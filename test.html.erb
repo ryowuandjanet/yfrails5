@@ -1,0 +1,251 @@
+    <!--<%= stylesheet_link_tag "/css/jquery-ui.min.css" %>-->
+    
+    
+    //= require turbolinks
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    ============================================================================================================
+    
+     <!--測試modal-->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    ============================================================================================================
+    <%= @yfcase.personnals.where(is_original_owner: true).blank? ? ' ' :  @yfcase.personnals.where(is_original_owner: true).first.right_share_person %>/<%= @yfcase.personnals.where(is_original_owner: true).blank? ? ' ' :  @yfcase.personnals.where(is_original_owner: true).first.right_share_all %>
+    
+    ============================================================================================================
+                    <table>
+                    <tr class="danger">
+                        <th class="xe5211 font-th-10">附件</th>
+                        <th class="xe5212 font-th-10">地址(屋齡)</th>
+                        <th class="xe5213 font-th-10">總價(元)</th>
+                        <th class="xe5214 font-th-10">建坪(坪)</th>
+                        <th class="xe5215 font-th-10">單價(元)</th>
+                        <th class="xe5216 font-th-10">樓高</th>
+                        <% if user_signed_in? %>
+                            <th class="xe5217 font-th-10">勘查員A</th>
+                            <th class="xe5218 font-th-10">加成A</th>
+                            <th class="xe5219 font-th-10">勘查員B</th>
+                            <th class="xe521a font-th-10">加成B</th>
+                            <th class="xe521b font-th-10">計算</th>
+                        <% end %>
+                    </tr>
+                    <% @yfcase.objectbuilds.each do |objectbuild| %>
+                    <tr>
+                        <td class="xe5221 font-th-10">
+                            <% if objectbuild.objectbuild_url == "" %>
+                                <%= link_to "" %>
+                            <% else %>
+                                <%= link_to "連結", objectbuild.objectbuild_url, target: "_blank" %>
+                            <% end %>
+                        </td>
+                        <td class="xe5222 font-th-10">
+                            <%= objectbuild.address %>
+                            <% if objectbuild.house_age.present? %>
+                                <br>(<%= objectbuild.house_age %>年)
+                            <% else %>
+                                <%= ' ' %>
+                            <% end %>
+                        </td>
+                        <td class="xe5223 font-th-10">
+                            <%= number_to_currency(objectbuild.total_price, unit: "", precision: 0 ) %>
+                        </td>
+                        <td class="xe5224 font-th-10">
+                            <%= objectbuild.build_area %>
+                        </td>
+                        <td class="xe5225 font-th-10">
+                            <%= number_to_currency(holdingpoint(objectbuild.total_price,objectbuild.build_area), unit: "", precision: 0 ) %>
+                        </td>
+
+                        <td class="xe5226 font-th-10">
+                            <%= objectbuild.floor_height %>
+                        </td>
+                        <% if user_signed_in? %>
+                            <td class="xe5227 font-th-10">
+                                <% if current_user.role == 1 %>
+                                    <%= objectbuild.surveyora %>
+                                    <%= link_to deleteplusratea_yfcase_objectbuild_path(@yfcase,objectbuild),method: :delete do %>
+                                        <span style='color: Red;'><i class='fa fa-times-circle fa-2x'></i></span>
+                                    <% end %>
+                                <% elsif objectbuild.surveyora.present? %>
+                                    <%= objectbuild.surveyora %>
+                                <% elsif objectbuild.surveyorb == (current_user.first_name + current_user.last_name) %>
+                                    已評
+                                <% else %>
+                                    <%= link_to "待評分", editplusratea_yfcase_objectbuild_path(@yfcase,objectbuild),class: "btn btn-primary btn-sm" %>
+                                <% end %>
+                            </td>
+                            <td class="xe5228 font-th-10">
+                                <% @plusa=objectbuild.plusa %>
+                                <%= @plusa %>
+                            </td>
+                            <td class="xe5229 font-th-10">
+                                <% if current_user.role == 1 %>
+                                    <%= objectbuild.surveyorb %>
+                                    <%= link_to deleteplusrateb_yfcase_objectbuild_path(@yfcase,objectbuild),method: :delete do %>
+                                        <span style='color: Red;'><i class='fa fa-times-circle fa-2x'></i></span>
+                                    <% end %>
+                                <% elsif objectbuild.surveyorb.present? %>
+                                    <%= objectbuild.surveyorb %>
+                                <% elsif objectbuild.surveyora == (current_user.first_name + current_user.last_name) %>
+                                    已評
+                                <% else %>
+                                    <%= link_to "待評分", editplusrateb_yfcase_objectbuild_path(@yfcase,objectbuild),class: "btn btn-primary btn-sm" %>
+                                <% end %>
+                            </td>
+                            <td class="xe522a font-th-10">
+                                <% @plusb=objectbuild.plusb %>
+                                <%= @plusb %>
+                            </td>
+                            <td class="xe522b font-th-10">
+                                <% @totalmesa = testvalue(objectbuild.total_price.to_f/objectbuild.build_area.to_f,@plusa,@plusb) %>
+                                <%= number_to_currency(@totalmesa, unit: "", precision: 0 ) %>
+                            </td>
+                        <% end %>
+                    </tr>
+                    <% end %>
+                </table>
+                
+           ============================================================================================================
+            <th class="xg1300 font-th">
+                <% if yfcasefullname == currentfullname && @yfcase.subsigntrueas.first.present? %>
+                    副署人員1<%= link_to "刪除", delete_subsigntruea_yfcase_path(@yfcase),method: :delete,class: "btn btn-info btn-sm" %>
+                <% elsif @yfcase.final_decision.blank? || (@yfcase.final_decision.present? && yfcasefullname == currentfullname) %>
+                    <%= '副署人員1' %>
+                <% else %>
+                    <% if @yfcase.subsigntrueas.first.blank? %>
+                         <%= link_to "副署人員1", new_yfcase_subsigntruea_path(@yfcase),class: "btn btn-primary btn-sm" %>
+                    <% else %>
+                         <%= "副署人員1" %>
+                    <% end %>
+                <% end %>    
+            </th>
+            <th class="xg1400 font-th">
+                <% if yfcasefullname == currentfullname && @yfcase.subsigntruebs.first.present? %>
+                    副署人員2 <%= link_to "刪除", delete_subsigntrueb_yfcase_path(@yfcase),method: :delete,class: "btn btn-info btn-sm" %>
+                <% elsif @yfcase.final_decision.blank? || (@yfcase.final_decision.present? && yfcasefullname == currentfullname) %>
+                    <%= '副署人員2' %>
+                <% elsif @yfcase.final_decision.present? && yfcasefullname != currentfullname && subsigntrueafullname == currentfullname %>
+                    <%= '該員已副署' %>
+                <% else %>
+                    <% if @yfcase.subsigntruebs.first.blank? && @yfcase.subsigntrueas.first.present? %>
+                         <%= link_to "副署人員2", new_yfcase_subsigntrueb_path(@yfcase),class: "btn btn-primary btn-sm" %>
+                    <% else %>
+                         <%= "副署人員2" %>
+                    <% end %>
+                <% end %>
+            </th>
+            <th class="xg1500 font-th">
+                <% if yfcasefullname == currentfullname && @yfcase.subsigntruecs.first.present? %>
+                    副署人員3<%= link_to "刪除", delete_subsigntruec_yfcase_path(@yfcase),method: :delete,class: "btn btn-info btn-sm" %>
+                <% elsif  @yfcase.final_decision.blank? || (@yfcase.final_decision.present? && yfcasefullname == currentfullname) %>
+                    <%= '副署人員3' %>
+                <% elsif @yfcase.final_decision.present? && yfcasefullname != currentfullname && ((subsigntrueafullname == currentfullname && subsigntruebfullname != currentfullname) || (subsigntrueafullname != currentfullname && subsigntruebfullname == currentfullname)) %>
+                    <%= '該員已副署' %>
+                <% else %>
+                    <% if @yfcase.subsigntruecs.first.blank? && @yfcase.subsigntruebs.first.present? %>
+                         <%= link_to "副署人員3", new_yfcase_subsigntruec_path(@yfcase),class: "btn btn-primary btn-sm" %>
+                    <% else %>
+                         <%= "副署人員3" %>
+                    <% end %>
+                <% end %>
+            </th>
+        </tr>
+        
+        
+        ============================================================================================================
+         # GET /yfcases/1
+  # GET /yfcases/1.json
+  def show
+    @yfcase = Yfcase.find(params[:id])
+    # 地坪總面積 (平方公尺)
+    @landtotalarea = @yfcase.lands.map{ |n| [n.land_area.to_f * (n.land_holding_point_personal.to_f / n.land_holding_point_all.to_f)] }.flatten.sum
+    
+    # 建坪
+    
+    if @yfcase.builds.where.not(build_type_use: "0公設").blank?
+      @notPU_HP_personal=1
+      @notPU_HP_all=1      
+    else
+      # 找到第一筆非公設(notPU)的個人持分(build_holding_point_personal)
+      @notPU_HP_personal=@yfcase.builds.where.not(build_type_use: "0公設").first.build_holding_point_personal
+      # 找到第一筆非公設(notPU)的個人持分(build_holding_point_all)
+      @notPU_HP_all=@yfcase.builds.where.not(build_type_use: "0公設").first.build_holding_point_all
+    end
+
+    # 建坪總面積 (平方公尺)-無公設
+    @withoutBuildTotalArea = @yfcase.builds.where.not(build_type_use: "0公設").not( build_type_use: "12增建(持分後坪數打對折").map { |n| [n.build_area.to_f * (n.build_holding_point_personal.to_f / n.build_holding_point_all.to_f)] }.flatten.sum 
+    # 建坪總面積 (平方公尺)-有公設
+    @withBuildTotalArea = @yfcase.builds.where(build_type_use: "0公設").map { |n| [n.build_area.to_f * ((n.build_holding_point_personal.to_f * @notPU_HP_personal.to_f) / (n.build_holding_point_all.to_f * @notPU_HP_all.to_f))] }.flatten.sum 
+    # 建坪總面積 (平方公尺)-有增建
+    @addBuildTotalArea = @yfcase.builds.where(build_type_use: "12增建(持分後坪數打對折)").map { |n| [n.build_area.to_f * ((n.build_holding_point_personal.to_f * 0.5.to_f) / (n.build_holding_point_all.to_f * 0.5.to_f))] }.flatten.sum 
+
+    # 坪價(萬)
+    @pingprice1 = @yfcase.floor_price_1.to_f / ((@withoutBuildTotalArea+@withBuildTotalArea+@addBuildTotalArea)*0.3025).to_f
+    @pingprice2 = @yfcase.floor_price_2.to_f / ((@withoutBuildTotalArea+@withBuildTotalArea+@addBuildTotalArea)*0.3025).to_f
+    @pingprice3 = @yfcase.floor_price_3.to_f / ((@withoutBuildTotalArea+@withBuildTotalArea+@addBuildTotalArea)*0.3025).to_f
+    @pingprice4 = @yfcase.floor_price_4.to_f / ((@withoutBuildTotalArea+@withBuildTotalArea+@addBuildTotalArea)*0.3025).to_f
+
+    # 時價(萬)
+
+    marketpricecount = @yfcase.objectbuilds.count
+    marketpricesum=@yfcase.objectbuilds.map { |n| [(testvalue(n.total_price.to_f / n.build_area.to_f ,n.plusa,n.plusb))] }.flatten
+    @marketprice = marketpricesum.map!{|e| e.to_f}.sum.fdiv(marketpricesum.size)
+    respond_to do |format|
+    format.html
+    format.json
+    format.pdf {render template:'yfcases/deedtax', pdf: 'Deedtax'}
+    end
+    # respond_to do |format|
+    # format.html
+    #   format.pdf do 
+    #     pdf = YfcasePdf.new(@yfcase)
+    #     send_data pdf.render, 
+    #     filename: "yfcase_#{@yfcase.case_number}.pdf",
+    #     type: "application/pdf",
+    #     disposition: "inline"
+    #   end
+    # end 
+  end
+  
+        ============================================================================================================  
+  
+
+  
+  ----------------------------------------------
+  
+
+        ============================================================================================================
+        
+
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+        ============================================================================================================

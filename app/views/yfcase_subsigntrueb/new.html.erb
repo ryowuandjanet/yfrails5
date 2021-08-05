@@ -1,0 +1,16 @@
+<h2>New</h2>
+<%= current_user.first_name %><%= current_user.last_name %>
+<%= form_for @signtrueb , :url => yfcase_subsigntruebs_path( @yfcase ) do |f| %>
+<div class="form-group">
+    <%= f.hidden_field :signtrueb, :value => "#{current_user.first_name}#{current_user.last_name}" %>
+    <%= f.hidden_field :signtrueb_first_name, :value => "#{current_user.first_name}" %>
+    <%= f.hidden_field :signtrueb_last_name, :value => "#{current_user.last_name}" %>
+    <%= f.hidden_field :signtrueb_date, :value => "#{Time.now.strftime('%Y-%m-%d')}" %>
+    <%= f.hidden_field :signtrueb_work_area, :value => "#{current_user.userWorkArea}" %>
+</div>
+
+<div class="form-group">
+    <%= f.submit "同意", :class => "btn btn-primary" %>
+</div>
+<% end %>
+<%= link_to "返回", yfcase_path(@yfcase) %>

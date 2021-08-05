@@ -1,0 +1,62 @@
+<div class="nested-fields">
+  <div class="field" style="background-color:#eee;">
+    <div style="padding:5px;margin-bottom:10px;border-radius:10px;background-color:#eee;">
+       
+      <div class="form-group row" style="margin-bottom:3px;">
+        <div class="col-sm-3">
+          <label style="margin:0px;">地號</label>
+          <%= f.text_field :land_number, class: "form-control form-control-sm" %>
+        </div>
+        
+        <div class="col-sm-3">
+          <label style="margin:0px;">地坪<small>(平方公尺)</small></label>
+          <%= f.number_field :land_area, :step => 0.01, class: "form-control form-control-sm" %>
+        </div>
+        
+        <div class="col-sm-3">
+          <label style="margin:0px;">持分(個人)</label>
+          <%= f.number_field :land_holding_point_personal, class: "form-control form-control-sm" %>
+        </div>
+        
+        <div class="col-sm-3">
+          <label style="margin:0px;">持分(所有)</label>
+          <%= f.number_field :land_holding_point_all, class: "form-control form-control-sm" %>
+        </div>
+      </div>
+      
+      <div class="form-group row" style="margin-bottom:3px;">
+        <div class="col-sm-6">
+          <label style="margin:0px;">地號謄本</label>
+          <%= f.url_field :land_url, class: "form-control form-control-sm" %>
+        </div>
+        <div class="col-sm-5">
+          <label style="margin:0px;">備註</label>
+          <%= f.text_field :landRemarks, class: "form-control form-control-sm" %>
+        </div>
+        <div class="col-sm-1" style="padding:1px;margin:auto;text-align:center;">
+          <%= link_to_remove_association "刪除地號", f, class: "btn btn-danger btn-sm" %>
+        </div>
+      </div>
+      
+      <div class="form-group row" style="margin-bottom:3px;">
+        <div class="col-sm-6">
+          <label style="margin:0px;">土地公告現值(平方公尺/元)</label>
+          <%= f.text_field :landPresentValue, class: "form-control form-control-sm" %>
+        </div>
+        <div class="col-sm-6">
+          <label style="margin:0px;">土地總面積</label>
+          <%= f.text_field :landTotalArea, class: "form-control form-control-sm" %>
+        </div>
+        <div class="col-sm-6">
+          <label style="margin:0px;">土地面積寬度</label>
+          <%= f.text_field :landAreaWidth , class: "form-control form-control-sm" %>
+        </div>
+        <div class="col-sm-6">
+          <label style="margin:0px;">土地面積深度</label>
+          <%= f.text_field :landAreaDepth , class: "form-control form-control-sm" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

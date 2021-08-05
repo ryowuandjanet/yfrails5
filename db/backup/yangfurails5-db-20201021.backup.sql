@@ -1,0 +1,2187 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.14 (Ubuntu 10.14-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.14 (Ubuntu 10.14-0ubuntu0.18.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO ubuntu;
+
+--
+-- Name: builds; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.builds (
+    id bigint NOT NULL,
+    build_number character varying,
+    build_url character varying,
+    build_area numeric(10,2),
+    build_holding_point_personal integer,
+    build_holding_point_all integer,
+    build_type_use character varying,
+    use_partition character varying,
+    yfcase_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    "buildCity" character varying,
+    "buildTownship" character varying,
+    "buildArea" character varying,
+    "buildStreet" character varying,
+    "buildRoad" character varying,
+    "buildSegment" character varying,
+    "buildLane" character varying,
+    "buildDo" character varying,
+    "buildNumber" character varying,
+    "buildFloor" character varying,
+    "buildBigSegment" character varying,
+    "buildSmallSegment" character varying,
+    "buildLot" character varying,
+    "buildLevel1" character varying,
+    "buildLevel2" character varying,
+    "buildLevel3" character varying,
+    "buildLevel4" character varying,
+    "buildOther1" character varying,
+    "buildOther2" character varying,
+    "buildUse" character varying,
+    "buildScopeOfArea" character varying,
+    "buildScopeOfRights" character varying,
+    "buildRemarks" character varying,
+    "buildTotalArea" character varying,
+    "buildLandNumber" character varying,
+    "mainBuildLevel1" character varying,
+    "mainBuildLevel2" character varying,
+    "mainBuildLevel3" character varying,
+    "mainBuildLevel4" character varying,
+    "mainBuildLevel5" character varying,
+    "mainBuildConstruction1" character varying,
+    "mainBuildConstruction2" character varying,
+    "mainBuildConstruction3" character varying,
+    "mainBuildConstruction4" character varying,
+    "mainBuildConstruction5" character varying,
+    "mainBuildArea1" character varying,
+    "mainBuildArea2" character varying,
+    "mainBuildArea3" character varying,
+    "mainBuildArea4" character varying,
+    "mainBuildArea5" character varying,
+    "publicBuildNumber1" character varying,
+    "publicBuildNumber2" character varying,
+    "publicBuildNumber3" character varying,
+    "publicBuildNumber4" character varying,
+    "publicBuildArea1" character varying,
+    "publicBuildArea2" character varying,
+    "publicBuildArea3" character varying,
+    "publicBuildArea4" character varying,
+    "publicBuildHP1" character varying,
+    "publicBuildHP2" character varying,
+    "publicBuildHP3" character varying,
+    "publicBuildHP4" character varying,
+    "subBuildUse1" character varying,
+    "subBuildUse2" character varying,
+    "subBuildUse3" character varying,
+    "subBuildArea1" character varying,
+    "subBuildArea2" character varying,
+    "subBuildArea3" character varying
+);
+
+
+ALTER TABLE public.builds OWNER TO ubuntu;
+
+--
+-- Name: builds_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.builds_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.builds_id_seq OWNER TO ubuntu;
+
+--
+-- Name: builds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.builds_id_seq OWNED BY public.builds.id;
+
+
+--
+-- Name: countries; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.countries (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.countries OWNER TO ubuntu;
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.countries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.countries_id_seq OWNER TO ubuntu;
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.countries_id_seq OWNED BY public.countries.id;
+
+
+--
+-- Name: lands; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.lands (
+    id bigint NOT NULL,
+    land_number character varying,
+    land_url character varying,
+    land_area numeric(10,2),
+    land_holding_point_personal integer,
+    land_holding_point_all integer,
+    yfcase_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    "landRemarks" character varying,
+    "landPresentValue" character varying,
+    "landTotalArea" character varying,
+    "landAreaWidth" character varying,
+    "landAreaDepth" character varying
+);
+
+
+ALTER TABLE public.lands OWNER TO ubuntu;
+
+--
+-- Name: lands_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.lands_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.lands_id_seq OWNER TO ubuntu;
+
+--
+-- Name: lands_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.lands_id_seq OWNED BY public.lands.id;
+
+
+--
+-- Name: objectbuilds; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.objectbuilds (
+    id bigint NOT NULL,
+    address character varying,
+    total_price integer,
+    build_area numeric(9,2),
+    house_age numeric(5,2),
+    floor_height character varying,
+    objectbuild_url character varying,
+    surveyora character varying,
+    surveyorb character varying,
+    plusa numeric(3,2),
+    plusb numeric(3,2),
+    yfcase_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    objectbuild_status character varying,
+    plusa_reason character varying,
+    plusb_reason character varying,
+    "objectBuildDealYear" character varying,
+    "objectBuildDealMonth" character varying
+);
+
+
+ALTER TABLE public.objectbuilds OWNER TO ubuntu;
+
+--
+-- Name: objectbuilds_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.objectbuilds_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.objectbuilds_id_seq OWNER TO ubuntu;
+
+--
+-- Name: objectbuilds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.objectbuilds_id_seq OWNED BY public.objectbuilds.id;
+
+
+--
+-- Name: personnals; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.personnals (
+    id bigint NOT NULL,
+    is_debtor boolean,
+    is_creditor boolean,
+    is_land_owner boolean,
+    is_build_owner boolean,
+    name character varying,
+    identity_card character varying,
+    birthday timestamp without time zone,
+    local_phone character varying,
+    mobile_phone character varying,
+    personnal_notes character varying,
+    person_country character varying,
+    person_township character varying,
+    person_village character varying,
+    person_neighbor character varying,
+    person_street character varying,
+    person_section character varying,
+    person_lane character varying,
+    person_alley character varying,
+    person_number character varying,
+    person_floor character varying,
+    is_original_owner boolean,
+    is_new_owner boolean,
+    is_deed_tax_agent boolean,
+    is_tax_agent boolean,
+    identity_code character varying,
+    public_or_private character varying,
+    right_share_person integer,
+    right_share_all integer,
+    yfcase_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    "personnalBuildHoldingPointPerson" character varying,
+    "personnalBuildHoldingPointAll" character varying,
+    "ownerFullAddress" character varying
+);
+
+
+ALTER TABLE public.personnals OWNER TO ubuntu;
+
+--
+-- Name: personnals_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.personnals_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.personnals_id_seq OWNER TO ubuntu;
+
+--
+-- Name: personnals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.personnals_id_seq OWNED BY public.personnals.id;
+
+
+--
+-- Name: plusrateas; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.plusrateas (
+    id bigint NOT NULL,
+    persona character varying,
+    plusa numeric(4,2),
+    objectbuild_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    plusa_reason character varying
+);
+
+
+ALTER TABLE public.plusrateas OWNER TO ubuntu;
+
+--
+-- Name: plusrateas_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.plusrateas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.plusrateas_id_seq OWNER TO ubuntu;
+
+--
+-- Name: plusrateas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.plusrateas_id_seq OWNED BY public.plusrateas.id;
+
+
+--
+-- Name: plusratebs; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.plusratebs (
+    id bigint NOT NULL,
+    personb character varying,
+    plusb numeric(4,2),
+    objectbuild_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    plusb_reason character varying
+);
+
+
+ALTER TABLE public.plusratebs OWNER TO ubuntu;
+
+--
+-- Name: plusratebs_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.plusratebs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.plusratebs_id_seq OWNER TO ubuntu;
+
+--
+-- Name: plusratebs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.plusratebs_id_seq OWNED BY public.plusratebs.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO ubuntu;
+
+--
+-- Name: subsigntrueas; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.subsigntrueas (
+    id bigint NOT NULL,
+    signtruea character varying,
+    signtruea_first_name character varying,
+    signtruea_last_name character varying,
+    signtruea_date date,
+    yfcase_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.subsigntrueas OWNER TO ubuntu;
+
+--
+-- Name: subsigntrueas_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.subsigntrueas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.subsigntrueas_id_seq OWNER TO ubuntu;
+
+--
+-- Name: subsigntrueas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.subsigntrueas_id_seq OWNED BY public.subsigntrueas.id;
+
+
+--
+-- Name: subsigntruebs; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.subsigntruebs (
+    id bigint NOT NULL,
+    signtrueb character varying,
+    signtrueb_first_name character varying,
+    signtrueb_last_name character varying,
+    signtrueb_date date,
+    yfcase_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.subsigntruebs OWNER TO ubuntu;
+
+--
+-- Name: subsigntruebs_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.subsigntruebs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.subsigntruebs_id_seq OWNER TO ubuntu;
+
+--
+-- Name: subsigntruebs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.subsigntruebs_id_seq OWNED BY public.subsigntruebs.id;
+
+
+--
+-- Name: subsigntruecs; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.subsigntruecs (
+    id bigint NOT NULL,
+    signtruec character varying,
+    signtruec_first_name character varying,
+    signtruec_last_name character varying,
+    signtruec_date date,
+    yfcase_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.subsigntruecs OWNER TO ubuntu;
+
+--
+-- Name: subsigntruecs_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.subsigntruecs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.subsigntruecs_id_seq OWNER TO ubuntu;
+
+--
+-- Name: subsigntruecs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.subsigntruecs_id_seq OWNED BY public.subsigntruecs.id;
+
+
+--
+-- Name: townships; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.townships (
+    id bigint NOT NULL,
+    name character varying,
+    zip_code character varying,
+    district_court character varying,
+    land_office character varying,
+    finance_and_tax_bureau character varying,
+    police_station character varying,
+    irs character varying,
+    home_office character varying,
+    country_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.townships OWNER TO ubuntu;
+
+--
+-- Name: townships_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.townships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.townships_id_seq OWNER TO ubuntu;
+
+--
+-- Name: townships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.townships_id_seq OWNED BY public.townships.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    role integer,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    full_name character varying,
+    "userIdentityCard" character varying,
+    "userBirthday" date,
+    "userLocalPhone" character varying,
+    "userMobilePhone" character varying,
+    "userNotes" character varying,
+    "userCountry" character varying,
+    "userTownship" character varying,
+    "userVillage" character varying,
+    "userNeighbor" character varying,
+    "userStreet" character varying,
+    "userSection" character varying,
+    "userLane" character varying,
+    "userAlley" character varying,
+    "userNumber" character varying,
+    "userFloor" character varying,
+    "userIdentityCode" character varying,
+    "userPublicOrPrivate" character varying
+);
+
+
+ALTER TABLE public.users OWNER TO ubuntu;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO ubuntu;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: yfcases; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.yfcases (
+    id bigint NOT NULL,
+    case_number character varying,
+    other_address character varying,
+    auction_day_1 date,
+    auction_day_2 date,
+    auction_day_3 date,
+    auction_day_4 date,
+    floor_price_1 integer,
+    floor_price_2 integer,
+    floor_price_3 integer,
+    floor_price_4 integer,
+    click_1 integer,
+    click_2 integer,
+    click_3 integer,
+    click_4 integer,
+    monitor_1 integer,
+    monitor_2 integer,
+    monitor_3 integer,
+    monitor_4 integer,
+    margin_1 integer,
+    margin_2 integer,
+    margin_3 integer,
+    margin_4 integer,
+    auction_notes character varying,
+    first_survey_day date,
+    other_survey_day date,
+    foreclosure_announcement_title character varying,
+    foreclosure_announcement_link character varying,
+    object_photo_title character varying,
+    object_photo_link character varying,
+    net_price_registration_market_price_title character varying,
+    net_price_registration_market_price_link character varying,
+    net_price_registration_map_title character varying,
+    net_price_registration_map_link character varying,
+    net_price_registration_photo_title character varying,
+    net_price_registration_photo_link character varying,
+    auction_record_title character varying,
+    auction_record_link character varying,
+    other_notes character varying,
+    survey_resolution character varying,
+    final_decision character varying,
+    co_owner boolean,
+    occupy boolean,
+    register boolean,
+    parking_space boolean,
+    management_fee boolean,
+    rent boolean,
+    leak boolean,
+    easy_parking boolean,
+    railway boolean,
+    vegetable_market boolean,
+    supermarket boolean,
+    school boolean,
+    park boolean,
+    post_office boolean,
+    main_road boolean,
+    water_and_power_failure boolean,
+    good_vision boolean,
+    final_decision_date date,
+    country_id integer,
+    township_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    big_section character varying,
+    small_section character varying,
+    company character varying,
+    foreclosure_announcement_988_link character varying,
+    adv_find_condition character varying,
+    active_result character varying,
+    active_result_date date,
+    priority_purchase_result character varying,
+    target_number character varying,
+    cause_data date,
+    application_for_registration character varying,
+    reason_for_registration character varying,
+    marking_and_application_rights character varying,
+    "attached_Document_Content_1" character varying,
+    number_of_attached_quantity_1 integer,
+    "attached_Document_Content_2" character varying,
+    number_of_attached_quantity_2 integer,
+    "attached_Document_Content_3" character varying,
+    number_of_attached_quantity_3 integer,
+    registration_notes character varying,
+    "deedtaxDateOfDeed" date,
+    "deedtaxDeclarationDate" date,
+    "deedtaxTransferPrice" integer,
+    "deedtaxChargeDaffairesTaxDeclarant" character varying,
+    "deedtaxDebtTaxPaymentReceiptMethod" character varying,
+    "deedtaxClosedNewsletter" character varying,
+    "deedtaxUnderreportedDays" integer,
+    "deedtaxRemark" character varying,
+    "deedtaxBuildingTransferLevel1" character varying,
+    "deedtaxBuildingTransferLevel2" character varying,
+    "deedtaxBuildingTransferLevel3" character varying,
+    "deedtaxBuildingTransferLevel4" character varying,
+    "deedtaxBuildingTransferLevel5" character varying,
+    "deedtaxBuildingTransferLevel6" character varying,
+    "deedtaxBuildingTransferLevel7" character varying,
+    "deedtaxBuildingTransferStructure1" character varying,
+    "deedtaxBuildingTransferStructure2" character varying,
+    "deedtaxBuildingTransferStructure3" character varying,
+    "deedtaxBuildingTransferStructure4" character varying,
+    "deedtaxBuildingTransferStructure5" character varying,
+    "deedtaxBuildingTransferStructure6" character varying,
+    "deedtaxBuildingTransferStructure7" character varying,
+    "deedtaxBuildingTransferArea1" character varying,
+    "deedtaxBuildingTransferArea2" character varying,
+    "deedtaxBuildingTransferArea3" character varying,
+    "deedtaxBuildingTransferArea4" character varying,
+    "deedtaxBuildingTransferArea5" character varying,
+    "deedtaxBuildingTransferArea6" character varying,
+    "deedtaxBuildingTransferArea7" character varying,
+    "deedtaxBuildingTransferPublicBuildingNumber1" character varying,
+    "deedtaxBuildingTransferPublicBuildingNumber2" character varying,
+    "deedtaxBuildingTransferPublicBuildingNumber3" character varying,
+    "deedtaxBuildingTransferPublicBuildingNumber4" character varying,
+    "deedtaxBuildingTransferPublicBuildingNumber5" character varying,
+    "deedtaxBuildingTransferPublicArea1" character varying,
+    "deedtaxBuildingTransferPublicArea2" character varying,
+    "deedtaxBuildingTransferPublicArea3" character varying,
+    "deedtaxBuildingTransferPublicArea4" character varying,
+    "deedtaxBuildingTransferPublicArea5" character varying,
+    "deedtaxBuildingTransferPublicHoldings1" character varying,
+    "deedtaxBuildingTransferPublicHoldings2" character varying,
+    "deedtaxBuildingTransferPublicHoldings3" character varying,
+    "deedtaxBuildingTransferPublicHoldings4" character varying,
+    "deedtaxBuildingTransferPublicHoldings5" character varying,
+    "housingTax" character varying,
+    "refereeFee" character varying,
+    "agreementSplitUnsuccessfulDate" character varying,
+    exhibit1 character varying,
+    exhibit2 character varying,
+    exhibit3 character varying,
+    exhibit4 character varying,
+    "tabulationDate" date,
+    "isMobileOrDesktop" character varying,
+    "realestateregistrationRealEstateAgent" character varying,
+    "complaintLitigationAgent" character varying,
+    "debtorName" character varying,
+    "debtorIdentitycard" character varying,
+    "debtorBirthday" date,
+    "debtorLocallphone" character varying,
+    "debtorMobilelphone" character varying,
+    "debtorNotes" character varying,
+    "debtorCountry" character varying,
+    "debtorTownship" character varying,
+    "debtorVillage" character varying,
+    "debtorNeighbor" character varying,
+    "debtorStreet" character varying,
+    "debtorSection" character varying,
+    "debtorLane" character varying,
+    "debtorAlley" character varying,
+    "debtorNumber" character varying,
+    "debtorFloor" character varying,
+    "debtorBuildholdingpointperson" character varying,
+    "debtorBuildholdingpointall" character varying,
+    "debtorLandholdingpointperson" character varying,
+    "debtorLandholdingpointall" character varying,
+    "creditorName" character varying,
+    "creditorIdentitycard" character varying,
+    "creditorBirthday" date,
+    "creditorLocallphone" character varying,
+    "creditorMobilelphone" character varying,
+    "creditorNotes" character varying,
+    "creditorCountry" character varying,
+    "creditorTownship" character varying,
+    "creditorVillage" character varying,
+    "creditorNeighbor" character varying,
+    "creditorStreet" character varying,
+    "creditorSection" character varying,
+    "creditorLane" character varying,
+    "creditorAlley" character varying,
+    "creditorNumber" character varying,
+    "creditorFloor" character varying,
+    "creditorBuildholdingpointperson" character varying,
+    "creditorBuildholdingpointall" character varying,
+    "creditorLandholdingpointperson" character varying,
+    "creditorLandholdingpointall" character varying,
+    "houseTaxNumberCountry1" character varying,
+    "houseTaxNumberCountry2" character varying,
+    "houseTaxNumberTownship1" character varying,
+    "houseTaxNumberTownship2" character varying,
+    "houseTaxNumberBuilding1" character varying,
+    "houseTaxNumberBuilding2" character varying,
+    "houseTaxNumberBuilding3" character varying,
+    "houseTaxNumberBuilding4" character varying,
+    "houseTaxNumberHouseHold1" character varying,
+    "houseTaxNumberHouseHold2" character varying,
+    "houseTaxNumberHouseHold3" character varying
+);
+
+
+ALTER TABLE public.yfcases OWNER TO ubuntu;
+
+--
+-- Name: yfcases_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.yfcases_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.yfcases_id_seq OWNER TO ubuntu;
+
+--
+-- Name: yfcases_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.yfcases_id_seq OWNED BY public.yfcases.id;
+
+
+--
+-- Name: builds id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.builds ALTER COLUMN id SET DEFAULT nextval('public.builds_id_seq'::regclass);
+
+
+--
+-- Name: countries id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.countries ALTER COLUMN id SET DEFAULT nextval('public.countries_id_seq'::regclass);
+
+
+--
+-- Name: lands id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.lands ALTER COLUMN id SET DEFAULT nextval('public.lands_id_seq'::regclass);
+
+
+--
+-- Name: objectbuilds id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.objectbuilds ALTER COLUMN id SET DEFAULT nextval('public.objectbuilds_id_seq'::regclass);
+
+
+--
+-- Name: personnals id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.personnals ALTER COLUMN id SET DEFAULT nextval('public.personnals_id_seq'::regclass);
+
+
+--
+-- Name: plusrateas id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.plusrateas ALTER COLUMN id SET DEFAULT nextval('public.plusrateas_id_seq'::regclass);
+
+
+--
+-- Name: plusratebs id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.plusratebs ALTER COLUMN id SET DEFAULT nextval('public.plusratebs_id_seq'::regclass);
+
+
+--
+-- Name: subsigntrueas id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.subsigntrueas ALTER COLUMN id SET DEFAULT nextval('public.subsigntrueas_id_seq'::regclass);
+
+
+--
+-- Name: subsigntruebs id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.subsigntruebs ALTER COLUMN id SET DEFAULT nextval('public.subsigntruebs_id_seq'::regclass);
+
+
+--
+-- Name: subsigntruecs id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.subsigntruecs ALTER COLUMN id SET DEFAULT nextval('public.subsigntruecs_id_seq'::regclass);
+
+
+--
+-- Name: townships id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.townships ALTER COLUMN id SET DEFAULT nextval('public.townships_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: yfcases id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.yfcases ALTER COLUMN id SET DEFAULT nextval('public.yfcases_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2020-07-20 02:56:36.84259	2020-07-20 02:56:36.84259
+\.
+
+
+--
+-- Data for Name: builds; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.builds (id, build_number, build_url, build_area, build_holding_point_personal, build_holding_point_all, build_type_use, use_partition, yfcase_id, created_at, updated_at, "buildCity", "buildTownship", "buildArea", "buildStreet", "buildRoad", "buildSegment", "buildLane", "buildDo", "buildNumber", "buildFloor", "buildBigSegment", "buildSmallSegment", "buildLot", "buildLevel1", "buildLevel2", "buildLevel3", "buildLevel4", "buildOther1", "buildOther2", "buildUse", "buildScopeOfArea", "buildScopeOfRights", "buildRemarks", "buildTotalArea", "buildLandNumber", "mainBuildLevel1", "mainBuildLevel2", "mainBuildLevel3", "mainBuildLevel4", "mainBuildLevel5", "mainBuildConstruction1", "mainBuildConstruction2", "mainBuildConstruction3", "mainBuildConstruction4", "mainBuildConstruction5", "mainBuildArea1", "mainBuildArea2", "mainBuildArea3", "mainBuildArea4", "mainBuildArea5", "publicBuildNumber1", "publicBuildNumber2", "publicBuildNumber3", "publicBuildNumber4", "publicBuildArea1", "publicBuildArea2", "publicBuildArea3", "publicBuildArea4", "publicBuildHP1", "publicBuildHP2", "publicBuildHP3", "publicBuildHP4", "subBuildUse1", "subBuildUse2", "subBuildUse3", "subBuildArea1", "subBuildArea2", "subBuildArea3") FROM stdin;
+1	135		73.76	1	18	2透天厝	第一種住宅區	1	2020-07-20 06:31:02.762886	2020-07-20 06:31:02.762886	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+2	3441		120.75	1	18	2透天厝	第一種住宅區	1	2020-07-20 06:31:02.769472	2020-07-20 06:31:02.769472	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+3	188		65.60	1	4	1公寓(5樓含以下無電梯)	第一種住宅區	2	2020-07-20 06:42:40.680946	2020-07-20 06:42:40.680946	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+4	4245		46.41	1	4	1公寓(5樓含以下無電梯)	第一種住宅區	2	2020-07-20 06:42:40.683137	2020-07-20 06:42:40.683137	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+5	661		83.98	1	7	2透天厝	第一種住宅區	3	2020-07-20 06:51:10.248917	2020-07-20 06:51:10.248917	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+6	1788		70.61	1	7	2透天厝	第一種住宅區	3	2020-07-20 06:51:10.251994	2020-07-20 06:51:10.251994	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+7	4664		76.48	1	3	1公寓(5樓含以下無電梯)	第一種住宅區	4	2020-07-20 06:56:20.110244	2020-07-20 06:56:20.110244	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+10	906		97.28	1	3	2透天厝	第一種住宅區	6	2020-07-20 07:55:42.559185	2020-07-20 07:55:42.559185	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+11	27371		151.96	1	5	2透天厝	第一種住宅區	7	2020-07-20 08:00:39.479306	2020-07-20 08:00:39.479306	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+14	806		110.12	1	6	1公寓(5樓含以下無電梯)	第一種住宅區	9	2020-07-20 08:08:41.523516	2020-07-20 08:08:41.523516	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+15	1635	https://drive.google.com/drive/folders/19qru68HgIO9M_wTfa5KeQyInRqu7GGr5	49.56	1	6	1公寓(5樓含以下無電梯)	第一種住宅區	10	2020-07-20 08:12:54.696831	2020-07-20 08:12:54.696831	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+16	38		168.84	1	4	2透天厝	第一種住宅區	11	2020-07-20 08:16:10.514703	2020-07-20 08:16:10.514703	\N	\N	\N	\N		\N					\N	\N										\N			\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+23	2583	https://drive.google.com/drive/u/1/folders/1jrs2PEF43gToupM1KtKNRNqRcTELhiSw	80.10	1	6	1公寓(5樓含以下無電梯)	第一種住宅區	18	2020-08-04 06:36:02.121963	2020-08-08 08:14:02.600163	\N	\N	\N	\N							\N	\N										\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+25	2590	https://drive.google.com/drive/u/0/folders/1jrs2PEF43gToupM1KtKNRNqRcTELhiSw	152.46	1	8	0公設	第一種住宅區	18	2020-08-06 12:33:13.651031	2020-08-08 08:14:02.6154	\N	\N	\N	\N							\N	\N										\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+24	301	https://drive.google.com/drive/u/1/folders/101EycYhst6wW3xUD2OYxnsc2jhUufc-V	101.29	1	2	1公寓(5樓含以下無電梯)	第一種住宅區	19	2020-08-04 06:53:37.27975	2020-08-08 08:44:40.391964	\N	\N	\N	\N							\N	\N										\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+26	999		103.00	1	2	12增建(持分後坪數打對折)	第一種住宅區	19	2020-08-08 08:44:40.396705	2020-08-08 08:45:20.738106	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+27	1506		88.90	1	5	1公寓(5樓含以下無電梯)	第一種住宅區	20	2020-08-13 14:53:40.451133	2020-08-13 14:53:40.451133	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+28	4220		71.75	1	3	1公寓(5樓含以下無電梯)	第一種住宅區	21	2020-08-13 15:15:54.144194	2020-08-13 15:15:54.144194	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+29	3160		76.60	1	6	1公寓(5樓含以下無電梯)	第一種住宅區	22	2020-08-13 15:29:41.513687	2020-08-13 15:29:41.513687	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+30	10083		58.10	1	6	12增建(持分後坪數打對折)	第一種住宅區	22	2020-08-13 15:35:36.064573	2020-08-13 15:35:36.064573	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+31	1066		123.26	1	7	2透天厝	第一種住宅區	23	2020-08-13 15:43:35.83582	2020-08-13 15:43:35.83582	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+39	205	https://drive.google.com/drive/u/0/folders/1fb_3B6YTM-B8Dmi8lvQD1SffqgCeWSKH	81.94	1	2	2透天厝	第一種住宅區	29	2020-08-21 08:34:15.969125	2020-08-21 09:34:52.291799	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+40	474		113.91	1	4	1公寓(5樓含以下無電梯)	第一種住宅區	30	2020-08-25 10:34:58.539732	2020-08-25 10:34:58.539732	\N	\N	\N	\N							\N	\N	\N									\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+8	1254		84.37	1	5	6華廈(10層含以下有電梯)	第一種住宅區	5	2020-07-20 07:49:29.128837	2020-08-25 10:44:21.058781	\N	\N	\N	\N							\N	\N										\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+9	1287		1231.00	1	42	0公設	第一種住宅區	5	2020-07-20 07:49:29.131071	2020-08-25 10:44:21.06358	\N	\N	\N	\N							\N	\N										\N				\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+21	774	https://drive.google.com/drive/u/1/folders/1VhEp9cfB65HgsC-kFAt0mjU4wybrejiH	84.37	1	6	2透天厝	第一種住宅區	12	2020-07-20 10:20:05.912932	2020-08-31 01:26:02.435944	\N	\N	\N	\N	西門路	1	702	2	17		\N	\N	南門段	57.75	12.83						9.25	\N			18																																	
+38	2295	https://drive.google.com/drive/u/0/folders/1pjirqcgu2zxwIttOFt8L-hOALQpTEqdn	122.64	1	2	2透天厝	第一種住宅區	28	2020-08-21 07:49:16.266374	2020-08-31 11:34:18.931888	\N	\N	\N	\N							\N	\N	\N									\N																																				
+37	增建陽台		2.45	1	2	12增建(持分後坪數打對折)	第一種住宅區	27	2020-08-21 07:04:06.074982	2020-08-31 16:53:46.657656	\N	\N	\N	\N							\N	\N	\N									\N																																				
+36	470	https://drive.google.com/drive/u/0/folders/1QX6gi-7A1zXACyYmRTHEizUJIE_kJhXN	94.54	1	2	3店面(店舖)	第一種住宅區	27	2020-08-21 07:04:06.07265	2020-08-31 16:53:46.666872	\N	\N	\N	\N							\N	\N	\N									\N																																				
+18	98		88.60	1	3	2透天厝	第一種住宅區	15	2020-07-20 08:25:12.121018	2020-09-01 02:13:43.464107	\N	\N	\N	\N							\N	\N										\N																																				
+20	242		144.90	4	6	2透天厝	第一種住宅區	17	2020-07-20 08:33:47.681012	2020-09-02 02:52:33.792906	\N	\N	\N	\N							\N	\N										\N																																				
+44	721		109.16	1	2	2透天厝	第一種住宅區	33	2020-09-02 06:02:56.987102	2020-09-02 06:02:56.987102	\N	\N	\N	\N							\N	\N	\N									\N																																				
+45	2761		119.71	1	2	12增建(持分後坪數打對折)	第一種住宅區	33	2020-09-02 06:06:25.058651	2020-09-02 06:06:25.058651	\N	\N	\N	\N							\N	\N	\N									\N																																				
+17	984		100.99	1	5	1公寓(5樓含以下無電梯)	第一種住宅區	14	2020-07-20 08:22:32.914319	2020-09-03 01:07:21.495444	\N	\N	\N	\N							\N	\N										\N																																				
+33	1639		113.23	1	24	1公寓(5樓含以下無電梯)	第一種住宅區	25	2020-08-13 16:56:37.070632	2020-09-05 09:30:03.190754	\N	\N	\N	\N							\N	\N	\N									\N																																				
+35	2036		86.42	1	3	1公寓(5樓含以下無電梯)	第三種住宅區	26	2020-08-13 17:19:54.238035	2020-09-05 09:40:26.685087	\N	\N	\N	\N							\N	\N	\N									\N																																				
+32	1450		97.60	1	2	1公寓(5樓含以下無電梯)	第一種住宅區	24	2020-08-13 16:14:06.1085	2020-09-05 09:47:02.521833	\N	\N	\N	\N							\N	\N	\N									\N																																				
+19	6059	https://drive.google.com/drive/mobile/folders/12Xo0A7PsAihvHXFfcQla0nmsZ7O-VJD7	187.06	1	8	2透天厝	第一種住宅區	16	2020-07-20 08:29:31.684504	2020-09-10 02:53:57.277975	\N	\N	\N	\N							\N	\N										\N																																				
+43	399		58.64	1	3	2透天厝	第一種住宅區	32	2020-09-02 03:09:11.317648	2020-09-12 00:41:46.214314	\N	\N	\N	\N							\N	\N	\N									\N																																				
+12	5574		109.39	1	6	1公寓(5樓含以下無電梯)	第一種住宅區	8	2020-07-20 08:04:52.276498	2020-10-07 09:15:21.331343	\N	\N	\N	\N							\N	\N										\N																																				
+41	377	https://drive.google.com/drive/u/1/folders/1NxhO1EB6nIT2Lg1O5r_0S59ZSfpqDq48	91.20	1	2	2透天厝	第一種住宅區	31	2020-08-27 14:01:45.272841	2020-10-15 09:52:04.183733	\N	\N	\N	\N							\N	\N	\N									\N																																				
+34	3784		32.20	1	24	12增建(持分後坪數打對折)	第一種住宅區	25	2020-08-13 16:56:37.073456	2020-09-05 09:30:03.206137	\N	\N	\N	\N							\N	\N	\N									\N																																				
+46	38		168.84	1	4	10農舍	第一種住宅區	34	2020-09-07 09:09:58.946808	2020-09-07 09:11:44.216647	\N	\N	\N	\N	新生路				52		\N	\N	\N	84.99	83.85						3	\N			38	一層	二層				磚造	磚造				84.99	83.85																			3		
+47	399增建		53.12	1	3	12增建(持分後坪數打對折)	第一種住宅區	32	2020-09-12 00:42:56.417578	2020-09-12 00:42:56.417578	\N	\N	\N	\N							\N	\N	\N									\N																																				
+48	370		66.98	4	6	2透天厝	第一種住宅區	36	2020-09-14 02:45:56.317252	2020-09-14 02:45:56.317252	\N	\N	\N	\N	瑞興街		102		18		\N	\N	\N	33.49	33.49							\N				一層	二層				磚造	磚造				33.49	33.49																					
+49	82		438.03	1	4	2透天厝	農業區	37	2020-09-21 08:06:29.562371	2020-09-21 08:06:29.562371	\N	\N	\N	\N							\N	\N	\N	154.93	141.55	141.55 						\N				一層																																
+50	439		102.13	1	3	2透天厝	第一種住宅區	38	2020-09-21 08:32:07.238375	2020-09-21 08:32:07.238375	\N	\N	\N	\N							\N	\N	\N	46.34	46.34	9.45						\N																																				
+51	205		110.63	1	7	2透天厝	第一種住宅區	39	2020-09-21 08:42:39.82023	2020-09-21 08:42:39.82023	\N	\N	\N	\N							\N	\N	\N	52.40 	52.40 					屋頂突出物	5.83	\N		110.63																																		
+52	164		91.50	1	2	1公寓(5樓含以下無電梯)	第一種住宅區	40	2020-09-22 06:22:21.074786	2020-09-22 06:22:21.074786	\N	\N	\N	\N							\N	\N	\N	40.33	40.33					陽台	10.84	\N		91.5																																		
+53	983		144.86	1	3	3店面(店舖)	第一種住宅區	41	2020-09-25 23:35:57.533501	2020-09-25 23:35:57.533501	\N	\N	\N	\N							\N	\N	\N									\N																																				
+55	131		97.54	1	4	3店面(店舖)	第一種住宅區	43	2020-09-28 06:43:42.919694	2020-09-28 06:43:42.919694	\N	\N	\N	\N							\N	\N	\N	34.14	51.4					騎樓	12	\N		97.54																																		
+56	764 		104.08	1	4	2透天厝	第一種住宅區	44	2020-09-28 06:51:48.324016	2020-09-28 06:51:48.324016	\N	\N	\N	\N							\N	\N	\N									\N																																				
+57	316		47.97	1	2	2透天厝	第一種住宅區	45	2020-09-28 07:45:19.783742	2020-09-28 07:45:19.783742	\N	\N	\N	\N							\N	\N	\N									\N																																				
+58	141		120.14	1	5	2透天厝	第一種住宅區	46	2020-09-28 08:04:21.472097	2020-09-28 08:04:21.472097	\N	\N	\N	\N							\N	\N	\N									\N																																				
+59	354		88.67	1	1	1公寓(5樓含以下無電梯)	第一種住宅區	47	2020-09-28 08:20:01.399104	2020-09-28 08:20:01.399104	\N	\N	\N	\N							\N	\N	\N									\N																																				
+54	301		227.42	1	4	3店面(店舖)	第一種住宅區	42	2020-09-28 06:32:35.525667	2020-09-30 23:07:32.093391	\N	\N	\N	\N							\N	\N	\N	44.14	53.84	53.84		12.6	45.34	屋頂突出物	3.72	\N																																				
+61	301頂增		50.12	1	4	12增建(持分後坪數打對折)	第一種住宅區	42	2020-09-30 23:08:53.470705	2020-09-30 23:08:53.470705	\N	\N	\N	\N							\N	\N	\N									\N																																				
+62	 880 		102.30	1	2	2透天厝	第一種住宅區	35	2020-10-02 04:19:43.304449	2020-10-02 04:19:43.304449	\N	\N	\N	\N							\N	\N	\N									\N																																				
+63	23		194.49	1	4	2透天厝	第一種住宅區	49	2020-10-02 12:09:30.591876	2020-10-02 12:09:30.591876	\N	\N	\N	\N							\N	\N	\N									\N																																				
+64	28		98.15	1	10	1公寓(5樓含以下無電梯)	第一種住宅區	50	2020-10-02 12:46:32.949213	2020-10-02 12:46:32.949213	\N	\N	\N	\N							\N	\N	\N									\N																																				
+65	346		131.97	1	3	2透天厝	第一種住宅區	51	2020-10-05 03:26:24.49294	2020-10-05 03:26:24.49294	\N	\N	\N	\N							\N	\N	\N									\N																																				
+66	2405		89.18	33334	100000	2透天厝	第一種住宅區	52	2020-10-05 03:39:00.905087	2020-10-05 03:39:00.905087	\N	\N	\N	\N							\N	\N	\N									\N																																				
+67	91		69.30	1	6	2透天厝	第一種住宅區	53	2020-10-05 03:47:08.798796	2020-10-05 03:47:08.798796	\N	\N	\N	\N							\N	\N	\N									\N																																				
+68	 7020		29.41	1	6	12增建(持分後坪數打對折)	第一種住宅區	53	2020-10-05 03:49:27.633946	2020-10-05 03:49:27.633946	\N	\N	\N	\N							\N	\N	\N									\N																																				
+69	801		75.19	1	5	1公寓(5樓含以下無電梯)	第一種住宅區	54	2020-10-05 05:54:11.820296	2020-10-05 05:54:11.820296	\N	\N	\N	\N	大武路				51-4		\N	\N	\N									\N				五層										75.19																						
+70	 377 		91.20	1	2	2透天厝	第一種住宅區	55	2020-10-05 11:02:07.672822	2020-10-05 11:02:07.672822	\N	\N	\N	\N							\N	\N	\N									\N																																				
+71	2147		150.40	1	2	12增建(持分後坪數打對折)	第一種住宅區	55	2020-10-05 11:05:29.359096	2020-10-05 11:05:29.359096	\N	\N	\N	\N							\N	\N	\N									\N																																				
+13	10085		95.13	1	6	1公寓(5樓含以下無電梯)	第一種住宅區	8	2020-07-20 08:04:52.279647	2020-10-07 09:15:21.36601	\N	\N	\N	\N							\N	\N										\N																																				
+72	2879		75.18	1	5	1公寓(5樓含以下無電梯)	第一種住宅區	56	2020-10-07 09:35:15.764922	2020-10-07 09:35:15.764922	\N	\N	\N	\N							\N	\N	\N									\N				四層					水泥																						陽台	花台		6.58	1.61	
+60	518	https://drive.google.com/file/d/1LvPsC0sBA1laxPRTjmWuiNm4wMXmwJMu/view?usp=drivesdk	69.94	14200	100000	1公寓(5樓含以下無電梯)	第一種住宅區	48	2020-09-30 10:47:45.030782	2020-10-13 11:52:46.102994	\N	\N	\N	\N							\N	\N	\N									\N																																				
+73	602		48.24	1	4	1公寓(5樓含以下無電梯)	第一種住宅區	57	2020-10-14 14:28:31.665817	2020-10-14 14:28:31.665817	\N	\N	\N	\N							\N	\N	\N									\N																																				
+42	2147	https://drive.google.com/drive/u/1/folders/1NxhO1EB6nIT2Lg1O5r_0S59ZSfpqDq48	150.40	1	2	12增建(持分後坪數打對折)	第一種住宅區	31	2020-08-27 14:01:45.285307	2020-10-15 09:52:04.18675	\N	\N	\N	\N							\N	\N	\N									\N																																				
+74	991		58.82	1	15	2透天厝	第一種住宅區	58	2020-10-16 14:58:20.240074	2020-10-16 14:58:20.240074	\N	\N	\N	\N							\N	\N	\N									\N																																				
+\.
+
+
+--
+-- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.countries (id, name, created_at, updated_at) FROM stdin;
+1	台北市	2020-07-20 02:58:30.884524	2020-07-20 02:58:30.884524
+2	基隆市	2020-07-20 02:58:30.889041	2020-07-20 02:58:30.889041
+3	新北市	2020-07-20 02:58:30.892173	2020-07-20 02:58:30.892173
+4	連江縣	2020-07-20 02:58:30.895192	2020-07-20 02:58:30.895192
+5	宜蘭縣	2020-07-20 02:58:30.898333	2020-07-20 02:58:30.898333
+6	釣魚台	2020-07-20 02:58:30.901437	2020-07-20 02:58:30.901437
+7	新竹市	2020-07-20 02:58:30.904587	2020-07-20 02:58:30.904587
+8	新竹縣	2020-07-20 02:58:30.907678	2020-07-20 02:58:30.907678
+9	桃園縣	2020-07-20 02:58:30.91078	2020-07-20 02:58:30.91078
+10	苗栗縣	2020-07-20 02:58:30.913948	2020-07-20 02:58:30.913948
+11	台中市	2020-07-20 02:58:30.917178	2020-07-20 02:58:30.917178
+12	彰化縣	2020-07-20 02:58:30.920257	2020-07-20 02:58:30.920257
+13	南投縣	2020-07-20 02:58:30.923304	2020-07-20 02:58:30.923304
+14	嘉義市	2020-07-20 02:58:30.926377	2020-07-20 02:58:30.926377
+15	嘉義縣	2020-07-20 02:58:30.929402	2020-07-20 02:58:30.929402
+16	雲林縣	2020-07-20 02:58:30.93266	2020-07-20 02:58:30.93266
+17	台南市	2020-07-20 02:58:30.935907	2020-07-20 02:58:30.935907
+18	高雄市	2020-07-20 02:58:30.93904	2020-07-20 02:58:30.93904
+19	南海島	2020-07-20 02:58:30.942122	2020-07-20 02:58:30.942122
+20	澎湖縣	2020-07-20 02:58:30.94531	2020-07-20 02:58:30.94531
+21	金門縣	2020-07-20 02:58:30.94854	2020-07-20 02:58:30.94854
+22	屏東縣	2020-07-20 02:58:30.951686	2020-07-20 02:58:30.951686
+23	台東縣	2020-07-20 02:58:30.954765	2020-07-20 02:58:30.954765
+24	花蓮縣	2020-07-20 02:58:30.957832	2020-07-20 02:58:30.957832
+\.
+
+
+--
+-- Data for Name: lands; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.lands (id, land_number, land_url, land_area, land_holding_point_personal, land_holding_point_all, yfcase_id, created_at, updated_at, "landRemarks", "landPresentValue", "landTotalArea", "landAreaWidth", "landAreaDepth") FROM stdin;
+1	1481		74.00	1	18	1	2020-07-20 06:31:02.756242	2020-07-20 06:31:02.756242					
+2	708		102.00	1	12	2	2020-07-20 06:42:40.67916	2020-07-20 06:42:40.67916					
+3	168		76.00	1	7	3	2020-07-20 06:51:10.246574	2020-07-20 06:51:10.246574					
+4	290-759		166.00	1	12	4	2020-07-20 06:56:20.107756	2020-07-20 06:56:20.107756					
+6	1588-2		75.55	1	3	6	2020-07-20 07:55:42.556917	2020-07-20 07:55:42.556917					
+7	74-141		59.00	1	5	7	2020-07-20 08:00:39.477032	2020-07-20 08:00:39.477032					
+8	212-6		756.00	374	60000	8	2020-07-20 08:04:52.274201	2020-07-20 08:04:52.274201					
+10	96-10	https://drive.google.com/drive/folders/19qru68HgIO9M_wTfa5KeQyInRqu7GGr5	94.00	1	24	10	2020-07-20 08:12:54.69454	2020-07-20 08:12:54.69454					
+11	277		195.92	1	4	11	2020-07-20 08:16:10.512342	2020-07-20 08:16:10.512342					
+12	573	https://drive.google.com/drive/mobile/folders/1f6PtxeSiXVh4SZqTpK9DSJt7dBlf-5wb	202.45	1	20	14	2020-07-20 08:22:32.912043	2020-07-20 08:22:32.912043					
+13	565	https://drive.google.com/drive/mobile/folders/1HtTsGVYYLsrgLmA6H0juIU_S-PpyPNG8	57.85	1	3	15	2020-07-20 08:25:12.116482	2020-07-20 08:25:12.116482					
+14	567	https://drive.google.com/drive/mobile/folders/1HtTsGVYYLsrgLmA6H0juIU_S-PpyPNG8	11.82	1	3	15	2020-07-20 08:25:12.118754	2020-07-20 08:25:12.118754					
+15	2965-23	https://drive.google.com/drive/mobile/folders/12Xo0A7PsAihvHXFfcQla0nmsZ7O-VJD7	2137.00	52	10000	16	2020-07-20 08:29:31.682226	2020-07-20 08:29:31.682226					
+16	1248		31.00	4	6	17	2020-07-20 08:33:47.676332	2020-07-20 08:33:47.676332					
+17	1249		35.00	4	6	17	2020-07-20 08:33:47.678709	2020-07-20 08:33:47.678709					
+9	182		1183.00	315	60000	9	2020-07-20 08:08:41.521801	2020-07-20 09:19:31.975005					
+5	1377		2311.00	101	50000	5	2020-07-20 07:49:29.126453	2020-07-20 09:27:25.694831					
+19	1832	https://drive.google.com/drive/u/1/folders/1jrs2PEF43gToupM1KtKNRNqRcTELhiSw	683.58	1	96	18	2020-08-04 06:36:02.101481	2020-08-04 06:36:02.101481					
+20	1832-1	https://drive.google.com/drive/u/1/folders/1jrs2PEF43gToupM1KtKNRNqRcTELhiSw	21.58	1	96	18	2020-08-04 06:36:02.119434	2020-08-04 06:36:02.119434					
+21	391	https://drive.google.com/drive/u/1/folders/101EycYhst6wW3xUD2OYxnsc2jhUufc-V	77.13	1	2	19	2020-08-04 06:53:37.276451	2020-08-04 06:53:37.276451					
+18	901	https://drive.google.com/drive/u/1/folders/1VhEp9cfB65HgsC-kFAt0mjU4wybrejiH	73.67	1	6	12	2020-07-20 10:20:05.911103	2020-08-05 08:33:01.545367		30500	73.67	23	4.9
+22	385		134.74	1	25	20	2020-08-13 14:53:40.442566	2020-08-13 14:53:40.442566					
+23	235-18		104.00	1	15	21	2020-08-13 15:15:54.14034	2020-08-13 15:15:54.14034					
+24	288-0006		14.00	1	30	22	2020-08-13 15:29:41.504648	2020-08-13 15:29:41.504648					
+25	292-14		77.00	1	30	22	2020-08-13 15:29:41.506701	2020-08-13 15:29:41.506701					
+26	131-3		71.00	1	7	23	2020-08-13 15:43:35.817106	2020-08-13 15:43:35.817106					
+27	98		135.83	1	8	24	2020-08-13 16:14:06.100606	2020-08-13 16:14:06.100606					
+28	 321		154.00	1	120	25	2020-08-13 16:56:37.06783	2020-08-13 16:56:37.06783					
+29	198-1		21.00	1	15	26	2020-08-13 17:19:54.233407	2020-08-13 17:19:54.233407					
+30	199-4		101.00	1	15	26	2020-08-13 17:19:54.236195	2020-08-13 17:19:54.236195					
+31	93	https://drive.google.com/drive/u/0/folders/1QX6gi-7A1zXACyYmRTHEizUJIE_kJhXN	47.98	1	2	27	2020-08-21 07:04:06.070052	2020-08-21 08:38:46.840422					
+33	1615	https://drive.google.com/drive/u/0/folders/1fb_3B6YTM-B8Dmi8lvQD1SffqgCeWSKH	68.00	1	2	29	2020-08-21 08:34:15.965769	2020-08-21 09:34:52.285475					
+32	 1687		77.38	1	2	28	2020-08-21 07:49:16.263646	2020-08-21 09:38:33.493998				https://drive.google.com/drive/u/0/folders/1pjirqcgu2zxwIttOFt8L-hOALQpTEqdn	
+34	714		101.19	1	4	30	2020-08-25 10:34:58.534717	2020-08-25 10:34:58.534717					
+36	1577		48.00	1	3	32	2020-09-02 03:09:11.302	2020-09-02 03:09:11.302					
+37	730-114		97.00	1	2	33	2020-09-02 06:02:56.983715	2020-09-02 06:02:56.983715					
+38	277		195.92	1	4	34	2020-09-07 09:09:58.944168	2020-09-07 09:09:58.944168					
+39	176		63.00	4	6	36	2020-09-14 02:45:56.314524	2020-09-14 02:45:56.314524					
+40	879-16		1826.00	1	4	37	2020-09-21 08:06:29.559747	2020-09-21 08:06:29.559747					
+41	541-5		83.00	1	3	38	2020-09-21 08:32:07.235741	2020-09-21 08:32:07.235741					
+42	363		83.64	1	7	39	2020-09-21 08:42:39.817512	2020-09-21 08:42:39.817512					
+43	539-37		65.00	1	2	40	2020-09-22 06:22:21.072226	2020-09-22 06:22:21.072226					
+44	1		70.00	1	3	41	2020-09-25 23:35:57.530789	2020-09-25 23:35:57.530789					
+45	827		97.45	1	4	42	2020-09-28 06:32:35.523426	2020-09-28 06:32:35.523426					
+46	246		90.16	1	4	43	2020-09-28 06:43:42.915863	2020-09-28 06:43:42.915863					
+47	247		6.63	1	4	43	2020-09-28 06:43:42.918043	2020-09-28 06:43:42.918043					
+48	922-4		100.00	1	4	44	2020-09-28 06:51:48.322119	2020-09-28 06:51:48.322119					
+49	1997		83.00	1	2	45	2020-09-28 07:45:19.781606	2020-09-28 07:45:19.781606					
+50	430		895.00	1	5	46	2020-09-28 08:04:21.468815	2020-09-28 08:04:21.468815					
+51	1122		794.84	3610	79300	47	2020-09-28 08:20:01.396552	2020-09-28 08:20:01.396552					
+53	 1581-7		48.00	1	2	35	2020-10-02 04:19:43.300415	2020-10-02 04:19:43.300415					
+54	1584-8		31.00	1	2	35	2020-10-02 04:19:43.302729	2020-10-02 04:19:43.302729					
+55	351-10		139.00	1	4	49	2020-10-02 12:09:30.589481	2020-10-02 12:09:30.589481					
+56	17		266.71	1	10	50	2020-10-02 12:46:32.94543	2020-10-02 12:46:32.94543					
+57	19		98.15	1	10	50	2020-10-02 12:46:32.947541	2020-10-02 12:46:32.947541					
+58	562		100.57	1	3	51	2020-10-05 03:26:24.490016	2020-10-05 03:26:24.490016					
+59	203-2		61.00	1	4	52	2020-10-05 03:39:00.88486	2020-10-05 03:39:00.88486					
+60	202-6		68.00	7	624	52	2020-10-05 03:39:00.886898	2020-10-05 03:39:00.886898					
+61	204-3		83.00	7	624	52	2020-10-05 03:39:00.903288	2020-10-05 03:39:00.903288					
+62	426-21		56.00	1	6	53	2020-10-05 03:47:08.794725	2020-10-05 03:47:08.794725					
+63	1362		801.00	378	50000	54	2020-10-05 05:54:11.817649	2020-10-05 05:54:11.817649					
+64	281		105.00	1	2	55	2020-10-05 11:02:07.67057	2020-10-05 11:02:07.67057					
+65	610		6413.96	38	50000	56	2020-10-07 09:35:15.728964	2020-10-07 09:35:15.728964					
+52	296	https://drive.google.com/file/d/1LvPsC0sBA1laxPRTjmWuiNm4wMXmwJMu/view?usp=drivesdk	36.74	1	15	48	2020-09-30 10:47:45.028131	2020-10-13 11:52:46.096944					
+66	 757		42.00	1	4	57	2020-10-14 14:28:31.646589	2020-10-14 14:28:31.646589					
+67	 757-1		2.00	1	4	57	2020-10-14 14:28:31.663685	2020-10-14 14:28:31.663685					
+35	281	https://drive.google.com/drive/u/1/folders/1NxhO1EB6nIT2Lg1O5r_0S59ZSfpqDq48	105.00	1	2	31	2020-08-27 14:01:45.264712	2020-10-15 09:52:04.158066					
+68	513		38.99	1	15	58	2020-10-16 14:58:20.23737	2020-10-16 14:58:20.23737					
+\.
+
+
+--
+-- Data for Name: objectbuilds; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.objectbuilds (id, address, total_price, build_area, house_age, floor_height, objectbuild_url, surveyora, surveyorb, plusa, plusb, yfcase_id, created_at, updated_at, objectbuild_status, plusa_reason, plusb_reason, "objectBuildDealYear", "objectBuildDealMonth") FROM stdin;
+1	板橋區四川路一段241~270號	9000000	17.79	49.00	3		\N	\N	\N	\N	1	2020-07-20 06:31:02.772971	2020-07-20 06:31:02.772971	自訂	\N	\N	\N	\N
+10	安南區安通路四段119巷27弄1~30號	6600000	34.66	38.00	透天	https://evertrust.yungching.com.tw/region/%E5%8F%B0%E5%8D%97%E5%B8%82/%E5%AE%89%E5%8D%97%E5%8D%80?kw=%E5%AE%89%E9%80%9A%E8%B7%AF%E5%9B%9B%E6%AE%B5	曾友和	曾昱銓	1.00	1.10	6	2020-07-20 07:55:42.562236	2020-07-20 09:15:37.143574	自訂			\N	\N
+18	七堵區泰安路2巷1~30號	3500000	25.21	\N	2/4		張浩文	\N	0.80	\N	9	2020-07-20 08:08:41.527304	2020-07-20 09:19:57.839929	自訂		\N	\N	\N
+4	武德街135巷1~30號	4250000	22.14	48.00	2		\N	\N	\N	\N	3	2020-07-20 06:51:10.255065	2020-07-20 06:51:10.255065	自訂	\N	\N	\N	\N
+21	復興路1~30號	2680000	49.67	26.00	4		曾昱銓	\N	1.10	\N	11	2020-07-20 08:16:10.517844	2020-07-20 09:40:19.967405	自訂	實際坪數約80坪\t	\N	\N	\N
+17	七堵區泰和街61~90號	3350000	28.36	29.00	3/4		\N	\N	\N	\N	9	2020-07-20 08:08:41.525758	2020-07-20 08:08:41.525758	自訂	\N	\N	\N	\N
+19	板橋區懷德街78巷1~30號	6450000	19.46	45.00	4/4	https://www.google.com.tw/maps/place/220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E6%87%B7%E5%BE%B7%E8%A1%9778%E5%B7%B71%E8%99%9F/@25.0315844,121.4782618,3a,75y,169.14h,89.6t/data=!3m7!1e1!3m5!1sXpaKTjjfXSQKPgCUvzx77A!2e0!6s%2F%2Fgeo2.ggpht.com%2Fcbk%3Fpanoid%3DXpaKTjjfXSQKPgCUvzx77A%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D182.28134%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m8!1m2!2m1!1z5p2_5qmL5Y2A5oe35b636KGXNzjlt7cxfjMw6Jmf!3m4!1s0x3442a845c3183079:0x7c82dda16d74a051!8m2!3d25.0314992!4d121.4782531	\N	\N	\N	\N	10	2020-07-20 08:12:54.69991	2020-07-20 08:12:54.69991	自訂	\N	\N	\N	\N
+20	板橋區懷德街91~120號	9500000	25.62	46.60	3/4	https://www.google.com.tw/maps/place/220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E6%87%B7%E5%BE%B7%E8%A1%9791%E8%99%9F/@25.0316992,121.4781761,3a,75y,344.67h,93.72t/data=!3m7!1e1!3m5!1sGGy9DCFqu95RE2EokApw0A!2e0!6s%2F%2Fgeo1.ggpht.com%2Fcbk%3Fpanoid%3DGGy9DCFqu95RE2EokApw0A%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D17.913296%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m5!3m4!1s0x3442a845c13b7cd9:0xb352895716a9a73a!8m2!3d25.0318411!4d121.4782099	\N	\N	\N	\N	10	2020-07-20 08:12:54.702649	2020-07-20 08:12:54.702649	自訂	\N	\N	\N	\N
+14	南區國華街一段91~120號(108/07)	4500000	29.09	47.90	2	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	劉家彰	曾友和	0.30	0.35	7	2020-07-20 08:00:39.484563	2020-07-20 09:33:42.522096	自訂	更近市區	0.7 無尾巷、0.5 未辦保存登記	\N	\N
+8	東區前鋒路61~90號	4500000	32.00	37.00	6	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	曾友和	曾昱銓	0.90	0.90	5	2020-07-20 07:51:48.207215	2020-07-20 09:28:51.931112	自訂			\N	\N
+13	南區國華街一段61~90號(108/11)	4880000	30.65	48.70	2	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	劉家彰	曾友和	0.35	0.35	7	2020-07-20 08:00:39.482371	2020-07-20 09:34:08.331432	自訂	無尾巷2m巷寬未辦保存登記	0.7 無尾巷、0.5 未辦保存登記	\N	\N
+12	安通路四段119巷27弄1號（**仲介））	7000000	29.43	38.00	透天		曾友和	曾昱銓	0.90	1.00	6	2020-07-20 07:56:50.531189	2020-07-20 09:15:23.384052	仲介			\N	\N
+11	安南區安通路四段119巷27弄1~30號	7000000	34.66	38.00	透天	https://evertrust.yungching.com.tw/region/%E5%8F%B0%E5%8D%97%E5%B8%82/%E5%AE%89%E5%8D%97%E5%8D%80?kw=%E5%AE%89%E9%80%9A%E8%B7%AF%E5%9B%9B%E6%AE%B5	曾友和	曾昱銓	1.00	1.00	6	2020-07-20 07:55:42.564402	2020-07-20 09:15:32.760568	自訂			\N	\N
+9	東區前鋒路61~90號	3200000	32.00	37.00	3	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	曾友和	曾昱銓	1.15	1.10	5	2020-07-20 07:51:48.209019	2020-07-20 09:28:59.269055	自訂			\N	\N
+5	金華路二段15巷1~30號	3000000	23.14	41.20	2/4		曾友和	劉家彰	1.10	1.10	4	2020-07-20 06:56:20.124651	2020-07-20 09:42:58.63967	自訂			\N	\N
+6	金華路二段15巷1~30號	3000000	22.89	41.50	3/4	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	曾友和	劉家彰	0.90	0.50	4	2020-07-20 06:56:20.127084	2020-07-20 09:43:13.514786	自訂			\N	\N
+7	金華路二段21巷1~30號	2350000	22.89	41.00	4/4		曾友和	劉家彰	1.10	1.00	4	2020-07-20 06:56:20.129237	2020-07-20 09:43:19.939417	自訂			\N	\N
+2	板橋區忠孝路132巷1~30號	6850000	21.18	47.20	2/3		張浩文	曾友和	0.80	0.75	2	2020-07-20 06:42:40.685418	2020-07-20 09:49:34.451475	自訂			\N	\N
+3	板橋區忠孝路154巷31~60號	7000000	24.58	44.70	2/4		張浩文	曾友和	0.75	0.70	2	2020-07-20 06:42:40.687013	2020-07-20 09:49:40.087807	自訂			\N	\N
+32	中西區健康路一段151~180號 (109/06公寓)	3880000	37.57	36.10	3/5		劉家彰	曾友和	0.98	1.10	18	2020-08-04 06:44:00.224959	2020-08-06 14:08:27.906687	自訂	頂樓加價		\N	\N
+31	中西區健康路一段150巷1~30號 (108/09公寓)	4380000	40.55	34.10	5/5		劉家彰	曾友和	1.05	1.10	18	2020-08-04 06:44:00.223098	2020-08-06 14:07:52.078874	自訂	去年價錢		\N	\N
+35	健康路一段170巷1~30號(107/05)	3300000	30.00	38.00	3/4		劉家彰	曾友和	1.15	1.10	18	2020-08-06 12:47:17.523576	2020-08-06 14:08:56.265151	自訂	漲價		\N	\N
+33	 復國二路16巷1~30號(108/05)	6500000	39.72	31.00	2/2	https://lvr.land.moi.gov.tw/	劉家彰	曾友志	0.80	1.00	19	2020-08-04 07:04:24.309088	2020-08-08 08:48:14.500646	自訂	拍賣物含未辦保存登記面積32.27坪，實價登錄未含。	0.8	\N	\N
+34	復國二路16巷1~30號(106/6)	5600000	39.30	29.00	2/2	https://lvr.land.moi.gov.tw/	劉家彰	曾友志	0.80	1.00	19	2020-08-04 07:09:35.291878	2020-08-08 08:48:34.525733	自訂	拍賣物含未辦保存登記面積32.27坪，實價登錄未含。	0.8	\N	\N
+36	 健康一段170巷1~30號(107/02)	3950000	30.00	37.00	4/4		劉家彰	曾友和	1.10	0.95	18	2020-08-06 12:49:02.201571	2020-08-06 14:09:16.530942	自訂	漲價頂樓		\N	\N
+27	東區前鋒路61~90號	4500000	32.00	37.00	6	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	曾友和	吳俊男	0.90	0.90	12	2020-07-20 10:22:22.442586	2020-08-31 01:26:02.439268	自訂				
+25	白河區中正路121~150號	5180000	62.35	13.60	1/4		\N	\N	\N	\N	17	2020-07-20 08:33:47.68414	2020-09-02 02:52:33.811939	自訂	\N	\N		
+26	白河區中正路121~150號	5500000	62.57	14.10	1/4		\N	\N	\N	\N	17	2020-07-20 08:33:47.686365	2020-09-02 02:52:33.814364	自訂	\N	\N		
+22	安平區安平路370巷3弄1~30號	3400000	28.52	44.70	2/4	https://goo.gl/maps/psYVs2UkDkfvtdY96	劉家彰	曾友志	1.00	1.00	14	2020-07-20 08:22:32.917347	2020-09-03 01:07:21.512315	自訂	相類似物件 同在二樓無需加成	相類似物件		
+29	信義街44巷1~30號(106/12)	5200000	58.44	24.00	全/4		劉家彰	曾友志	1.10	1.00	16	2020-08-04 03:46:00.399067	2020-09-10 02:53:57.29361	自訂	參考106年到100年間 房地產增值	1.1		
+16	板橋區懷德街66巷1~30號	12360000	32.45	48.30	2/5		張浩文	曾友和	0.60	0.60	8	2020-07-20 08:04:52.28515	2020-10-07 09:15:21.370024	自訂				
+15	板橋區仁化街64巷1~30號	8350000	23.55	46.30	2/3		張浩文	曾友和	0.65	0.60	8	2020-07-20 08:04:52.282747	2020-10-07 09:15:21.37201	自訂				
+51	大安里大安街241~270號\t(242號)	6300000	32.51	38.00	全/2(108/12)		\N	\N	\N	\N	30	2020-08-25 10:34:58.549831	2020-08-25 10:34:58.549831	自訂	\N	\N	\N	\N
+53	 -大安街257巷1~30號(4號) \t \t\t \t	3500000	26.17	38.00	全/2		\N	\N	\N	\N	30	2020-08-25 10:41:41.157634	2020-08-25 10:41:41.157634	自訂	\N	\N	\N	\N
+52	 大安街211~240號(230號)	6300000	32.59	39.00	全/2(109/4)		\N	\N	\N	\N	30	2020-08-25 10:34:58.553391	2020-08-25 10:43:07.216028	自訂	\N	\N	\N	\N
+28	東區前鋒路61~90號	3200000	32.00	37.00	3	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	吳俊男	曾友和	1.15	1.10	12	2020-07-20 10:22:22.444421	2020-08-31 01:26:02.440855	自訂				
+46	慶中街121~150號(128號)	8000000	34.64	44.00	2	https://drive.google.com/drive/u/0/folders/1pjirqcgu2zxwIttOFt8L-hOALQpTEqdn	曾友和	劉家彰	1.20	1.23	28	2020-08-21 08:04:46.342904	2020-08-31 11:34:18.965242	自訂	(路寛+0.1、屋況+0、其他+0.1非無尾巷)	5米巷+0.08、非無尾巷+0.1、近南門健康路+0.05		
+45	南門路241~270號	14200000	54.84	48.50	1/3	https://drive.google.com/drive/u/0/folders/1pjirqcgu2zxwIttOFt8L-hOALQpTEqdn	曾友和	劉家彰	0.80	0.88	28	2020-08-21 08:00:43.82247	2020-08-31 11:34:18.968713	自訂	\t(路寛-0.1、屋況+0、店面-0.1非無尾巷)	巷小-0.05、店面小巷-0.05、屋況差不多-0.02		
+57	北興街400巷8號	3200000	33.06	39.00	2/2		\N	\N	\N	\N	33	2020-09-02 06:48:45.618276	2020-09-02 06:48:45.618276	自訂	\N	\N	2020	4
+58	北興街411巷13弄10號	3254700	35.19	31.00	2/2		\N	\N	\N	\N	33	2020-09-02 06:48:45.620682	2020-09-02 06:48:45.620682	自訂	\N	\N	2019	8
+47	成功路600巷39弄1~30號(1號)105年3月	3000000	23.48	44.00	2	https://drive.google.com/folderview?id=1fb_3B6YTM-B8Dmi8lvQD1SffqgCeWSKH	曾友和	劉家彰	1.05	0.97	29	2020-08-21 08:34:15.973235	2020-08-31 13:02:49.76254	自訂	無尾巷 巷尾 有空間 可利用	屋況舊(-0.02)、無尾巷尾(-0.01)	\N	\N
+48	文賢路218巷10弄1~30號 (6號)109/2	4330000	24.24	47.00	2	https://drive.google.com/folderview?id=1fb_3B6YTM-B8Dmi8lvQD1SffqgCeWSKH	曾友和	劉家彰	0.75	0.95	29	2020-08-21 08:34:15.976584	2020-08-31 13:10:19.301645	自訂	臨路寬度 比較	進出位置較麻煩(-0.05)、屋況差不多(0)	\N	\N
+44	安南區怡安路一段481~510號	8580000	66.47	32.20	1/3	https://drive.google.com/folderview?id=1QX6gi-7A1zXACyYmRTHEizUJIE_kJhXN	曾友和	劉家彰	0.98	0.97	27	2020-08-21 07:42:19.279061	2020-08-31 16:53:46.703645	自訂	臨路條件相同 比較物件 附近雖較為熱鬧 但目標物件店面效益較佳	離黃昏市場較遠店面價值(-0.3)、路寬同、離台1-9主幹線較近(+0.1)、屋況舊一點點(-0.1)		
+43	安南區修安街66巷1~30號	7000000	49.02	21.30	1/4	https://drive.google.com/folderview?id=1QX6gi-7A1zXACyYmRTHEizUJIE_kJhXN	曾友和	劉家彰	1.10	1.20	27	2020-08-21 07:42:19.272174	2020-08-31 16:53:46.706032	自訂	比較物件是社區不具店面效益	店面價值>住宅(+0.5)、屋況舊(-0.3)		
+49	新化區中正路341巷1~30號(108/09)	3900000	38.54	34.90	1/3		\N	\N	\N	\N	15	2020-08-21 08:52:34.39236	2020-09-01 02:13:43.481837	自訂	\N	\N		
+50	大同街31~60號(36) 109/4	5400000	57.05	36.00	3		\N	\N	\N	\N	15	2020-08-21 08:52:34.394354	2020-09-01 02:13:43.484137	自訂	\N	\N		
+23	安平區安平路370巷3弄1~30號\t	3600000	28.17	\N		https://goo.gl/maps/psYVs2UkDkfvtdY96	劉家彰	曾友志	0.95	1.00	14	2020-07-20 08:22:32.91947	2020-09-03 01:07:21.51478	自訂	比較物件有頂樓增建	有頂樓		
+40	中正區臨沂街19巷1~10號	25430000	29.36	49.10	2/4		張浩文	曾友和	1.10	1.20	25	2020-08-13 16:59:59.574712	2020-09-05 09:30:03.212081	自訂	目標物件在一樓較值錢	目標物件在一樓可做商業使用		
+39	中正區臨沂街19巷11~20號	29800000	30.18	45.50	1/4	https://drive.google.com/folderview?id=1ET_sQNuBW8kNr9uPZZvx3VCqCm0LFM0M	張浩文	曾友和	0.96	0.98	25	2020-08-13 16:59:59.57209	2020-09-05 09:30:03.214061	自訂	目標物件感覺稍舊	目標物件看起來比較舊可能需要整修		
+41	萬華區環河南路二段125巷15弄1~10號	8000000	24.66	33.10	4/5		張浩文	曾友和	1.20	1.15	26	2020-08-13 17:27:28.661838	2020-09-05 09:40:26.700933	自訂	目標物件感覺舊，環境差	目標物件 環境 清幽 比較物件 有廟宇存在		
+42	萬華區雙園街152巷1~10號	6500000	20.26	43.90	3/4	https://drive.google.com/folderview?id=1ENmvh6RyXJmD-WNxJVzKRvVugsH6C3AW	張浩文	曾友和	1.00	1.15	26	2020-08-13 17:27:28.664158	2020-09-05 09:40:26.703136	自訂		比較物件 較為老舊 臨路寬度 相近		
+38	新莊區建中街16巷31~60號	10250000	32.27	43.30	2/4		張浩文	曾友和	1.00	0.98	24	2020-08-13 16:20:55.412287	2020-09-05 09:47:02.547876	自訂		目標物件 在同一社區中 稍嫌老舊		
+37	新莊區建中街1~30號	9500000	30.53	42.60	2/4	https://drive.google.com/folderview?id=1EQfSK5voJht9Pzoju8NEwKpHxkflYjgq	張浩文	曾友和	0.97	1.00	24	2020-08-13 16:20:55.405429	2020-09-05 09:47:02.550115	自訂	目標物件感覺稍舊，在巷內	比價屋物件 是 馬路邊的公寓， 目標是 巷口的物件		
+59	文賢路313巷12弄1~30號	8000000	61.75	30.00	2	https://drive.google.com/file/d/1GYUxIIkxCCAcLvX_wcyOBLFHUNPtwGle/view?usp=drivesdk	劉家彰	曾友和	0.78	0.58	32	2020-09-11 09:33:32.764024	2020-09-12 00:47:46.812334	自訂	屋況-0.05、增建-0.10、臨路-0.05\t、聯外-0.02	屋況0.8、臨路0.85、連外0.85	2020	3
+66	文賢路520巷33號	6000000	22.06	47.00	2	地30.97坪，建坪22.06坪？(地籍56坪)	\N	\N	\N	\N	32	2020-09-18 13:12:00.646594	2020-09-18 13:16:18.410801	自訂	\N	\N	2019	6
+67	光和31~60號	6200000	232.83	22.00	4		\N	\N	\N	\N	37	2020-09-22 04:15:17.736887	2020-09-22 04:15:17.736887	自訂	\N	\N	2020	5
+68	中正里172號	740000	28.95	39.00	3		\N	\N	\N	\N	37	2020-09-22 04:18:19.300808	2020-09-22 04:18:19.300808	自訂	\N	\N	2020	1
+63	文賢路242巷9弄61~90號	6320000	32.83	45.00	2	https://drive.google.com/file/d/1hLACQIAHO3QMhGu-MXdQLj6dCmKSvk8p/view?usp=drivesdk	劉家彰	曾友和	0.75	0.65	32	2020-09-11 09:39:11.377655	2020-09-12 00:51:11.184623	自訂	屋況-0.1、增建-0.05、臨路-0.05 、聯外-0.05	屋況0.8、臨路0.9、連外0.9	2020	5
+64	瑞興街91~120號2F	7650000	26.05	47.00	2		曾昱銓	曾友志	1.20	1.00	36	2020-09-14 02:45:56.320666	2020-09-15 13:33:59.802022	自訂	增建9坪	如初勘意見	2018	11
+55	嘉義市民生南路576巷31~60號	4060000	30.40	40.70	1/2	https://drive.google.com/file/d/1O4o-q0KU9wptxDgd0EevYlBNoRTsFsAk/view?usp=drivesdk	曾友和	劉家彰	1.33	1.21	31	2020-08-27 14:10:42.531239	2020-09-13 23:03:21.701359	自訂	0.1、0.10.15	心就加乘0.1林路加乘0.1主要道路一樣		
+65	文賢路520巷6號	5500000	45.77	42.00	2		\N	\N	\N	\N	32	2020-09-18 13:12:00.644301	2020-09-18 13:12:00.644301	自訂	\N	\N	2019	1
+69	海佃路二段700巷23弄2號	8000000	61.54	12.00	4		\N	\N	\N	\N	39	2020-09-22 04:49:40.927743	2020-09-22 04:49:40.927743	自訂	\N	\N	2020	5
+70	海佃路二段700巷2弄20號	12600000	66.68	12.00	4		\N	\N	\N	\N	39	2020-09-22 04:49:40.934316	2020-09-22 04:50:27.746136	自訂	\N	\N	2019	10
+71	臺南市新巿區中山路138號	7200000	68.12	24.00	4		\N	\N	\N	\N	38	2020-09-22 05:23:59.545886	2020-09-22 05:23:59.545886	自訂	\N	\N	2019	2
+72	臺南市新巿區中山路104號	6800000	29.53	41.00	2		\N	\N	\N	\N	38	2020-09-22 05:23:59.573804	2020-09-22 05:23:59.573804	自訂	\N	\N	2019	9
+73	臺南市新巿區中山路104號	4450000	28.84	41.00	2		\N	\N	\N	\N	38	2020-09-22 05:27:29.980272	2020-09-22 05:27:29.980272	自訂	\N	\N	2019	8
+74	拔林220-6號	2300000	24.96	40.00	2		\N	\N	\N	\N	40	2020-09-22 06:22:21.078054	2020-09-22 06:22:21.078054	自訂	\N	\N	2020	5
+75	拔林211~240號	2500000	24.24	39.00	2		\N	\N	\N	\N	40	2020-09-22 06:22:21.079975	2020-09-22 06:22:21.079975	自訂	\N	\N	2020	6
+96	嘉義市圓福街118巷48弄5號	2200000	20.96	47.00	2	https://drive.google.com/file/d/1rayAH7rkVLnn0zQ0ibt1PUT7476v7pNq/view	劉家彰	曾友和	0.95	0.90	53	2020-10-06 06:39:46.988067	2020-10-06 10:08:25.068745	自訂	屋況1.0、增建0.95、臨路 1.0、路寬1.0	屋況-0.1、臨路0、連況幹道0	2020	3
+97	嘉義市圓福街118巷48弄36號	2000000	21.09	47.00	2	https://drive.google.com/file/d/1rayAH7rkVLnn0zQ0ibt1PUT7476v7pNq/view	劉家彰	曾友和	0.95	1.00	53	2020-10-06 08:42:44.295418	2020-10-06 10:09:15.430679	自訂	屋況1.0、增建0.95、臨路 1.0、路寬1.0	\t屋況0、臨路0、連況幹道0	2020	1
+77	中華南路二段300巷30弄33號	6200000	44.27	33.00	3	https://drive.google.com/file/d/1hwikfVS9lSoNAlidmoiyc3Le4LgJ6ERt/view?usp=drivesdk	劉家彰	曾友和	0.85	0.86	42	2020-09-30 09:58:03.033622	2020-10-01 01:11:40.884602	自訂	0.85 增建3F～3.5F、臨路1.0、屋況1.0	增建還原0.86、新舊1.0、臨路寬1.0、連接幹到1.0	2019	12
+76	金華路一段29巷8弄2號	5000000	46.88	33.00	3	https://drive.google.com/file/d/1vYpO_sE5fYuWxMTio4Z1NbjAh2jJPbGI/view?usp=drivesdk	劉家彰	曾友和	0.98	0.86	42	2020-09-30 09:58:03.024508	2020-10-01 01:14:27.837847	自訂	0.89增建、屋況1.0、臨路1.1	增建還原0.86、新舊1.0、臨路寬0.95、連接幹到1.05	2019	9
+81	仁愛五街38-1號	6500000	51.30	25.00	4		\N	\N	\N	\N	35	2020-10-02 04:13:16.981778	2020-10-02 04:13:16.981778	自訂	\N	\N	2019	8
+82	公明路204號	15679000	100.51	30.00	全/5		\N	\N	\N	\N	41	2020-10-02 11:37:53.259066	2020-10-02 11:37:53.259066	自訂	\N	\N	2019	9
+83	公明路301~330號	23700000	130.57	50.00	全/4		\N	\N	\N	\N	41	2020-10-02 11:37:53.270437	2020-10-02 11:37:53.270437	自訂	\N	\N	2019	8
+101	 仁和路109巷53號	6880000	21.33	47.00	全/2	https://drive.google.com/file/d/1Sr11OzS5M2tbJeYId4Wl-vZMFiD-13Vh/view?usp=drivesdk	曾友和	劉家彰	0.75	0.72	57	2020-10-14 14:38:13.499619	2020-10-17 02:22:52.515853	自訂	新舊屋況-0.25、臨路寬0、交通0	新舊0.8、臨路1.0、停車0.9、增建1.0	2020	4
+85	旺萊路581巷14號(二等親)	3200000	47.52	40.00	2		\N	\N	\N	\N	49	2020-10-02 12:21:11.102373	2020-10-02 12:28:22.73029	自訂	\N	\N	2019	12
+86	北花里中正路113巷21號	4500000	68.59	30.00	3		\N	\N	\N	\N	49	2020-10-02 12:28:22.736228	2020-10-02 12:28:22.736228	自訂	\N	\N	2020	6
+87	朝琴路126號	7800000	100.88	50.00	全/2		\N	\N	\N	\N	50	2020-10-02 12:44:59.432149	2020-10-02 12:46:58.221765	自訂	\N	\N	2019	5
+88	新市區崙頂75-15號	5000000	47.88	25.00	3		\N	\N	\N	\N	38	2020-10-02 13:04:42.965992	2020-10-02 13:04:42.965992	自訂	\N	\N	2017	7
+89	崙頂46-2號	4600000	59.03	24.00	3		\N	\N	\N	\N	38	2020-10-02 13:19:19.16935	2020-10-02 13:19:19.16935	自訂	\N	\N	2017	5
+98	海安路二段302巷31~60號	5870000	11.76	0.00	1	https://drive.google.com/file/d/1Zs04njhen2kaiOKuIUUDGB96DXVjUJRt/view?usp=drivesdk	\N	\N	\N	\N	48	2020-10-08 14:50:51.087871	2020-10-08 23:30:44.52691	自訂	\N	\N	2020	4
+100	 仁和路107巷74號	4610000	21.33	47.00	全/2	https://drive.google.com/file/d/1Suvi8GNBw6WDwl5cZkJTvdMtnkt-Qyvm/view?usp=drivesdk	曾友和	劉家彰	0.90	1.00	57	2020-10-14 14:38:13.497785	2020-10-17 02:22:52.51778	自訂	新舊屋況-0.9、臨路寬0、交通0	新舊1.0、臨路1.0、增建1.0	2020	6
+80	海安路二段296巷11號	7750000	12.28	0.00	1	https://drive.google.com/file/d/1nBFMvMSmtcykodD774IA9FrHRmIhx11Z/view?usp=drivesdk	劉家彰	曾友和	0.76	0.70	48	2020-09-30 15:56:17.000283	2020-10-08 23:44:19.930295	自訂	屋況0.8、路寬1.0、臨路0.95	屋況-0.3、臨路0、、交通0	2020	7
+84	社內28-31	5700000	29.51	40.00	全/2	https://drive.google.com/file/d/1xd7lHOrZh8UDoKIWclzxLuAZ2tBkUjV_/view?usp=drivesdk	劉家彰	曾友和	1.00	1.00	43	2020-10-02 12:09:53.039324	2020-10-05 02:03:12.587969	自訂	屋況1.0、臨路1.0、增建1.0	各細項狀況類似 故 不再分相加成	2019	9
+91	社內22-6	5200000	29.04	36.00	2	https://drive.google.com/file/d/1xd7lHOrZh8UDoKIWclzxLuAZ2tBkUjV_/view?usp=drivesdk	劉家彰	曾友和	1.00	1.00	43	2020-10-02 14:04:56.631061	2020-10-05 02:03:12.593385	自訂	屋況臨路增建1.0		2017	2
+92	大武路1~30號	3330000	21.80	37.00	2		\N	曾友志	\N	1.00	54	2020-10-05 05:55:26.079076	2020-10-05 07:22:48.301634	自訂	\N	照底標不加價	2019	11
+93	民生南路576巷82號	4300000	33.03	43.00	2		\N	\N	\N	\N	55	2020-10-05 11:34:34.661038	2020-10-05 11:34:34.661038	自訂	\N	\N	2019	12
+94	民生南路576巷8號	7380000	32.20	47.00	2		\N	\N	\N	\N	55	2020-10-05 11:44:46.625273	2020-10-05 11:44:46.625273	自訂	\N	\N	2019	12
+95	民生南路590巷1號	4900000	30.50	45.00	2		\N	\N	\N	\N	55	2020-10-05 11:44:46.633076	2020-10-05 11:45:11.708508	自訂	\N	\N	2020	5
+56	民生南路545巷17弄1~30號(21) \t  \t\t 透天厝\t\t	7700000	63.33	26.00	全/4	https://drive.google.com/file/d/1O1kOMQWiotKHknjkdG8tNMs650JjS8v_/view?usp=drivesdk	曾友和	劉家彰	1.32	1.26	31	2020-08-27 14:32:54.298926	2020-10-06 06:20:52.078841	自訂	星座不加成臨路寬度假存1.15聯外道路加成1.15	屋況 1.0、臨路 1.2 、路寬1.05		
+102	光華街119巷20號	640000	4.85	60.00	2		\N	\N	\N	\N	58	2020-10-16 15:15:09.141958	2020-10-16 15:15:09.141958	自訂	\N	\N	2020	3
+\.
+
+
+--
+-- Data for Name: personnals; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.personnals (id, is_debtor, is_creditor, is_land_owner, is_build_owner, name, identity_card, birthday, local_phone, mobile_phone, personnal_notes, person_country, person_township, person_village, person_neighbor, person_street, person_section, person_lane, person_alley, person_number, person_floor, is_original_owner, is_new_owner, is_deed_tax_agent, is_tax_agent, identity_code, public_or_private, right_share_person, right_share_all, yfcase_id, created_at, updated_at, "personnalBuildHoldingPointPerson", "personnalBuildHoldingPointAll", "ownerFullAddress") FROM stdin;
+1	t	f	\N	\N	郭秀珍	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	3	2020-07-20 06:51:10.242374	2020-07-20 06:51:10.242374	\N	\N	\N
+2	t	f	\N	\N	黃絹惠	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	5	2020-07-20 07:49:29.12335	2020-07-20 07:49:29.12335	\N	\N	\N
+3	f	t	\N	\N	飊誠第一資產管理股份有限公司	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	5	2020-07-20 07:49:29.124966	2020-07-20 07:49:29.124966	\N	\N	\N
+4	t	f	\N	\N	洪蘇淑珍	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	11	2020-07-20 08:16:10.510108	2020-07-20 08:16:10.510108	\N	\N	\N
+5	t	f	\N	\N	林艮伶即林吳雪珍之繼承人	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	14	2020-07-20 08:22:32.909757	2020-07-20 08:22:32.909757	\N	\N	\N
+9	\N	\N	\N	\N	李碩冠 	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	12	12	2020-08-05 10:46:18.236036	2020-08-05 10:46:18.236036	1	12	臺南市中西區開山路122巷38號
+10	\N	\N	\N	\N	李信佑	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	12	12	2020-08-05 10:46:18.249166	2020-08-05 10:46:18.249166	1	12	新北市汐止區民權街2段28號3樓
+11	\N	\N	\N	\N	李維倫 	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	6	12	2020-08-05 10:46:18.251292	2020-08-05 10:46:18.251292	1	6	臺南市中西區民權路3段400巷32號3樓
+12	\N	\N	\N	\N	李建賢	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	6	12	2020-08-05 10:46:18.270852	2020-08-05 10:46:18.270852	1	6	臺南市歸仁區文化十街10巷19弄16號
+13	\N	\N	\N	\N	陳俊一	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	96	18	2020-08-06 14:23:36.545713	2020-08-06 14:23:36.545713	1	6	台南市東門路1號
+14	\N	\N	\N	\N	陳俊二	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	96	18	2020-08-06 14:23:36.555489	2020-08-06 14:23:36.555489	1	6	台南市東門路1號
+15	\N	\N	\N	\N	陳俊三	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	96	18	2020-08-06 14:23:36.557339	2020-08-06 14:23:36.557339	1	6	南市東門路1號
+16	\N	\N	\N	\N	陳俊四	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	96	18	2020-08-06 14:23:36.572467	2020-08-06 14:23:36.572467	1	6	南市東門路1號
+17	\N	\N	\N	\N	陳俊五	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	96	18	2020-08-06 14:23:36.574968	2020-08-06 14:23:36.574968	1	6	南市東門路1號
+7	f	t	t	t	李壁鈞	A123456789	2020-07-16 00:00:00	06-12345678	0921343456												f	f	f	f	 	 	1	6	12	2020-07-20 10:20:05.909592	2020-08-07 12:16:43.702103	1	6	新北市中和區景安路132巷15號
+6	t	f	t	t	李瑞鏗		\N														t	f	f	f	 	 	1	6	12	2020-07-20 10:20:05.907895	2020-09-05 04:15:14.830909	1	6	高雄市三民區自強一路207巷1-5號
+\.
+
+
+--
+-- Data for Name: plusrateas; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.plusrateas (id, persona, plusa, objectbuild_id, created_at, updated_at, plusa_reason) FROM stdin;
+\.
+
+
+--
+-- Data for Name: plusratebs; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.plusratebs (id, personb, plusb, objectbuild_id, created_at, updated_at, plusb_reason) FROM stdin;
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20200716031100
+20200507063050
+20200713014036
+20200713080306
+20200507085341
+20200507063322
+20200507062623
+20200520062613
+20200507061515
+20200713091540
+20200629053924
+20200507063328
+20200507062407
+20200507062139
+20200520031724
+20200710015536
+20200629032539
+20200507063333
+20200507063033
+20200710090624
+20200525134706
+20200706081323
+20200507061908
+20200629063415
+20200507145534
+20200507060621
+20200507061128
+20200705135300
+20200716005206
+20200723132704
+20200723231257
+20200724005707
+20200724025125
+20200729022530
+20200729045759
+20200807054708
+20200807101013
+20200817053235
+20200817065500
+\.
+
+
+--
+-- Data for Name: subsigntrueas; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.subsigntrueas (id, signtruea, signtruea_first_name, signtruea_last_name, signtruea_date, yfcase_id, created_at, updated_at) FROM stdin;
+1	曾友志	曾	友志	2020-06-05	11	2020-07-20 09:00:10.462202	2020-07-20 09:03:18.762018
+2	曾友和	曾	友和	2020-06-03	2	2020-07-20 09:06:57.662559	2020-07-20 09:07:17.200448
+3	曾友和	曾	友和	2020-06-03	8	2020-07-20 09:08:08.542166	2020-07-20 09:08:35.432752
+4	曾友和	曾	友和	2020-06-05	7	2020-07-20 09:09:22.051265	2020-07-20 09:09:40.392684
+5	曾昱銓	曾	昱銓	2020-05-16	5	2020-07-20 09:10:37.296956	2020-07-20 09:10:54.955429
+6	曾昱銓	曾	昱銓	2020-05-16	6	2020-07-20 09:11:40.167975	2020-07-20 09:11:53.204311
+7	曾友和	曾	友和	2020-07-20	12	2020-07-20 10:24:10.500769	2020-07-20 10:24:10.500769
+8	曾友和	曾	友和	2020-07-31	13	2020-07-31 13:52:47.726296	2020-07-31 13:52:47.726296
+9	曾友和	曾	友和	2020-08-06	18	2020-08-06 14:09:57.240534	2020-08-06 14:09:57.240534
+11	曾友志	曾	友志	2020-08-08	19	2020-08-08 08:49:22.068145	2020-08-08 08:49:22.068145
+12	曾友志	曾	友志	2020-08-08	16	2020-08-08 09:09:02.325532	2020-08-08 09:09:02.325532
+13	曾友志	曾	友志	2020-08-09	14	2020-08-09 13:22:05.297582	2020-08-09 13:22:05.297582
+14	曾友和	曾	友和	2020-08-14	25	2020-08-14 04:24:16.889675	2020-08-14 04:24:16.889675
+15	曾友和	曾	友和	2020-08-14	26	2020-08-14 05:31:55.044147	2020-08-14 05:31:55.044147
+16	曾友和	曾	友和	2020-08-14	24	2020-08-14 06:14:59.075897	2020-08-14 06:14:59.075897
+17	劉家彰	劉	家彰	2020-08-29	28	2020-08-29 00:04:05.666689	2020-08-29 00:04:05.666689
+18	劉家彰	劉	家彰	2020-09-01	27	2020-09-01 01:53:50.020635	2020-09-01 01:53:50.020635
+20	曾友志	曾	友志	2020-09-14	36	2020-09-14 03:52:49.474179	2020-09-14 03:52:49.474179
+21	曾友和	曾	友和	2020-10-01	42	2020-10-01 01:33:13.057017	2020-10-01 01:33:13.057017
+22	曾友志	曾	友志	2020-10-05	54	2020-10-05 07:21:46.559595	2020-10-05 07:21:46.559595
+23	曾友和	曾	友和	2020-10-07	53	2020-10-07 03:45:58.428125	2020-10-07 03:45:58.428125
+24	曾友和	曾	友和	2020-10-07	53	2020-10-07 12:29:42.733591	2020-10-07 12:29:42.733591
+25	曾友和	曾	友和	2020-10-09	48	2020-10-09 00:01:13.070799	2020-10-09 00:01:13.070799
+26	劉家彰	劉	家彰	2020-10-16	57	2020-10-16 23:25:01.023103	2020-10-16 23:25:01.023103
+27	曾友志	曾	友志	2020-10-19	31	2020-10-19 23:26:48.414541	2020-10-19 23:26:48.414541
+\.
+
+
+--
+-- Data for Name: subsigntruebs; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.subsigntruebs (id, signtrueb, signtrueb_first_name, signtrueb_last_name, signtrueb_date, yfcase_id, created_at, updated_at) FROM stdin;
+1	張浩文	張	浩文	2020-09-05	27	2020-09-05 08:11:39.343327	2020-09-05 08:11:39.343327
+2	張浩文	張	浩文	2020-09-05	28	2020-09-05 08:13:12.715986	2020-09-05 08:13:12.715986
+3	曾友和	曾	友和	2020-09-15	36	2020-09-15 14:23:04.835357	2020-09-15 14:23:04.835357
+\.
+
+
+--
+-- Data for Name: subsigntruecs; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.subsigntruecs (id, signtruec, signtruec_first_name, signtruec_last_name, signtruec_date, yfcase_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: townships; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.townships (id, name, zip_code, district_court, land_office, finance_and_tax_bureau, police_station, irs, home_office, country_id, created_at, updated_at) FROM stdin;
+1	中正區	100	臺北	古亭	中正分處				1	2020-07-20 02:58:30.977377	2020-07-20 02:58:30.977377
+2	大同區	103	士林	建成	大同分處				1	2020-07-20 02:58:30.981416	2020-07-20 02:58:30.981416
+3	中山區	104	臺北	中山	中山分處				1	2020-07-20 02:58:30.985016	2020-07-20 02:58:30.985016
+4	松山區	105	臺北	松山	松山分處				1	2020-07-20 02:58:30.988437	2020-07-20 02:58:30.988437
+5	大安區	106	臺北	大安	大安分處				1	2020-07-20 02:58:30.991823	2020-07-20 02:58:30.991823
+6	萬華區	108	臺北	建成	萬華分處				1	2020-07-20 02:58:30.9953	2020-07-20 02:58:30.9953
+7	信義區	110	臺北	松山	信義分處				1	2020-07-20 02:58:30.999881	2020-07-20 02:58:30.999881
+8	士林區	111	士林	士林	士林分處				1	2020-07-20 02:58:31.003297	2020-07-20 02:58:31.003297
+9	北投區	112	士林	士林	北投分處				1	2020-07-20 02:58:31.006739	2020-07-20 02:58:31.006739
+10	內湖區	114	士林	中山	內湖分處				1	2020-07-20 02:58:31.010276	2020-07-20 02:58:31.010276
+11	南港區	115	士林	松山	南港分處				1	2020-07-20 02:58:31.013228	2020-07-20 02:58:31.013228
+12	文山區	116	臺北	古亭	文山分處				1	2020-07-20 02:58:31.016211	2020-07-20 02:58:31.016211
+13	仁愛區	200	基隆	信義	總局				2	2020-07-20 02:58:31.019061	2020-07-20 02:58:31.019061
+14	信義區	201	臺北	松山	信義分處				2	2020-07-20 02:58:31.021964	2020-07-20 02:58:31.021964
+15	中正區	202	臺北	古亭	中正分處				2	2020-07-20 02:58:31.024874	2020-07-20 02:58:31.024874
+16	中山區	203	臺北	中山	中山分處				2	2020-07-20 02:58:31.02769	2020-07-20 02:58:31.02769
+17	安樂區	204	基隆	安樂	總局				2	2020-07-20 02:58:31.030548	2020-07-20 02:58:31.030548
+18	暖暖區	205	基隆	安樂	七堵分局				2	2020-07-20 02:58:31.033377	2020-07-20 02:58:31.033377
+19	七堵區	206	基隆	安樂	七堵分局				2	2020-07-20 02:58:31.036207	2020-07-20 02:58:31.036207
+20	萬里區	207	基隆	汐止	淡水分處				3	2020-07-20 02:58:31.038994	2020-07-20 02:58:31.038994
+21	金山區	208	基隆	汐止	淡水分處				3	2020-07-20 02:58:31.042079	2020-07-20 02:58:31.042079
+22	板橋區	220	新北	板橋	板橋分處				3	2020-07-20 02:58:31.04496	2020-07-20 02:58:31.04496
+23	汐止區	221	士林	汐止	汐止分處				3	2020-07-20 02:58:31.057616	2020-07-20 02:58:31.057616
+24	深坑區	222	臺北	新店	新店分處				3	2020-07-20 02:58:31.060635	2020-07-20 02:58:31.060635
+25	石碇區	223	臺北	新店	新店分處				3	2020-07-20 02:58:31.063495	2020-07-20 02:58:31.063495
+26	瑞芳區	224	基隆	瑞芳	瑞芳分處				3	2020-07-20 02:58:31.066475	2020-07-20 02:58:31.066475
+27	平溪區	226	基隆	瑞芳	瑞芳分處				3	2020-07-20 02:58:31.069369	2020-07-20 02:58:31.069369
+28	雙溪區	227	基隆	瑞芳	瑞芳分處				3	2020-07-20 02:58:31.07246	2020-07-20 02:58:31.07246
+29	貢寮區	228	基隆	瑞芳	瑞芳分處				3	2020-07-20 02:58:31.075456	2020-07-20 02:58:31.075456
+30	新店區	231	臺北	新店	新店分處				3	2020-07-20 02:58:31.078369	2020-07-20 02:58:31.078369
+31	坪林區	232	臺北	新店	新店分處				3	2020-07-20 02:58:31.08137	2020-07-20 02:58:31.08137
+32	烏來區	233	臺北	新店	新店分處				3	2020-07-20 02:58:31.084054	2020-07-20 02:58:31.084054
+33	永和區	234	新北	中和	中和分處				3	2020-07-20 02:58:31.086502	2020-07-20 02:58:31.086502
+34	中和區	235	新北	中和	中和分處				3	2020-07-20 02:58:31.0888	2020-07-20 02:58:31.0888
+35	土城區	236	新北	板橋	總處				3	2020-07-20 02:58:31.091121	2020-07-20 02:58:31.091121
+36	三峽區	237	新北	樹林	三鶯分處				3	2020-07-20 02:58:31.093469	2020-07-20 02:58:31.093469
+37	樹林區	238	新北	樹林	總處				3	2020-07-20 02:58:31.095833	2020-07-20 02:58:31.095833
+38	鶯歌區	239	新北	樹林	三鶯分處				3	2020-07-20 02:58:31.098235	2020-07-20 02:58:31.098235
+39	三重區	241	新北	三重	三重分處				3	2020-07-20 02:58:31.100612	2020-07-20 02:58:31.100612
+40	新莊區	242	新北	新莊	新莊分處				3	2020-07-20 02:58:31.102971	2020-07-20 02:58:31.102971
+41	泰山區	243	新北	新莊	新莊分處				3	2020-07-20 02:58:31.10535	2020-07-20 02:58:31.10535
+42	林口區	244	新北	新莊	林口分處				3	2020-07-20 02:58:31.107652	2020-07-20 02:58:31.107652
+43	蘆洲區	247	新北	三重	三重分處				3	2020-07-20 02:58:31.109987	2020-07-20 02:58:31.109987
+44	五股區	248	新北	新莊	新莊分處				3	2020-07-20 02:58:31.112317	2020-07-20 02:58:31.112317
+45	八里區	249	士林	淡水	淡水分處				3	2020-07-20 02:58:31.114684	2020-07-20 02:58:31.114684
+46	淡水區	251	士林	淡水	淡水分處				3	2020-07-20 02:58:31.116977	2020-07-20 02:58:31.116977
+47	三芝區	252	士林	淡水	淡水分處				3	2020-07-20 02:58:31.119243	2020-07-20 02:58:31.119243
+48	石門區	253	士林	淡水	淡水分處				3	2020-07-20 02:58:31.121535	2020-07-20 02:58:31.121535
+49	南竿鄉	209							4	2020-07-20 02:58:31.123736	2020-07-20 02:58:31.123736
+50	北竿鄉	210							4	2020-07-20 02:58:31.126018	2020-07-20 02:58:31.126018
+51	莒光鄉	211							4	2020-07-20 02:58:31.128287	2020-07-20 02:58:31.128287
+52	東引鄉	212							4	2020-07-20 02:58:31.137001	2020-07-20 02:58:31.137001
+53	宜蘭市	260							5	2020-07-20 02:58:31.143799	2020-07-20 02:58:31.143799
+54	頭城鎮	261							5	2020-07-20 02:58:31.192567	2020-07-20 02:58:31.192567
+55	礁溪鄉	262							5	2020-07-20 02:58:31.19492	2020-07-20 02:58:31.19492
+56	壯圍鄉	263							5	2020-07-20 02:58:31.197173	2020-07-20 02:58:31.197173
+57	員山鄉	264							5	2020-07-20 02:58:31.200107	2020-07-20 02:58:31.200107
+58	羅東鎮	265							5	2020-07-20 02:58:31.202923	2020-07-20 02:58:31.202923
+59	三星鄉	266							5	2020-07-20 02:58:31.205994	2020-07-20 02:58:31.205994
+60	大同鄉	267							5	2020-07-20 02:58:31.208834	2020-07-20 02:58:31.208834
+61	五結鄉	268							5	2020-07-20 02:58:31.211802	2020-07-20 02:58:31.211802
+62	冬山鄉	269							5	2020-07-20 02:58:31.214662	2020-07-20 02:58:31.214662
+63	蘇澳鎮	270							5	2020-07-20 02:58:31.21757	2020-07-20 02:58:31.21757
+64	南澳鄉	272							5	2020-07-20 02:58:31.220087	2020-07-20 02:58:31.220087
+65	釣魚台	290							6	2020-07-20 02:58:31.222455	2020-07-20 02:58:31.222455
+66	東區	300							7	2020-07-20 02:58:31.224692	2020-07-20 02:58:31.224692
+67	北區	300							7	2020-07-20 02:58:31.226934	2020-07-20 02:58:31.226934
+68	香山區	300							7	2020-07-20 02:58:31.229207	2020-07-20 02:58:31.229207
+69	竹北市	302							8	2020-07-20 02:58:31.231447	2020-07-20 02:58:31.231447
+70	湖口鄉	303							8	2020-07-20 02:58:31.233733	2020-07-20 02:58:31.233733
+71	新豐鄉	304							8	2020-07-20 02:58:31.236002	2020-07-20 02:58:31.236002
+72	新埔鎮	305							8	2020-07-20 02:58:31.238295	2020-07-20 02:58:31.238295
+73	關西鎮	306							8	2020-07-20 02:58:31.240639	2020-07-20 02:58:31.240639
+74	芎林鄉	307							8	2020-07-20 02:58:31.242937	2020-07-20 02:58:31.242937
+75	寶山鄉	308							8	2020-07-20 02:58:31.24524	2020-07-20 02:58:31.24524
+76	竹東鎮	310							8	2020-07-20 02:58:31.247475	2020-07-20 02:58:31.247475
+77	五峰鄉	311							8	2020-07-20 02:58:31.249791	2020-07-20 02:58:31.249791
+78	橫山鄉	312							8	2020-07-20 02:58:31.25215	2020-07-20 02:58:31.25215
+79	尖石鄉	313							8	2020-07-20 02:58:31.254456	2020-07-20 02:58:31.254456
+80	北埔鄉	314							8	2020-07-20 02:58:31.256692	2020-07-20 02:58:31.256692
+81	峨眉鄉	315							8	2020-07-20 02:58:31.258939	2020-07-20 02:58:31.258939
+82	中壢市	320							9	2020-07-20 02:58:31.261197	2020-07-20 02:58:31.261197
+83	平鎮市	324							9	2020-07-20 02:58:31.263494	2020-07-20 02:58:31.263494
+84	龍潭鄉	325							9	2020-07-20 02:58:31.265728	2020-07-20 02:58:31.265728
+85	楊梅市	326							9	2020-07-20 02:58:31.268018	2020-07-20 02:58:31.268018
+86	新屋鄉	327							9	2020-07-20 02:58:31.270334	2020-07-20 02:58:31.270334
+87	觀音鄉	328							9	2020-07-20 02:58:31.272675	2020-07-20 02:58:31.272675
+88	桃園市	330							9	2020-07-20 02:58:31.275059	2020-07-20 02:58:31.275059
+89	龜山鄉	333							9	2020-07-20 02:58:33.286892	2020-07-20 02:58:33.286892
+90	八德市	334							9	2020-07-20 02:58:33.289421	2020-07-20 02:58:33.289421
+91	大溪鎮	335							9	2020-07-20 02:58:33.291746	2020-07-20 02:58:33.291746
+92	復興鄉	336							9	2020-07-20 02:58:33.294801	2020-07-20 02:58:33.294801
+93	大園鄉	337							9	2020-07-20 02:58:33.297894	2020-07-20 02:58:33.297894
+94	蘆竹鄉	338							9	2020-07-20 02:58:33.301088	2020-07-20 02:58:33.301088
+95	竹南鎮	350							10	2020-07-20 02:58:33.304219	2020-07-20 02:58:33.304219
+96	頭份鎮	351							10	2020-07-20 02:58:33.314374	2020-07-20 02:58:33.314374
+97	三灣鄉	352							10	2020-07-20 02:58:33.317536	2020-07-20 02:58:33.317536
+98	南庄鄉	353							10	2020-07-20 02:58:33.320675	2020-07-20 02:58:33.320675
+99	獅潭鄉	354							10	2020-07-20 02:58:33.323618	2020-07-20 02:58:33.323618
+100	後龍鎮	356							10	2020-07-20 02:58:33.326703	2020-07-20 02:58:33.326703
+101	通霄鎮	357							10	2020-07-20 02:58:33.329852	2020-07-20 02:58:33.329852
+102	苑裡鎮	358							10	2020-07-20 02:58:33.332799	2020-07-20 02:58:33.332799
+103	苗栗市	360							10	2020-07-20 02:58:33.335849	2020-07-20 02:58:33.335849
+104	造橋鄉	361							10	2020-07-20 02:58:33.338958	2020-07-20 02:58:33.338958
+105	頭屋鄉	362							10	2020-07-20 02:58:33.342104	2020-07-20 02:58:33.342104
+106	公館鄉	363							10	2020-07-20 02:58:33.34527	2020-07-20 02:58:33.34527
+107	大湖鄉	364							10	2020-07-20 02:58:33.34867	2020-07-20 02:58:33.34867
+108	泰安鄉	365							10	2020-07-20 02:58:33.351687	2020-07-20 02:58:33.351687
+109	銅鑼鄉	366							10	2020-07-20 02:58:33.354616	2020-07-20 02:58:33.354616
+110	三義鄉	367							10	2020-07-20 02:58:33.357625	2020-07-20 02:58:33.357625
+111	西湖鄉	368							10	2020-07-20 02:58:33.360462	2020-07-20 02:58:33.360462
+112	卓蘭鎮	369							10	2020-07-20 02:58:33.363069	2020-07-20 02:58:33.363069
+113	中區	400							11	2020-07-20 02:58:33.36551	2020-07-20 02:58:33.36551
+114	東區	401							11	2020-07-20 02:58:33.367856	2020-07-20 02:58:33.367856
+115	南區	402							11	2020-07-20 02:58:33.370219	2020-07-20 02:58:33.370219
+116	西區	403							11	2020-07-20 02:58:33.372639	2020-07-20 02:58:33.372639
+117	北區	404							11	2020-07-20 02:58:33.375016	2020-07-20 02:58:33.375016
+118	北屯區	406	臺中	中正	東山分局				11	2020-07-20 02:58:33.377731	2020-07-20 02:58:33.377731
+119	西屯區	407	臺中	中興	文心分局				11	2020-07-20 02:58:33.380147	2020-07-20 02:58:33.380147
+120	南屯區	408	臺中	中興	文心分局				11	2020-07-20 02:58:33.382564	2020-07-20 02:58:33.382564
+121	太平區	411	臺中	太平	大屯分局				11	2020-07-20 02:58:33.384986	2020-07-20 02:58:33.384986
+122	大里區	412	臺中	大里	大屯分局				11	2020-07-20 02:58:33.387366	2020-07-20 02:58:33.387366
+123	霧峰區	413	臺中	大里	大屯分局				11	2020-07-20 02:58:33.389744	2020-07-20 02:58:33.389744
+124	烏日區	414	臺中	大里	大屯分局				11	2020-07-20 02:58:33.392162	2020-07-20 02:58:33.392162
+125	豐原區	420	臺中	豐原	豐原分局				11	2020-07-20 02:58:33.394539	2020-07-20 02:58:33.394539
+126	后里區	421	臺中	豐原	豐原分局				11	2020-07-20 02:58:33.396926	2020-07-20 02:58:33.396926
+127	石岡區	422	臺中	東勢	東勢分局				11	2020-07-20 02:58:33.399232	2020-07-20 02:58:33.399232
+128	東勢區	423	臺中	東勢	東勢分局				11	2020-07-20 02:58:33.401564	2020-07-20 02:58:33.401564
+129	和平區	424	臺中	東勢	東勢分局				11	2020-07-20 02:58:33.403854	2020-07-20 02:58:33.403854
+130	新社區	426	臺中	東勢	東勢分局				11	2020-07-20 02:58:33.406188	2020-07-20 02:58:33.406188
+131	潭子區	427	臺中	雅潭	豐原分局				11	2020-07-20 02:58:33.408488	2020-07-20 02:58:33.408488
+132	大雅區	428	臺中	雅潭	豐原分局				11	2020-07-20 02:58:33.410824	2020-07-20 02:58:33.410824
+133	神岡區	429	臺中	豐原	豐原分局				11	2020-07-20 02:58:33.586564	2020-07-20 02:58:33.586564
+134	大肚區	432	臺中	龍井	沙鹿分局				11	2020-07-20 02:58:33.58947	2020-07-20 02:58:33.58947
+135	沙鹿區	433	臺中	清水	沙鹿分局				11	2020-07-20 02:58:33.591815	2020-07-20 02:58:33.591815
+136	龍井區	434	臺中	龍井	沙鹿分局				11	2020-07-20 02:58:33.594956	2020-07-20 02:58:33.594956
+137	梧棲區	435	臺中	清水	沙鹿分局				11	2020-07-20 02:58:33.598502	2020-07-20 02:58:33.598502
+138	清水區	436	臺中	清水	沙鹿分局				11	2020-07-20 02:58:33.601674	2020-07-20 02:58:33.601674
+139	大甲區	437	臺中	大甲	沙鹿分局				11	2020-07-20 02:58:33.604713	2020-07-20 02:58:33.604713
+140	外埔區	438	臺中	大甲	沙鹿分局				11	2020-07-20 02:58:33.607584	2020-07-20 02:58:33.607584
+141	大安區	439	臺北	大安	大安分處				11	2020-07-20 02:58:33.610514	2020-07-20 02:58:33.610514
+142	彰化市	500							12	2020-07-20 02:58:33.618188	2020-07-20 02:58:33.618188
+143	芬園鄉	502							12	2020-07-20 02:58:33.621163	2020-07-20 02:58:33.621163
+144	花壇鄉	503							12	2020-07-20 02:58:33.624108	2020-07-20 02:58:33.624108
+145	秀水鄉	504							12	2020-07-20 02:58:33.627012	2020-07-20 02:58:33.627012
+146	鹿港鎮	505							12	2020-07-20 02:58:33.630281	2020-07-20 02:58:33.630281
+147	福興鄉	506							12	2020-07-20 02:58:33.63316	2020-07-20 02:58:33.63316
+148	線西鄉	507							12	2020-07-20 02:58:33.636112	2020-07-20 02:58:33.636112
+149	和美鎮	508							12	2020-07-20 02:58:33.638953	2020-07-20 02:58:33.638953
+150	伸港鄉	509							12	2020-07-20 02:58:33.641852	2020-07-20 02:58:33.641852
+151	員林鎮	510							12	2020-07-20 02:58:33.644871	2020-07-20 02:58:33.644871
+152	社頭鄉	511							12	2020-07-20 02:58:33.648067	2020-07-20 02:58:33.648067
+153	永靖鄉	512							12	2020-07-20 02:58:33.651033	2020-07-20 02:58:33.651033
+154	埔心鄉	513							12	2020-07-20 02:58:33.654088	2020-07-20 02:58:33.654088
+155	溪湖鎮	514							12	2020-07-20 02:58:33.657035	2020-07-20 02:58:33.657035
+156	大村鄉	515							12	2020-07-20 02:58:33.660129	2020-07-20 02:58:33.660129
+157	埔鹽鄉	516							12	2020-07-20 02:58:33.663023	2020-07-20 02:58:33.663023
+158	田中鎮	520							12	2020-07-20 02:58:33.665906	2020-07-20 02:58:33.665906
+159	北斗鎮	521							12	2020-07-20 02:58:33.668861	2020-07-20 02:58:33.668861
+160	田尾鄉	522							12	2020-07-20 02:58:33.671995	2020-07-20 02:58:33.671995
+161	埤頭鄉	523							12	2020-07-20 02:58:33.674863	2020-07-20 02:58:33.674863
+162	溪州鄉	524							12	2020-07-20 02:58:33.677983	2020-07-20 02:58:33.677983
+163	竹塘鄉	525							12	2020-07-20 02:58:33.680832	2020-07-20 02:58:33.680832
+164	二林鎮	526							12	2020-07-20 02:58:33.683567	2020-07-20 02:58:33.683567
+165	大城鄉	527							12	2020-07-20 02:58:33.686205	2020-07-20 02:58:33.686205
+166	芳苑鄉	528							12	2020-07-20 02:58:33.688688	2020-07-20 02:58:33.688688
+167	二水鄉	530							12	2020-07-20 02:58:33.691113	2020-07-20 02:58:33.691113
+168	南投市	540							13	2020-07-20 02:58:33.693478	2020-07-20 02:58:33.693478
+169	中寮鄉	541							13	2020-07-20 02:58:33.702104	2020-07-20 02:58:33.702104
+170	草屯鎮	542							13	2020-07-20 02:58:33.705438	2020-07-20 02:58:33.705438
+171	國姓鄉	544							13	2020-07-20 02:58:33.707847	2020-07-20 02:58:33.707847
+172	埔里鎮	545							13	2020-07-20 02:58:33.710344	2020-07-20 02:58:33.710344
+173	仁愛鄉	546							13	2020-07-20 02:58:33.7151	2020-07-20 02:58:33.7151
+174	名間鄉	551							13	2020-07-20 02:58:33.717439	2020-07-20 02:58:33.717439
+175	集集鎮	552							13	2020-07-20 02:58:33.719728	2020-07-20 02:58:33.719728
+176	水里鄉	553							13	2020-07-20 02:58:33.72209	2020-07-20 02:58:33.72209
+177	魚池鄉	555							13	2020-07-20 02:58:33.724417	2020-07-20 02:58:33.724417
+178	信義鄉	556							13	2020-07-20 02:58:33.726638	2020-07-20 02:58:33.726638
+179	竹山鎮	557							13	2020-07-20 02:58:33.728905	2020-07-20 02:58:33.728905
+180	鹿谷鄉	558							13	2020-07-20 02:58:33.731213	2020-07-20 02:58:33.731213
+181	東區	600							14	2020-07-20 02:58:33.733521	2020-07-20 02:58:33.733521
+182	西區	600							14	2020-07-20 02:58:33.735779	2020-07-20 02:58:33.735779
+183	番路鄉	602							15	2020-07-20 02:58:33.738246	2020-07-20 02:58:33.738246
+184	梅山鄉	603							15	2020-07-20 02:58:33.740586	2020-07-20 02:58:33.740586
+185	竹崎鄉	604							15	2020-07-20 02:58:33.742926	2020-07-20 02:58:33.742926
+186	阿里山鄉	605							15	2020-07-20 02:58:33.745406	2020-07-20 02:58:33.745406
+187	中埔鄉	606							15	2020-07-20 02:58:33.747798	2020-07-20 02:58:33.747798
+188	大埔鄉	607							15	2020-07-20 02:58:33.750187	2020-07-20 02:58:33.750187
+189	水上鄉	608							15	2020-07-20 02:58:33.752534	2020-07-20 02:58:33.752534
+190	鹿草鄉	611							15	2020-07-20 02:58:33.930937	2020-07-20 02:58:33.930937
+191	太保市	612							15	2020-07-20 02:58:33.933428	2020-07-20 02:58:33.933428
+192	朴子市	613							15	2020-07-20 02:58:33.935706	2020-07-20 02:58:33.935706
+193	東石鄉	614							15	2020-07-20 02:58:33.938707	2020-07-20 02:58:33.938707
+194	六腳鄉	615							15	2020-07-20 02:58:33.941583	2020-07-20 02:58:33.941583
+195	新港鄉	616							15	2020-07-20 02:58:33.944588	2020-07-20 02:58:33.944588
+196	民雄鄉	621							15	2020-07-20 02:58:33.947578	2020-07-20 02:58:33.947578
+197	大林鎮	622							15	2020-07-20 02:58:33.950547	2020-07-20 02:58:33.950547
+198	溪口鄉	623							15	2020-07-20 02:58:33.953561	2020-07-20 02:58:33.953561
+199	義竹鄉	624							15	2020-07-20 02:58:33.956479	2020-07-20 02:58:33.956479
+200	布袋鎮	625							15	2020-07-20 02:58:33.95947	2020-07-20 02:58:33.95947
+201	斗南鎮	630							16	2020-07-20 02:58:33.962436	2020-07-20 02:58:33.962436
+202	大埤鄉	631							16	2020-07-20 02:58:33.965314	2020-07-20 02:58:33.965314
+203	虎尾鎮	632							16	2020-07-20 02:58:33.968582	2020-07-20 02:58:33.968582
+204	土庫鎮	633							16	2020-07-20 02:58:33.971439	2020-07-20 02:58:33.971439
+205	褒忠鄉	634							16	2020-07-20 02:58:33.974549	2020-07-20 02:58:33.974549
+206	東勢鄉	635							16	2020-07-20 02:58:33.9776	2020-07-20 02:58:33.9776
+207	台西鄉	636							16	2020-07-20 02:58:33.98049	2020-07-20 02:58:33.98049
+208	崙背鄉	637							16	2020-07-20 02:58:33.983319	2020-07-20 02:58:33.983319
+209	麥寮鄉	638							16	2020-07-20 02:58:33.986178	2020-07-20 02:58:33.986178
+210	斗六市	640							16	2020-07-20 02:58:33.988998	2020-07-20 02:58:33.988998
+211	林內鄉	643							16	2020-07-20 02:58:33.992008	2020-07-20 02:58:33.992008
+212	古坑鄉	646							16	2020-07-20 02:58:33.995014	2020-07-20 02:58:33.995014
+213	莿桐鄉	647							16	2020-07-20 02:58:33.997819	2020-07-20 02:58:33.997819
+214	西螺鎮	648							16	2020-07-20 02:58:34.000441	2020-07-20 02:58:34.000441
+215	二崙鄉	649							16	2020-07-20 02:58:34.002912	2020-07-20 02:58:34.002912
+216	北港鎮	651							16	2020-07-20 02:58:34.005314	2020-07-20 02:58:34.005314
+217	水林鄉	652							16	2020-07-20 02:58:34.007549	2020-07-20 02:58:34.007549
+218	口湖鄉	653							16	2020-07-20 02:58:34.010053	2020-07-20 02:58:34.010053
+219	四湖鄉	654							16	2020-07-20 02:58:34.012614	2020-07-20 02:58:34.012614
+220	元長鄉	655							16	2020-07-20 02:58:34.015085	2020-07-20 02:58:34.015085
+225	安平區	708	臺南	臺南	臺南分局		臺南分局		17	2020-07-20 02:58:34.026982	2020-07-20 02:58:34.026982
+226	安南區	709	臺南	安南	安南分局		安南稽徵所		17	2020-07-20 02:58:34.029344	2020-07-20 02:58:34.029344
+227	永康區	710	臺南	永康	新化分局		新化稽徵所		17	2020-07-20 02:58:34.031773	2020-07-20 02:58:34.031773
+228	歸仁區	711	臺南	歸仁	新化分局		新化稽徵所		17	2020-07-20 02:58:34.034128	2020-07-20 02:58:34.034128
+229	新化區	712	臺南	新化	新化分局		新化稽徵所		17	2020-07-20 02:58:34.036464	2020-07-20 02:58:34.036464
+230	左鎮區	713	臺南	新化	新化分局		新化稽徵所		17	2020-07-20 02:58:34.038881	2020-07-20 02:58:34.038881
+231	玉井區	714	臺南	玉井	新化分局		新化稽徵所		17	2020-07-20 02:58:34.041147	2020-07-20 02:58:34.041147
+232	楠西區	715	臺南	玉井	新化分局		新化稽徵所		17	2020-07-20 02:58:34.04348	2020-07-20 02:58:34.04348
+233	南化區	716	臺南	玉井	新化分局		新化稽徵所		17	2020-07-20 02:58:34.045808	2020-07-20 02:58:34.045808
+234	仁德區	717	臺南	歸仁	���化分局		新化稽徵所		17	2020-07-20 02:58:34.048064	2020-07-20 02:58:34.048064
+235	關廟區	718	臺南	歸仁	新化分局		新化稽徵所		17	2020-07-20 02:58:34.05034	2020-07-20 02:58:34.05034
+236	龍崎區	719	臺南	歸仁	新化分局		新化稽徵所		17	2020-07-20 02:58:34.052593	2020-07-20 02:58:34.052593
+237	官田區	720	臺南	麻豆	新化分局		新化稽徵所		17	2020-07-20 02:58:34.240431	2020-07-20 02:58:34.240431
+238	麻豆區	721	臺南	麻豆	佳里分局		佳里稽徵所		17	2020-07-20 02:58:34.242886	2020-07-20 02:58:34.242886
+239	佳里區	722	臺南	佳里	佳里分局		佳里稽徵所		17	2020-07-20 02:58:34.245109	2020-07-20 02:58:34.245109
+240	西港區	723	臺南	佳里	佳里分局		佳里稽徵所		17	2020-07-20 02:58:34.248231	2020-07-20 02:58:34.248231
+241	七股區	724							17	2020-07-20 02:58:34.251071	2020-07-20 02:58:34.251071
+242	將軍區	725	臺南	佳里	佳里分局		佳里稽徵所		17	2020-07-20 02:58:34.25955	2020-07-20 02:58:34.25955
+243	學甲區	726	臺南	佳里	佳里分局		佳里稽徵所		17	2020-07-20 02:58:34.263531	2020-07-20 02:58:34.263531
+244	北門區	727	臺南	佳里	佳里分局		佳里稽徵所		17	2020-07-20 02:58:34.266502	2020-07-20 02:58:34.266502
+245	新營區	730	臺南	鹽水	新營分局		新營分局		17	2020-07-20 02:58:34.26942	2020-07-20 02:58:34.26942
+246	後壁區	731	臺南	白河	新營分局		新營分局		17	2020-07-20 02:58:34.272404	2020-07-20 02:58:34.272404
+247	白河區	732	臺南	白河	新營分局		新營分局		17	2020-07-20 02:58:34.275514	2020-07-20 02:58:34.275514
+248	東山區	733	臺南	白河	新營分局		新營分局		17	2020-07-20 02:58:34.278523	2020-07-20 02:58:34.278523
+249	六甲區	734	臺南	麻豆	新營分局		新營分局		17	2020-07-20 02:58:34.281426	2020-07-20 02:58:34.281426
+250	下營區	735	臺南	麻豆	新營分局		新營分局		17	2020-07-20 02:58:34.28468	2020-07-20 02:58:34.28468
+251	柳營區	736	臺南	鹽水	新營分局		新營分局		17	2020-07-20 02:58:34.287716	2020-07-20 02:58:34.287716
+252	鹽水區	737	臺南	鹽水	新營分局		新營分局		17	2020-07-20 02:58:34.290953	2020-07-20 02:58:34.290953
+253	善化區	741	臺南	新化	新營分局		新營分局		17	2020-07-20 02:58:34.294267	2020-07-20 02:58:34.294267
+254	大內區	742	臺南	麻豆	新營分局		新營分局		17	2020-07-20 02:58:34.297319	2020-07-20 02:58:34.297319
+255	山上區	743	臺南	新化	新化分局		新化稽徵所		17	2020-07-20 02:58:34.300461	2020-07-20 02:58:34.300461
+256	新市區	744	臺南	新化	新化分局		新化稽徵所		17	2020-07-20 02:58:34.303543	2020-07-20 02:58:34.303543
+257	安定區	745	臺南	新化	佳里分局		佳里稽徵所		17	2020-07-20 02:58:34.306603	2020-07-20 02:58:34.306603
+258	新興區	800	高雄	新興	新興分處				18	2020-07-20 02:58:34.309545	2020-07-20 02:58:34.309545
+259	前金區	801	高雄	鹽埕	鹽埕分處				18	2020-07-20 02:58:34.312646	2020-07-20 02:58:34.312646
+260	苓雅區	802	高雄	新興	新興分處				18	2020-07-20 02:58:34.315714	2020-07-20 02:58:34.315714
+261	鹽埕區	803	高雄	鹽埕	鹽埕分處				18	2020-07-20 02:58:34.318788	2020-07-20 02:58:34.318788
+262	鼓山區	804	高雄	鹽埕	鹽埕分處				18	2020-07-20 02:58:34.321656	2020-07-20 02:58:34.321656
+263	旗津區	805	高雄	鹽埕	鹽埕分處				18	2020-07-20 02:58:34.324255	2020-07-20 02:58:34.324255
+264	前鎮區	806	高雄	前鎮	前鎮				18	2020-07-20 02:58:34.326751	2020-07-20 02:58:34.326751
+265	三民區	807	高雄	三民	三民				18	2020-07-20 02:58:34.329139	2020-07-20 02:58:34.329139
+266	楠梓區	811	橋頭	楠梓	楠梓				18	2020-07-20 02:58:34.331548	2020-07-20 02:58:34.331548
+267	小港區	812	高雄	前鎮	前鎮				18	2020-07-20 02:58:34.333942	2020-07-20 02:58:34.333942
+268	左營區	813	橋頭	楠梓	左營分處				18	2020-07-20 02:58:34.336287	2020-07-20 02:58:34.336287
+269	仁武區	814	橋頭	仁武	仁武				18	2020-07-20 02:58:34.338607	2020-07-20 02:58:34.338607
+270	大社區	815	橋頭	仁武	仁武				18	2020-07-20 02:58:34.340912	2020-07-20 02:58:34.340912
+271	岡山區	820	橋頭	岡山	岡山分處				18	2020-07-20 02:58:34.343282	2020-07-20 02:58:34.343282
+272	路竹區	821	橋頭	路竹	岡山分處				18	2020-07-20 02:58:34.345595	2020-07-20 02:58:34.345595
+273	阿蓮區	822	橋頭	路竹	岡山分處				18	2020-07-20 02:58:34.34791	2020-07-20 02:58:34.34791
+274	田寮區	823	橋頭	路竹	岡山分處				18	2020-07-20 02:58:34.350271	2020-07-20 02:58:34.350271
+275	燕巢區	824	橋頭	岡山	岡山分處				18	2020-07-20 02:58:34.352684	2020-07-20 02:58:34.352684
+222	東區	701	臺南	東南	臺南分局				17	2020-07-20 02:58:34.019874	2020-07-21 01:45:23.006479
+223	南區	702	臺南	東南	臺南分局				17	2020-07-20 02:58:34.022241	2020-07-21 01:45:29.438048
+276	橋頭區	825	橋頭	岡山	岡山分處				18	2020-07-20 02:58:34.355012	2020-07-20 02:58:34.355012
+277	梓官區	826	橋頭	岡山	岡山分處				18	2020-07-20 02:58:34.357511	2020-07-20 02:58:34.357511
+278	彌陀區	827	橋頭	岡山	岡山分處				18	2020-07-20 02:58:34.36014	2020-07-20 02:58:34.36014
+279	永安區	828	橋頭	岡山	岡山分處				18	2020-07-20 02:58:34.362525	2020-07-20 02:58:34.362525
+280	湖內區	829	橋頭	路竹	岡山分處				18	2020-07-20 02:58:34.364809	2020-07-20 02:58:34.364809
+281	鳳山區	830	高雄	鳳山	鳳山分處				18	2020-07-20 02:58:34.367195	2020-07-20 02:58:34.367195
+282	大寮區	831	高雄	大寮	大寮				18	2020-07-20 02:58:34.369457	2020-07-20 02:58:34.369457
+283	林園區	832	高雄	大寮	大寮				18	2020-07-20 02:58:34.561094	2020-07-20 02:58:34.561094
+284	鳥松區	833	橋頭	仁武	仁武				18	2020-07-20 02:58:34.564003	2020-07-20 02:58:34.564003
+285	大樹區	840	橋頭	鳳山	仁武				18	2020-07-20 02:58:34.566287	2020-07-20 02:58:34.566287
+286	旗山區	842	橋頭	旗山	旗山分處				18	2020-07-20 02:58:34.569776	2020-07-20 02:58:34.569776
+287	美濃區	843	橋頭	美濃	旗山分處				18	2020-07-20 02:58:34.573379	2020-07-20 02:58:34.573379
+288	六龜區	844	橋頭	美濃	旗山分處				18	2020-07-20 02:58:34.576904	2020-07-20 02:58:34.576904
+289	內門區	845	橋頭	旗山	旗山分處				18	2020-07-20 02:58:34.5829	2020-07-20 02:58:34.5829
+290	杉林區	846	橋頭	旗山	旗山分處				18	2020-07-20 02:58:34.586333	2020-07-20 02:58:34.586333
+291	甲仙區	847	橋頭	旗山	旗山分處				18	2020-07-20 02:58:34.589457	2020-07-20 02:58:34.589457
+292	桃源區	848	橋頭	美濃	旗山分處				18	2020-07-20 02:58:34.592307	2020-07-20 02:58:34.592307
+293	那瑪夏區	849	橋頭	旗山	旗山分處				18	2020-07-20 02:58:34.595133	2020-07-20 02:58:34.595133
+294	茂林區	851	橋頭	美濃	旗山分處				18	2020-07-20 02:58:34.598054	2020-07-20 02:58:34.598054
+295	茄萣區	852	橋頭	路竹	岡山分處				18	2020-07-20 02:58:34.600964	2020-07-20 02:58:34.600964
+296	東沙群島	817							19	2020-07-20 02:58:34.604065	2020-07-20 02:58:34.604065
+297	南沙群島	819							19	2020-07-20 02:58:34.60712	2020-07-20 02:58:34.60712
+298	馬公市	880							20	2020-07-20 02:58:34.610102	2020-07-20 02:58:34.610102
+299	西嶼鄉	881							20	2020-07-20 02:58:34.613026	2020-07-20 02:58:34.613026
+300	望安鄉	882							20	2020-07-20 02:58:34.615918	2020-07-20 02:58:34.615918
+301	七美鄉	883							20	2020-07-20 02:58:34.618904	2020-07-20 02:58:34.618904
+302	白沙鄉	884							20	2020-07-20 02:58:34.621821	2020-07-20 02:58:34.621821
+303	湖西鄉	885							20	2020-07-20 02:58:34.624667	2020-07-20 02:58:34.624667
+304	金沙鎮	890							21	2020-07-20 02:58:34.627666	2020-07-20 02:58:34.627666
+305	金湖鎮	891							21	2020-07-20 02:58:34.630608	2020-07-20 02:58:34.630608
+306	金寧鄉	892							21	2020-07-20 02:58:34.633575	2020-07-20 02:58:34.633575
+307	金城鎮	893							21	2020-07-20 02:58:34.636463	2020-07-20 02:58:34.636463
+308	烈嶼鄉	894							21	2020-07-20 02:58:34.63927	2020-07-20 02:58:34.63927
+309	烏坵鄉	896							21	2020-07-20 02:58:34.642263	2020-07-20 02:58:34.642263
+310	屏東市	900							22	2020-07-20 02:58:34.645166	2020-07-20 02:58:34.645166
+311	三地門鄉	901							22	2020-07-20 02:58:34.648086	2020-07-20 02:58:34.648086
+312	霧台鄉	902							22	2020-07-20 02:58:34.650849	2020-07-20 02:58:34.650849
+313	瑪家鄉	903							22	2020-07-20 02:58:34.653719	2020-07-20 02:58:34.653719
+314	九如鄉	904							22	2020-07-20 02:58:34.656613	2020-07-20 02:58:34.656613
+315	里港鄉	905							22	2020-07-20 02:58:34.659479	2020-07-20 02:58:34.659479
+316	高樹鄉	906							22	2020-07-20 02:58:34.66913	2020-07-20 02:58:34.66913
+317	鹽埔鄉	907							22	2020-07-20 02:58:34.671658	2020-07-20 02:58:34.671658
+318	長治鄉	908							22	2020-07-20 02:58:34.674178	2020-07-20 02:58:34.674178
+319	麟洛鄉	909							22	2020-07-20 02:58:34.676547	2020-07-20 02:58:34.676547
+320	竹田鄉	911							22	2020-07-20 02:58:34.678867	2020-07-20 02:58:34.678867
+321	內埔鄉	912							22	2020-07-20 02:58:34.68113	2020-07-20 02:58:34.68113
+322	萬丹鄉	913							22	2020-07-20 02:58:34.683461	2020-07-20 02:58:34.683461
+323	潮州鎮	920							22	2020-07-20 02:58:34.685801	2020-07-20 02:58:34.685801
+324	泰武鄉	921							22	2020-07-20 02:58:34.688076	2020-07-20 02:58:34.688076
+325	來義鄉	922							22	2020-07-20 02:58:34.690609	2020-07-20 02:58:34.690609
+326	萬巒鄉	923							22	2020-07-20 02:58:34.692954	2020-07-20 02:58:34.692954
+327	崁頂鄉	924							22	2020-07-20 02:58:34.695205	2020-07-20 02:58:34.695205
+328	新埤鄉	925							22	2020-07-20 02:58:34.697485	2020-07-20 02:58:34.697485
+329	南州鄉	926							22	2020-07-20 02:58:34.699687	2020-07-20 02:58:34.699687
+330	林邊鄉	927							22	2020-07-20 02:58:34.702009	2020-07-20 02:58:34.702009
+331	東港鎮	928							22	2020-07-20 02:58:34.704434	2020-07-20 02:58:34.704434
+332	琉球鄉	929							22	2020-07-20 02:58:34.706706	2020-07-20 02:58:34.706706
+333	佳冬鄉	931							22	2020-07-20 02:58:34.708912	2020-07-20 02:58:34.708912
+334	新園鄉	932							22	2020-07-20 02:58:34.711178	2020-07-20 02:58:34.711178
+335	枋寮鄉	940							22	2020-07-20 02:58:34.713415	2020-07-20 02:58:34.713415
+336	枋山鄉	941							22	2020-07-20 02:58:34.715605	2020-07-20 02:58:34.715605
+337	春日鄉	942							22	2020-07-20 02:58:34.718018	2020-07-20 02:58:34.718018
+338	獅子鄉	943							22	2020-07-20 02:58:34.720384	2020-07-20 02:58:34.720384
+339	車城鄉	944							22	2020-07-20 02:58:34.722749	2020-07-20 02:58:34.722749
+340	牡丹鄉	945							22	2020-07-20 02:58:34.725107	2020-07-20 02:58:34.725107
+341	恆春鎮	946							22	2020-07-20 02:58:34.727744	2020-07-20 02:58:34.727744
+342	滿州鄉	947							22	2020-07-20 02:58:34.730086	2020-07-20 02:58:34.730086
+343	台東市	950							23	2020-07-20 02:58:34.732409	2020-07-20 02:58:34.732409
+344	綠島鄉	951							23	2020-07-20 02:58:34.8947	2020-07-20 02:58:34.8947
+345	蘭嶼鄉	952							23	2020-07-20 02:58:34.897263	2020-07-20 02:58:34.897263
+346	延平鄉	953							23	2020-07-20 02:58:34.899617	2020-07-20 02:58:34.899617
+347	卑南鄉	954							23	2020-07-20 02:58:34.902052	2020-07-20 02:58:34.902052
+348	鹿野鄉	955							23	2020-07-20 02:58:34.90431	2020-07-20 02:58:34.90431
+349	關山鎮	956							23	2020-07-20 02:58:34.906796	2020-07-20 02:58:34.906796
+350	海端鄉	957							23	2020-07-20 02:58:34.909221	2020-07-20 02:58:34.909221
+351	池上鄉	958							23	2020-07-20 02:58:34.911642	2020-07-20 02:58:34.911642
+352	東河鄉	959							23	2020-07-20 02:58:34.913988	2020-07-20 02:58:34.913988
+353	成功鎮	961							23	2020-07-20 02:58:34.916278	2020-07-20 02:58:34.916278
+354	長濱鄉	962							23	2020-07-20 02:58:34.918527	2020-07-20 02:58:34.918527
+355	太麻里鄉	963							23	2020-07-20 02:58:34.920728	2020-07-20 02:58:34.920728
+356	金峰鄉	964							23	2020-07-20 02:58:34.923085	2020-07-20 02:58:34.923085
+357	大武鄉	965							23	2020-07-20 02:58:34.925494	2020-07-20 02:58:34.925494
+358	達仁鄉	966							23	2020-07-20 02:58:34.927899	2020-07-20 02:58:34.927899
+359	花蓮市	970							24	2020-07-20 02:58:34.93045	2020-07-20 02:58:34.93045
+360	新城鄉	971							24	2020-07-20 02:58:34.932804	2020-07-20 02:58:34.932804
+361	秀林鄉	972							24	2020-07-20 02:58:34.935233	2020-07-20 02:58:34.935233
+362	吉安鄉	973							24	2020-07-20 02:58:34.937558	2020-07-20 02:58:34.937558
+363	壽豐鄉	974							24	2020-07-20 02:58:34.940083	2020-07-20 02:58:34.940083
+364	鳳林鎮	975							24	2020-07-20 02:58:34.942571	2020-07-20 02:58:34.942571
+365	光復鄉	976							24	2020-07-20 02:58:34.944908	2020-07-20 02:58:34.944908
+366	豐濱鄉	977							24	2020-07-20 02:58:34.947211	2020-07-20 02:58:34.947211
+367	瑞穗鄉	978							24	2020-07-20 02:58:34.94947	2020-07-20 02:58:34.94947
+368	萬榮鄉	979							24	2020-07-20 02:58:34.951796	2020-07-20 02:58:34.951796
+369	玉里鎮	981							24	2020-07-20 02:58:34.954155	2020-07-20 02:58:34.954155
+370	卓溪鄉	982							24	2020-07-20 02:58:34.956591	2020-07-20 02:58:34.956591
+371	富里鄉	983							24	2020-07-20 02:58:35.198756	2020-07-20 02:58:35.198756
+221	中西區	700	臺南	臺南	臺南分局				17	2020-07-20 02:58:34.01752	2020-07-21 01:43:41.44479
+224	北區	704	臺南	臺南	臺南分局				17	2020-07-20 02:58:34.024715	2020-07-21 01:45:34.866807
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.users (id, first_name, last_name, role, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, created_at, updated_at, full_name, "userIdentityCard", "userBirthday", "userLocalPhone", "userMobilePhone", "userNotes", "userCountry", "userTownship", "userVillage", "userNeighbor", "userStreet", "userSection", "userLane", "userAlley", "userNumber", "userFloor", "userIdentityCode", "userPublicOrPrivate") FROM stdin;
+5	曾	桂雄	\N	brainsou@gmail.com	$2a$11$jq0SC4ft3qphEI6u8y.AXuddz3UPTdynUcfbYgkc3MbFMFBY1AJLC	\N	\N	\N	2020-07-20 02:58:30.231692	2020-08-07 02:35:13.279239	曾桂雄	L103230313	\N	\N	0911987701	職員	高雄市	鳳山區	\N	\N	建國路	一段	17巷	\N	86號	\N	\N	\N
+9	王	建斌	\N	bahg2001@gmail.com	$2a$11$nZtmHpqlUQ/VhnUsMgd7O.Wa4nRPLUnwRCMDQENcbfF9QyMYSTkTe	\N	\N	\N	2020-07-20 02:58:30.870679	2020-08-07 02:35:13.296317	王建斌	\N	\N	\N	\N	職員	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+2	吳	俊男	\N	ryowu0329@gmail.com	$2a$11$l.PDhoYpwtkHPb7ddxxkfu/PMpy5/lBMg0lcgvm26ZfRDKJJZCUHi	\N	\N	\N	2020-07-20 02:58:29.758236	2020-08-07 02:35:13.304589	吳俊男	R111111333	1976-03-29	06-7222333	0921526137	職員	台南市	東區	\N	\N	德東街	\N	\N	\N	222號	6樓6	\N	\N
+7	曾	友志	\N	7531karl@gmail.com	$2a$11$Vh0Jblcu3dNI.3Nygm34fu35y8ZZarGqUzKr4hFNJSFWFGHuhbkru	\N	\N	2020-07-24 15:08:23.365825	2020-07-20 02:58:30.553441	2020-08-07 02:35:13.318153	曾友志	L121920838	\N	\N	0935770043	會計	臺中市	大里區	\N	\N	新仁路	三段	\N	\N	49號	\N	\N	\N
+12	曾	智翊	\N	sunmarbo@gmail.com	$2a$11$35H0K1hN5FQrT5bMqH4nk.FXO53fzrPU19nUbAgW2ao4CMWd9Ml9a	\N	\N	\N	2020-08-07 02:19:11.481507	2020-08-07 02:35:13.331533	曾智翊	\N	\N	\N	0912676719	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+13	揚富	開發有限公司	\N	yangfu@gmail.com	$2a$11$2zwbA6gLtjKckKTJndcnbeuK6u0/fYBTx.QSpX67K.uRrAkLPHIV.	\N	\N	\N	2020-08-07 02:21:46.292755	2020-08-07 03:06:46.699291	揚富開發有限公司	64187207	2018-01-23	\N	\N	\N	臺中市	大里區	\N	\N	新仁路	三段	\N	\N	49號	1樓	\N	\N
+14	鉅鈦	開發有限公司	\N	jutai@gmail.com	$2a$11$iYiZf5Rwd7dqmN9c8pCM1e5TKnF4lBUyY38RmPfdT73OqRPXJXE5.	\N	\N	\N	2020-08-07 02:24:53.55161	2020-08-07 03:06:46.706335	鉅鈦開發有限公司	83554300	2020-03-11	\N	\N	\N	臺中市	大里區	\N	\N	新仁路	三段	72巷	\N	3號	1樓	\N	\N
+1	管	理者	1	admin@gmail.com	$2a$11$biE6TLmajNwSYDy.R3kh3OxClPxGtgsF6yDId/mWh1JsE1Bkx7sWS	\N	\N	\N	2020-07-20 02:58:29.600414	2020-08-09 09:18:30.096659	管理者	\N	\N	\N	\N	管理者	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+4	曾	昱銓	\N	acme6801@gmail.com	$2a$11$7lvUaYwllgo/dNXJUWiJqelg/8vNfp.pY6/V5XzDfWKOjJpoP/1P6	\N	\N	2020-09-07 09:01:09.102318	2020-07-20 02:58:30.074442	2020-09-07 09:01:09.106873	曾昱銓	L125051272	\N	\N	0911987707	職員	高雄市	鳳山區	\N	\N	建國路	一段	17巷	\N	86號	\N	\N	\N
+8	曾	友和	\N	sosan600715@gmail.com	$2a$11$SDF.EEpeT8D1/ZUzX7kMoeLQU3B9Uwx41bHMXqa.3ZN05cNLR0CXe	\N	\N	\N	2020-07-20 02:58:30.710781	2020-10-02 12:08:21.341041	曾友和	L121924265	1971-07-15	\N	0921765023	法務	臺南市	東區	\N	\N	東平路	\N	\N	\N	11號	5樓	\N	\N
+3	張	浩文	\N	waterhao0709@gmail.com	$2a$11$zoNOfDd3VtG/JVWjHGP4/.VgBpubJ18ijM0pL5MV1MhMQ1cnxnFVu	\N	\N	\N	2020-07-20 02:58:29.916249	2020-10-07 09:36:50.026874	張浩文	\N	\N	\N	0920005858	職員	新北巿	中和區	\N	\N	圓通路	\N	198巷	\N	32號	\N	\N	\N
+6	劉	家彰	\N	nealeliu@gmail.com	$2a$11$U35P79R9X2DHOYc76a6C9e8sKbH5XVKiT3ICF6osfHBEAyOtv7ZSi	\N	\N	\N	2020-07-20 02:58:30.394661	2020-10-13 12:05:49.701961	劉家彰	P122190873	\N	\N	0918332707	職員	臺南市	東區	\N	\N	東平路	\N	\N	\N	11號	5樓	\N	\N
+\.
+
+
+--
+-- Data for Name: yfcases; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.yfcases (id, case_number, other_address, auction_day_1, auction_day_2, auction_day_3, auction_day_4, floor_price_1, floor_price_2, floor_price_3, floor_price_4, click_1, click_2, click_3, click_4, monitor_1, monitor_2, monitor_3, monitor_4, margin_1, margin_2, margin_3, margin_4, auction_notes, first_survey_day, other_survey_day, foreclosure_announcement_title, foreclosure_announcement_link, object_photo_title, object_photo_link, net_price_registration_market_price_title, net_price_registration_market_price_link, net_price_registration_map_title, net_price_registration_map_link, net_price_registration_photo_title, net_price_registration_photo_link, auction_record_title, auction_record_link, other_notes, survey_resolution, final_decision, co_owner, occupy, register, parking_space, management_fee, rent, leak, easy_parking, railway, vegetable_market, supermarket, school, park, post_office, main_road, water_and_power_failure, good_vision, final_decision_date, country_id, township_id, user_id, created_at, updated_at, big_section, small_section, company, foreclosure_announcement_988_link, adv_find_condition, active_result, active_result_date, priority_purchase_result, target_number, cause_data, application_for_registration, reason_for_registration, marking_and_application_rights, "attached_Document_Content_1", number_of_attached_quantity_1, "attached_Document_Content_2", number_of_attached_quantity_2, "attached_Document_Content_3", number_of_attached_quantity_3, registration_notes, "deedtaxDateOfDeed", "deedtaxDeclarationDate", "deedtaxTransferPrice", "deedtaxChargeDaffairesTaxDeclarant", "deedtaxDebtTaxPaymentReceiptMethod", "deedtaxClosedNewsletter", "deedtaxUnderreportedDays", "deedtaxRemark", "deedtaxBuildingTransferLevel1", "deedtaxBuildingTransferLevel2", "deedtaxBuildingTransferLevel3", "deedtaxBuildingTransferLevel4", "deedtaxBuildingTransferLevel5", "deedtaxBuildingTransferLevel6", "deedtaxBuildingTransferLevel7", "deedtaxBuildingTransferStructure1", "deedtaxBuildingTransferStructure2", "deedtaxBuildingTransferStructure3", "deedtaxBuildingTransferStructure4", "deedtaxBuildingTransferStructure5", "deedtaxBuildingTransferStructure6", "deedtaxBuildingTransferStructure7", "deedtaxBuildingTransferArea1", "deedtaxBuildingTransferArea2", "deedtaxBuildingTransferArea3", "deedtaxBuildingTransferArea4", "deedtaxBuildingTransferArea5", "deedtaxBuildingTransferArea6", "deedtaxBuildingTransferArea7", "deedtaxBuildingTransferPublicBuildingNumber1", "deedtaxBuildingTransferPublicBuildingNumber2", "deedtaxBuildingTransferPublicBuildingNumber3", "deedtaxBuildingTransferPublicBuildingNumber4", "deedtaxBuildingTransferPublicBuildingNumber5", "deedtaxBuildingTransferPublicArea1", "deedtaxBuildingTransferPublicArea2", "deedtaxBuildingTransferPublicArea3", "deedtaxBuildingTransferPublicArea4", "deedtaxBuildingTransferPublicArea5", "deedtaxBuildingTransferPublicHoldings1", "deedtaxBuildingTransferPublicHoldings2", "deedtaxBuildingTransferPublicHoldings3", "deedtaxBuildingTransferPublicHoldings4", "deedtaxBuildingTransferPublicHoldings5", "housingTax", "refereeFee", "agreementSplitUnsuccessfulDate", exhibit1, exhibit2, exhibit3, exhibit4, "tabulationDate", "isMobileOrDesktop", "realestateregistrationRealEstateAgent", "complaintLitigationAgent", "debtorName", "debtorIdentitycard", "debtorBirthday", "debtorLocallphone", "debtorMobilelphone", "debtorNotes", "debtorCountry", "debtorTownship", "debtorVillage", "debtorNeighbor", "debtorStreet", "debtorSection", "debtorLane", "debtorAlley", "debtorNumber", "debtorFloor", "debtorBuildholdingpointperson", "debtorBuildholdingpointall", "debtorLandholdingpointperson", "debtorLandholdingpointall", "creditorName", "creditorIdentitycard", "creditorBirthday", "creditorLocallphone", "creditorMobilelphone", "creditorNotes", "creditorCountry", "creditorTownship", "creditorVillage", "creditorNeighbor", "creditorStreet", "creditorSection", "creditorLane", "creditorAlley", "creditorNumber", "creditorFloor", "creditorBuildholdingpointperson", "creditorBuildholdingpointall", "creditorLandholdingpointperson", "creditorLandholdingpointall", "houseTaxNumberCountry1", "houseTaxNumberCountry2", "houseTaxNumberTownship1", "houseTaxNumberTownship2", "houseTaxNumberBuilding1", "houseTaxNumberBuilding2", "houseTaxNumberBuilding3", "houseTaxNumberBuilding4", "houseTaxNumberHouseHold1", "houseTaxNumberHouseHold2", "houseTaxNumberHouseHold3") FROM stdin;
+7	109南金職亥字第223號\t	國華街一段56巷9號	2020-06-10	\N	\N	\N	830000	0	0	0	22	\N	\N	\N	1	\N	\N	\N	166000	\N	\N	\N	\N	2020-06-03	2020-06-06	\N	https://tfasc.blob.core.windows.net/importbulletin/10905_15103251.112	\N	https://drive.google.com/drive/folders/1MwTRY7Xi_70scqVbzlS60sUdbLLecKzL	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e5%9c%8b%e8%8f%af%e8%a1%97%e4%b8%80%e6%ae%b556%e5%b7%b79%e8%99%9f	\N	\N	放棄	f	f	t	f	f	f	f	f	f	t	f	t	t	t	f	f	f	2020-06-05	17	223	6	2020-07-20 08:00:39.471964	2020-07-20 08:57:21.461128			揚富開發有限公司		//3/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+10	108年度司執字第47156號	懷德街121號3樓	2020-02-11	2020-03-10	\N	\N	1010000	810000	0	0	\N	301	\N	\N	\N	1	\N	\N	\N	\N	\N	\N	\N	2020-02-12	2020-02-15	\N	https://tw.988house.com/Auction/AuctionDataShow.aspx?Caption=108%e6%97%a547156_2_2020-2-12.pdf&Court=PCD	\N	https://www.google.com.tw/maps/@25.0310432,121.4787308,3a,75y,49.25h,121.04t/data=!3m6!1e1!3m4!1sclj4hqkdufKyBreyhTzLGg!2e0!7i16384!8i8192	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e6%87%b7%e5%be%b7%e8%a1%97121%e8%99%9f3%e6%a8%93	\N	\N	放棄	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-05-25	3	22	8	2020-07-20 08:12:54.689641	2020-07-20 08:57:34.797114	江子翠段		揚富開發有限公司		//3/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+2	108司執助字第3566號\t	忠孝路132巷23之2號	2020-04-09	2020-05-07	2020-06-04	\N	2200000	1760000	1414000	0	\N	\N	172	\N	\N	\N	1	\N	\N	\N	290000	\N	\N	2020-05-20	2020-06-03	\N	http://aomp.judicial.gov.tw/abbs/sale/pcd/10905/07142132037.000.pdf	\N	https://www.google.com.tw/maps/place/220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E5%BF%A0%E5%AD%9D%E8%B7%AF132%E5%B7%B723%E8%99%9F/@25.0017011,121.4635519,3a,75y,60.67h,101.84t/data=!3m7!1e1!3m5!1soiZp4IEU4FKrMe3mOHf7bQ!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3DoiZp4IEU4FKrMe3mOHf7bQ%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D82.89324%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m5!3m4!1s0x346802a3e547b995:0x66cc8096f9ee8c65!8m2!3d25.0017266!4d121.4636571	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e5%bf%a0%e5%ad%9d%e8%b7%af132%e5%b7%b723%e4%b9%8b2	\N	\N	放棄	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-06-03	3	22	3	2020-07-20 06:37:36.220299	2020-07-20 08:56:50.877102	重慶段		揚富開發有限公司		108司執助字第3566號\t/放棄/3/3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+3	109雄金職申15\t	武德街140巷28號	\N	\N	2020-05-27	\N	0	0	491000	0	\N	\N	69	\N	\N	\N	1	\N	\N	\N	99000	\N	\N	\N	\N	\N	https://tfasc.blob.core.windows.net/importbulletin/10905_06172206.109	\N	https://www.google.com.tw/maps/place/806%E9%AB%98%E9%9B%84%E5%B8%82%E5%89%8D%E9%8E%AE%E5%8D%80%E6%AD%A6%E5%BE%B7%E8%A1%97140%E5%B7%B728%E8%99%9F/@22.6082776,120.3265989,3a,75y,62.62h,89.43t/data=!3m6!1e1!3m4!1syZ0q1b-1QyxP7Fuo2WJc3g!2e0!7i13312!8i6656!4m5!3m4!1s0x346e0358d6a43f7f:0x80e34ac9cf89931b!8m2!3d22.6082991!4d120.3266215?hl=zh-TW	\N		\N	\N	\N	\N	\N		\N	\N	3拍進場	f	t	f	f	f	f	t	t	t	t	t	t	t	t	t	f	t	2020-05-22	18	264	4	2020-07-20 06:51:10.236781	2020-07-20 08:56:56.361278			揚富開發有限公司		//3/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+6	108年度南金職字第751號	安通路四段119巷27弄1號	2020-02-19	2020-03-11	2020-04-08	\N	2650000	2120000	1696000	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2020-02-08	2020-05-16	\N	https://tw.988house.com/Auction/AuctionDataShow.aspx?Caption=108%e5%8d%97%e9%87%91%e8%81%b7%e9%85%89751_99_2020-4-10.txt&Court=TNG	\N	https://maps.app.goo.gl/VmsqhKYHeagen52fA	\N		\N	\N	\N	\N	\N	https://實價登錄/	\N	\N	放棄	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-05-16	17	226	8	2020-07-20 07:55:42.552036	2020-07-20 08:57:17.644903	安西段		揚富開發有限公司		108年度南金職字第751號//3/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+4	108司執字114619號\t	金華路二段21巷1之1號	2020-05-19	\N	\N	\N	1200000	0	0	0	74	\N	\N	\N	1	\N	\N	\N	240000	\N	\N	\N	\N	\N	2020-05-11	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10904/17163817083.016.pdf	\N	https://www.google.com.tw/maps/place/702%E5%8F%B0%E5%8D%97%E5%B8%82%E5%8D%97%E5%8D%80%E9%87%91%E8%8F%AF%E8%B7%AF%E4%BA%8C%E6%AE%B521%E5%B7%B71%E8%99%9F/@22.9764889,120.1908,3a,75y,133.85h,88.54t/data=!3m7!1e1!3m5!1s4j-n3T1ikngLcsByTx8Gyw!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3D4j-n3T1ikngLcsByTx8Gyw%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D147.41145%26pitch%3D0%26thumbfov%3D100!7i13312!8i6656!4m5!3m4!1s0x346e75da325b0aef:0x2f28bd5bed925d37!8m2!3d22.9763917!4d120.1908683?hl=zh-hant-tw	\N		\N	\N	\N	\N	\N		\N	\N	放棄	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-07-17	17	223	6	2020-07-20 06:56:20.101289	2020-07-20 08:57:05.921239	鹽埕段		揚富開發有限公司		//3/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+11	108司執字43915\t	新生路52號	\N	\N	\N	2020-06-09	0	0	0	362000	\N	\N	\N	261	\N	\N	\N	1	\N	\N	\N	73000	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/ptd/10905/15144147850.017.pdf	\N	https://www.google.com.tw/maps/place/924%E5%B1%8F%E6%9D%B1%E7%B8%A3%E5%B4%81%E9%A0%82%E9%84%89%E6%96%B0%E7%94%9F%E8%B7%AF52%E8%99%9F/@22.5040189,120.4812574,3a,85.9y,289.62h,105.78t/data=!3m7!1e1!3m5!1sTIgDcz2GNNOwWmYdj4dv5Q!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3DTIgDcz2GNNOwWmYdj4dv5Q%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod%2Fmaps%2Flocal-details-getcard.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D326.12936%26pitch%3D0%26thumbfov%3D100!7i13312!8i6656!4m5!3m4!1s0x346e1e32af9a7489:0xf365959c38ff0447!8m2!3d22.5040427!4d120.4811859?hl=zh-TW	\N		\N	\N	\N	\N	\N		\N	\N	4拍進場	t	t	f	f	f	f	t	t	t	t	t	t	t	t	t	f	t	2020-06-05	22	327	4	2020-07-20 08:16:10.504775	2020-07-20 08:57:38.280836			揚富開發有限公司		//3/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+9	109年度司執字第1330號\t	泰安路23之7號4 樓	2020-05-13	2020-06-10	\N	\N	810000	689000	0	0	134	134	\N	\N	0	0	\N	\N	162000	138000	\N	\N	\N	2020-06-05	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/kld/10905/14090025540.001.pdf	\N	http://aomp1.judicial.gov.tw/KPIC/query/QUERYPIC_01v2.jsp?pic=../pic/KLD/10903/06100204939.jpg&rot=Y	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e6%b3%b0%e5%ae%89%e8%b7%af23%e4%b9%8b7%e8%99%9f	\N	\N	未判定	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-07-20	2	19	3	2020-07-20 08:06:33.921583	2020-08-31 01:36:17.541223	工建段		揚富開發有限公司		109年度司執字第1330號\t//3/2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+13	管理者文件測試		\N	\N	\N	\N	0	0	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	3拍進場	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-07-31	\N	\N	2	2020-07-20 08:16:59.033355	2020-07-31 13:51:52.224328			揚富開發有限公司		管理者文件測試//2/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+18	109司執字第30344號	健康路一段170巷3號之1	2020-08-18	\N	\N	\N	610000	0	0	0	\N	\N	\N	\N	\N	\N	\N	\N	122000	\N	\N	\N	\N	2020-08-01	2020-08-08	\N	 http://aomp.judicial.gov.tw/abbs/sale/tnd/10907/27103531648.026.pdf	\N		\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/550661	\N	\N	4拍進場	t	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-08	17	221	6	2020-08-04 06:36:02.092934	2020-08-08 08:15:33.610852	郡王祠		揚富開發有限公司		109司執字第30344號/4拍進場/6/17		2020-08-08	無人優購		2020-08-28	\N	拍賣	\N	\N	\N	\N	\N	\N	\N		2020-08-06	2020-08-14	45000		 	 	\N								\N							\N							\N					\N					\N					\N								\N	\N	6		陳俊銘		\N				台南市	中西區			健康路	1	170		3-1		1	6	1	96		64187207	\N				台中市	大里區			新仁路	3			49																
+19	109年司執字030899號	復國二路16巷9號	2020-07-28	\N	\N	\N	2580000	0	0	0	97	\N	\N	\N	0	\N	\N	\N	516000	\N	\N	\N	\N	2020-08-01	2020-08-08	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	3拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-08	17	227	6	2020-08-04 06:53:37.257817	2020-08-08 08:49:37.434938	永仁段		揚富開發有限公司	https://tw.988house.com/auction/595973	109年司執字030899號/3拍進場/6/17		2020-08-08	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	黃文山	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+21	108司執字第  20437號	中 山路一段206巷 117之1號	2020-08-20	\N	\N	\N	3820000	0	0	0	97	\N	\N	\N	1	\N	\N	\N	770000	\N	\N	\N	\N	2020-08-11	2020-08-14	\N	http://aomp.judicial.gov.tw/abbs/sale/pcd/10907/06135733991.003.pdf	\N	https://www.google.com.tw/maps/place/220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E4%B8%AD%E5%B1%B1%E8%B7%AF%E4%B8%80%E6%AE%B5206%E5%B7%B7117%E8%99%9F/@25.0134026,121.4706239,17z/data=!3m1!4b1!4m5!3m4!1s0x3442a8239fe29b75:0x708ac710a06b578c!8m2!3d25.0133978!4d121.4728126	\N	https://evertrust.yungching.com.tw/map?q=&lat=22.6110190101813&lng=120.267889946231&d=0&t=&a=&c=	\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-13	3	22	3	2020-08-13 15:07:14.65267	2020-08-31 01:36:32.257222	中山		鉅鈦開發有限公司	https://tw.988house.com/auction/595928	108司執字第  20437號//3/3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	謝文閔	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+22	108年度司執字第130169號	江寧路三段55巷9之4號5樓	2020-09-01	\N	\N	\N	2300000	0	0	0	18	\N	\N	\N	0	\N	\N	\N	460000	\N	\N	\N	\N	2020-08-10	2020-08-14	\N	http://aomp.judicial.gov.tw/abbs/sale/pcd/10908/06142924688.014.pdf	\N	https://www.google.com.tw/maps/place/220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E6%B1%9F%E5%AF%A7%E8%B7%AF%E4%B8%89%E6%AE%B555%E8%99%9F5/@25.0322105,121.4696386,17z/data=!4m13!1m7!3m6!1s0x3442a843d62833d3:0xb1e2d55f8a5b8fc9!2zMjIw5paw5YyX5biC5p2_5qmL5Y2A5rGf5a-n6Lev5LiJ5q61NTXomZ81!3b1!8m2!3d25.0322057!4d121.4718273!3m4!1s0x3442a843d62833d3:0xb1e2d55f8a5b8fc9!8m2!3d25.0322057!4d121.4718273	\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-13	3	22	3	2020-08-13 15:24:46.874345	2020-08-31 01:36:37.922169	江子翠 	第三崁	鉅鈦開發有限公司	https://tw.988house.com/auction/keyword/130169	108年度司執字第130169號//3/3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	楊麗珠	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+23	108年度司執字第52538號	吳 鳳路50巷42弄25 號	\N	\N	2020-09-14	\N	0	0	1536000	0	\N	\N	130	\N	\N	\N	2	\N	\N	\N	310000	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-13	3	22	3	2020-08-13 15:39:20.751485	2020-08-31 01:36:44.778263	江子翠 	溪頭	鉅鈦開發有限公司		108年度司執字第52538號//3/3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	周真儀即周招悌	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+5	109年度南金職字第31號\t	前鋒路81號3樓	2020-03-18	2020-04-08	2020-04-29	\N	800000	640000	512000	409600	\N	\N	\N	150	\N	\N	\N	2	\N	\N	\N	\N	\N	2020-03-07	2020-05-16	\N	https://tfasc.blob.core.windows.net/importbulletin/10904_29171637.107	\N	https://www.google.com.tw/maps/place/701%E5%8F%B0%E5%8D%97%E5%B8%82%E6%9D%B1%E5%8D%80%E5%89%8D%E9%8B%92%E8%B7%AF81%E8%99%9F/@22.9917642,120.2128888,3a,75y,258.04h,90t/data=!3m7!1e1!3m5!1snpwjvUSYXSPJX1GNMdRrSQ!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3DnpwjvUSYXSPJX1GNMdRrSQ%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D258.0402%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m8!1m2!2m1!1z5YmN6YuS6LevODHomZ8z5qiT!3m4!1s0x346e768ee428a9b9:0x5e64bc54631f7012!8m2!3d22.9917521!4d120.2128537	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e5%89%8d%e9%8b%92%e8%b7%af81%e8%99%9f	\N	\N	4拍進場	t	t	f	f	f	f	f	f	f	f	f	t	t	f	f	f	f	2020-08-25	17	222	8	2020-07-20 07:49:29.118647	2020-08-25 10:44:21.049744			揚富開發有限公司		109年度南金職字第31號\t/4拍進場/8/17	遭搶標	2020-08-25	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+15	109年司執字027357號\t	中正路310之7號	2020-07-21	2020-08-11	2020-09-01	\N	920000	736000	589000	0	83	\N	414	\N	0	\N	2	\N	\N	\N	118000	\N	\N	2020-07-05	2020-08-08	\N	https://tw.988house.com/Auction/AuctionDataShow.aspx?Caption=109%e7%95%b627357_3_2020-8-11.pdf&Court=TND	\N	https://tw.988house.com/Auction/AuctionPicture.ashx?ID=245995&Height=450&Width=600	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e4%b8%ad%e6%ad%a3%e8%b7%af310%e4%b9%8b7	\N	\N	4拍進場	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-03	17	229	6	2020-07-20 08:25:12.110731	2020-09-03 01:05:19.327058	新安段		揚富開發有限公司	https://tw.988house.com/auction/595032	109年司執字027357號\t/4拍進場/6/17	第三人搶標	2020-09-03	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+14	109南金職午290號(108年度司執字第32797號)\t	安平路370巷3弄20號2樓	2020-07-08	2020-07-29	2020-08-19	\N	710000	568000	455000	0	43	68	102	\N	0	0	0	\N	142000	114000	91000	\N	\N	2020-07-04	2020-08-08	\N	https://tw.988house.com/auction/594927	\N	https://goo.gl/maps/psYVs2UkDkfvtdY96	\N	https://evertrust.yungching.com.tw/region/%E5%8F%B0%E5%8D%97%E5%B8%82/%E5%AE%89%E5%B9%B3%E5%8D%80?kw=%E5%AE%89%E5%B9%B3%E8%B7%AF	\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/370%e5%b7%b73%e5%bc%8420%e8%99%9f2%e6%a8%93	\N	\N	3拍進場	t	f	f	f	f	f	f	f	f	t	t	t	t	f	t	f	f	2020-09-03	17	225	6	2020-07-20 08:22:32.904963	2020-09-03 01:07:21.491371	新南段		揚富開發有限公司	https://tw.988house.com/auction/594927	109南金職午290號(108年度司執字第32797號)\t/3拍進場/6/17	第三人搶標	2020-09-03	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	林艮伶	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+24	108年度司執字第101063號	建 中街16巷9之1號	2020-09-09	\N	\N	\N	4850000	0	0	0	42	\N	\N	\N	1	\N	\N	\N	970000	\N	\N	\N	\N	2020-08-14	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/pcd/10907/22141011987.007.pdf	\N	https://drive.google.com/foldervihttps://tw.988house.com/auction/keyword/101063ew?id=1EQfSK5voJht9Pzoju8NEwKpHxkflYjgq	\N		\N	\N	\N	\N	\N		\N	\N	4拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-05	3	40	3	2020-08-13 16:10:20.8454	2020-09-05 09:47:02.513486	全安		鉅鈦開發有限公司	https://tw.988house.com/auction/596977	108年度司執字第101063號/4拍進場/3/3		2020-09-05	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	周文郁	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+25	108司執助字第  10318號	臨沂街25巷13號	2020-08-14	\N	\N	\N	1532000	0	0	0	52	\N	\N	\N	1	\N	\N	\N	310000	\N	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tpd/10907/20112732247.033.pdf	\N	https://drive.google.com/folderview?id=1ET_sQNuBW8kNr9uPZZvx3VCqCm0LFM0M	\N		\N	\N	\N	\N	\N		\N	\N	4拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-05	1	1	3	2020-08-13 16:56:37.05047	2020-09-05 09:37:08.642567	臨沂 	一	鉅鈦開發有限公司	https://m.988house.com/auction/596614	108司執助字第  10318號/4拍進場/3/1		2020-09-05	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	張禮真	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+16	109年度司執字第11399號\t	信義街44巷6號	2020-07-21	2020-08-11	2020-09-08	\N	640000	512000	410000	0	48	93	139	\N	0	0	0	\N	128000	103000	82000	\N	\N	2020-06-20	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10908/11155044277.014.pdf	\N	https://www.google.com.tw/maps/place/710%E5%8F%B0%E5%8D%97%E5%B8%82%E6%B0%B8%E5%BA%B7%E5%8D%80%E4%BF%A1%E7%BE%A9%E8%A1%9744%E5%B7%B76%E8%99%9F/@23.0111958,120.2730646,3a,75y,96.48h,90t/data=!3m7!1e1!3m5!1sOGekGuyfub6_ZylqrIm31g!2e0!6s%2F%2Fgeo2.ggpht.com%2Fcbk%3Fpanoid%3DOGekGuyfub6_ZylqrIm31g%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D96.476234%26pitch%3D0%26thumbfov%3D100!7i13312!8i6656!4m5!3m4!1s0x346e70de3460a92b:0x7ee0d3503b9f2eab!8m2!3d23.0111357!4d120.2731418	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/44%e5%b7%b76%e8%99%9f	\N	\N	4拍進場	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-10	17	227	6	2020-07-20 08:29:31.677281	2020-09-10 02:53:57.26927	大灣段		揚富開發有限公司	https://tw.988house.com/auction/595012	109年度司執字第11399號\t/4拍進場/6/17	第三人搶標	2020-09-10	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+26	109司執字第 23899號	環河南路二段250 巷3弄16號4樓	2020-08-18	2020-09-22	2020-10-20	\N	3310000	2648000	2118400	0	\N	109	161	\N	\N	0	1	\N	\N	530000	430000	\N	\N	2020-08-14	2020-08-14	\N	http://aomp.judicial.gov.tw/abbs/sale/tpd/10907/07134020125.027.pdf	\N	https://drive.google.com/folderview?id=1ENmvh6RyXJmD-WNxJVzKRvVugsH6C3AW	\N		\N	\N	\N	\N	\N		\N	\N	4拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-07	1	6	3	2020-08-13 17:19:54.215353	2020-10-07 09:09:39.524623	華江	二	鉅鈦開發有限公司	https://m.988house.com/auction/595995	109司執字第 23899號/4拍進場/3/1		2020-10-07	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	罕光宗即罕浩銓	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+30	109年度司執字第1129號	大安街229巷6號	2020-08-12	2020-09-09	\N	\N	690000	1080000	0	0	59	59	\N	\N	0	0	\N	\N	138000	216000	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/229%e5%b7%b76%e8%99%9f	\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-25	17	226	8	2020-08-25 10:34:58.494124	2020-08-31 01:31:46.098332	海東		揚富開發有限公司	https://tw.988house.com/auction/597746	109年度司執字第1129號//8/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	陳懋隆	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+29	109年度司執字第35052號	成功路600巷39弄 4號	2020-08-26	\N	\N	\N	2010000	0	0	0	50	\N	\N	\N	4	\N	\N	\N	402000	\N	\N	\N	\N	\N	\N	\N		\N	https://drive.google.com/folderview?id=1fb_3B6YTM-B8Dmi8lvQD1SffqgCeWSKH	\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-25	17	224	8	2020-08-21 08:34:15.95829	2020-08-31 01:37:02.229269	立人		揚富開發有限公司		109年度司執字第35052號//8/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	曾永欽	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+1	108司執字第25440號\t	四川路一段286巷5號	2020-05-21	2020-06-18	\N	\N	2110000	1710000	0	0	\N	98	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	2020-06-03	2020-06-03	\N	http://aomp.judicial.gov.tw/abbs/sale/pcd/10905/22110827662.000.pdf	\N	https://www.google.com.tw/maps/place/220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E5%9B%9B%E5%B7%9D%E8%B7%AF%E4%B8%80%E6%AE%B5286%E5%B7%B75%E8%99%9F/@25.0008838,121.4561369,17z/data=!3m1!4b1!4m5!3m4!1s0x346802a59fd70f73:0x3a11c8c24ef49976!8m2!3d25.000879!4d121.458331	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e5%9b%9b%e5%b7%9d%e8%b7%af%e4%b8%80%e6%ae%b5286%e5%b7%b75%e8%99%9f	\N	\N	未判定	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-06-03	3	22	3	2020-07-20 06:25:06.146563	2020-08-31 01:34:09.380951	忠孝段		揚富開發有限公司		108司執字第25440號\t//3/3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+20	106司執字第107512號	民權路49巷5弄15號 4樓	2020-08-13	\N	\N	\N	2400000	0	0	0	46	\N	\N	\N	0	\N	\N	\N	480000	\N	\N	\N	\N	2020-08-10	2020-08-14	\N	http://aomp.judicial.gov.tw/abbs/sale/pcd/10907/13200411159.042.pdf	\N	https://www.google.com.tw/maps/place/234%E6%96%B0%E5%8C%97%E5%B8%82%E6%B0%B8%E5%92%8C%E5%8D%80%E6%B0%91%E6%AC%8A%E8%B7%AF49%E5%B7%B75%E5%BC%8415%E8%99%9F/@24.9975901,121.5206982,3a,75y,351.15h,100.52t/data=!3m7!1e1!3m5!1sRf1v9DgDqmoIl66XoToh3w!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3DRf1v9DgDqmoIl66XoToh3w%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D355.4301%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m5!3m4!1s0x3442a9e3c48ee1c7:0x4354512d5416147d!8m2!3d24.9977569!4d121.5207295	\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-13	3	33	3	2020-08-13 14:47:42.984435	2020-08-31 01:36:27.298485	民權 		鉅鈦開發有限公司	https://tw.988house.com/auction/596276	106司執字第107512號//3/3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	周正濤	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+28	108年度司執字第115385號	南門路243之4號	2020-08-25	2020-09-22	\N	\N	4800000	3840000	0	0	93	120	\N	\N	3	3	\N	\N	960000	768000	\N	\N	\N	2020-08-22	2020-08-29	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10908/25155118463.028.pdf	\N	https://drive.google.com/drive/u/0/folders/1pjirqcgu2zxwIttOFt8L-hOALQpTEqdn	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e5%8d%97%e9%96%80%e8%b7%af243%e4%b9%8b4	\N	\N	4拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-08-31	17	221	8	2020-08-21 07:49:16.246758	2020-08-31 11:34:18.92287	郡王祠		揚富開發有限公司	https://tw.988house.com/auction/597429	108年度司執字第115385號/4拍進場/8/17		2020-08-31	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	施明德	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+17	南院武109司執廉字第30199號\t	中正路169號	2020-07-21	2020-08-11	2020-09-01	\N	3300000	2640000	2113000	0	35	\N	119	\N	0	\N	0	\N	66000	528000	423000	\N	\N	2020-07-16	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10906/30083357741.016.pdf	\N	https://www.google.com/maps/place/732%E5%8F%B0%E5%8D%97%E5%B8%82%E7%99%BD%E6%B2%B3%E5%8D%80%E4%B8%AD%E6%AD%A3%E8%B7%AF169%E8%99%9F/@23.3493204,120.410796,3a,75y,167.24h,107.24t/data=!3m6!1e1!3m4!1s70y8IcaTa5_YuZcwltR6Zg!2e0!7i13312!8i6656!4m5!3m4!1s0x346e8e3e7642cc17:0x9f59a4d9cded87f1!8m2!3d23.3491735!4d120.4108379	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e5%8f%b0%e5%8d%97%e5%b8%82%e7%99%bd%e6%b2%b3%e5%8d%80%e6%b0%b8%e5%ae%89%e9%87%8c%e4%b8%ad%e6%ad%a3%e8%b7%af169%e8%99%9f	\N	\N	未判定	f	f	f	f	f	f	f	t	f	t	t	t	t	t	t	f	t	2020-09-02	17	247	6	2020-07-20 08:33:47.670383	2020-09-02 02:52:33.781669	永安段		揚富開發有限公司		南院武109司執廉字第30199號\t/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+27	109年度司執字第59682號	怡安路一段237號	2020-09-08	\N	\N	\N	1170000	0	0	0	101	\N	\N	\N	2	\N	\N	\N	234000	\N	\N	\N	\N	2020-08-25	2020-08-25	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10908/14092025819.026.pdf	\N	https://drive.google.com/folderview?id=1QX6gi-7A1zXACyYmRTHEizUJIE_kJhXN	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e6%80%a1%e5%ae%89%e8%b7%af%e4%b8%80%e6%ae%b5237%e8%99%9f	\N	\N	1拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-08	17	226	8	2020-08-21 07:04:06.047464	2020-09-08 13:56:12.147345	安慶		揚富開發有限公司	https://tw.988house.com/auction/598710	109年度司執字第59682號/1拍進場/8/17	第三人搶標	2020-09-08	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	唐士賢	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+31	109年度司執字第6516號	民生南路608巷119號	2020-09-17	2020-10-15	2020-11-05	\N	3381000	2704800	2163800	0	12	\N	86	\N	0	\N	0	\N	677000	541000	430000	\N	\N	2020-09-13	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/cyd/10910/15091348112.005.pdf	\N	南京路20巷 https://maps.app.goo.gl/QLrpvHqBDdVxnbUQA	\N	https://drive.google.com/file/d/1O0lZJzQOjDJ1i6pPCnR-TbkxRYdbbXdX/view?usp=drivesdk	\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/608%e5%b7%b7119%e8%99%9f	\N	\N	3拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-19	14	182	8	2020-08-27 14:01:45.235461	2020-10-19 23:05:26.424961	湖內		揚富開發有限公司	https://tw.988house.com/auction/599144	109年度司執字第6516號/未判定/8/14		2020-10-19	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	蔡明坤	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+33	109年度司執字第9670號	遠東街28巷12號	2020-07-29	2020-09-02	\N	\N	3113000	2801700	0	0	\N	116	\N	\N	\N	0	\N	\N	\N	561000	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/cyd/10907/29162151989.015.pdf	\N		\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/嘉義市西區遠東街28巷12號	\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-02	14	182	8	2020-09-02 06:02:56.961385	2020-09-02 06:51:13.511904	北社尾段 		揚富開發有限公司	https://tw.988house.com/auction/595195	109年度司執字第9670號/未判定/8/14	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+32	南院武109司執坤字第1116號	文賢路520巷55弄14號	2020-09-23	\N	\N	\N	1200000	0	0	0	34	\N	\N	\N	0	\N	\N	\N	240000	\N	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10908/26090034234.024.pdf	\N	https://aomp1.judicial.gov.tw/KPIC/pic/TND/10902/24213639411.jpg	\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-18	17	224	6	2020-09-02 03:09:11.29729	2020-09-18 13:12:00.639865	小北		揚富開發有限公司	https://tw.988house.com/auction/599199	南院武109司執坤字第1116號/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	方耀東	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+54	109宇4331	屏東市大武路51-4號	\N	\N	\N	2020-10-08	0	0	0	307200	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	62000	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/ptd/10909/03171257609.011.pdf	\N	https://www.google.com.tw/maps/place/900%E5%B1%8F%E6%9D%B1%E7%B8%A3%E5%B1%8F%E6%9D%B1%E5%B8%82%E5%A4%A7%E6%AD%A6%E8%B7%AF51%E8%99%9F/@22.6565283,120.4777604,3a,87.1y,207.27h,114.51t/data=!3m6!1e1!3m4!1sbSeraJEZbLENzIXKFgMQYg!2e0!7i13312!8i6656!4m5!3m4!1s0x346e19d248399893:0x3d4c01ea754f28c4!8m2!3d22.6564495!4d120.4775686?hl=zh-TW&authuser=0	\N		\N	\N	\N	\N	\N		\N	\N	4拍進場	\N	t	t	f	f	f	t	t	t	t	t	t	t	t	t	f	t	2020-10-05	22	310	4	2020-10-05 05:53:21.025444	2020-10-05 05:57:30.135979	萬年		揚富開發有限公司		109宇4331/4拍進場/4/22		2020-10-05	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	臧荷馨	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+12	測試文件(以109年度南金職字第31號為例)	西門路1段702巷17號	2018-08-30	2018-08-30	2018-08-30	2020-09-14	300000	240000	200000	160000	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2020-03-07	2020-05-16	\N	https://tfasc.blob.core.windows.net/importbulletin/10904_29171637.107	\N	https://www.google.com.tw/maps/place/701%E5%8F%B0%E5%8D%97%E5%B8%82%E6%9D%B1%E5%8D%80%E5%89%8D%E9%8B%92%E8%B7%AF81%E8%99%9F/@22.9917642,120.2128888,3a,75y,258.04h,90t/data=!3m7!1e1!3m5!1snpwjvUSYXSPJX1GNMdRrSQ!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3DnpwjvUSYXSPJX1GNMdRrSQ%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D258.0402%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m8!1m2!2m1!1z5YmN6YuS6LevODHomZ8z5qiT!3m4!1s0x346e768ee428a9b9:0x5e64bc54631f7012!8m2!3d22.9917521!4d120.2128537	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e5%89%8d%e9%8b%92%e8%b7%af81%e8%99%9f	\N	\N	4拍進場	t	t	f	f	f	f	f	f	f	t	t	t	t	f	f	f	f	2020-09-05	3	33	8	2020-07-20 08:16:39.183775	2020-09-05 04:11:29.869053	南門段		鉅鈦開發有限公司		測試文件(以109年度南金職字第31號為例)/4拍進場/8/3	得標	2020-09-05	無人優購		2020-07-24	所有權移轉登記	買賣	登記清冊	土地權狀	1	土地權狀2	1	土地權狀3	2		2020-09-05	2020-09-06	36200	7	郵寄	需要	2	無	一層	二層						磚造	磚造						57.75	12.83	9.25									\N					\N					\N	36200	4190	2020-07-01	地契	土地權狀	合約	申請書	2020-07-31	\N	3	4	李郭琴	A123456789	\N		123		臺南市	中西區	小西門里	19鄰	西門路	1	702		17		1	6	1	6		64187207	1990-11-20	04-24839038	020525353		臺中市	大里區			新仁路	3段			49		1	6	1	6	3	5	3	4	f	d	e	8	9	A	B
+55	109宇6516 	民生南路608巷119號	2020-09-17	2020-10-15	\N	\N	3381000	2704800	0	0	\N	63	\N	\N	\N	0	\N	\N	677000	541000	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/cyd/10909/17085932082.005.pdf	\N	https://www.google.com.tw/maps/@23.4567777,120.4422318,3a,73.3y,345.19h,95.48t/data=!3m6!1e1!3m4!1srouu6yHojMmCd8k4N18vng!2e0!7i13312!8i6656	\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-05	14	182	6	2020-10-05 11:02:07.666301	2020-10-05 11:46:18.089421	湖內		揚富開發有限公司	https://tw.988house.com/auction/599144	109宇6516 /未判定/6/14	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	蔡明坤	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+53	109東14796 	圓福街118巷48弄46號	\N	2020-10-13	\N	\N	0	285000	0	0	\N	40	\N	\N	\N	0	\N	\N	\N	57000	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/cyd/10909/22161326253.019.pdf	\N		\N	https://drive.google.com/file/d/1rayAH7rkVLnn0zQ0ibt1PUT7476v7pNq/view?usp=drivesdk	\N	\N	\N	\N	\N		\N	\N	4拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-06	14	181	6	2020-10-05 03:47:08.770129	2020-10-06 13:40:52.658967	盧厝		揚富開發有限公司	https://tw.988house.com/auction/598889	109東14796 /未判定/6/14	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+38	109坤35413	崙頂87號	2020-09-30	2020-10-21	\N	\N	1900000	1520000	0	0	59	\N	\N	\N	0	\N	\N	\N	380000	\N	\N	\N	\N	\N	\N	\N		\N	https://www.257.com.tw/index.php?action=in_house_detail&id=NB001235	\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-02	17	256	6	2020-09-21 08:32:07.211289	2020-10-02 12:49:28.323629	港子墘段		揚富開發有限公司	https://tw.988house.com/auction/599800	109坤35413/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+34	108司執43915	屏東縣崁頂鄉新生路52	\N	\N	\N	2020-06-09	0	0	0	362000	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2020-06-04	2020-06-04	\N	http://aomp.judicial.gov.tw/abbs/sale/ptd/10905/15144147850.017.pdf	\N	https://www.google.com.tw/maps/place/924%E5%B1%8F%E6%9D%B1%E7%B8%A3%E5%B4%81%E9%A0%82%E9%84%89%E6%96%B0%E7%94%9F%E8%B7%AF52%E8%99%9F/@22.5040171,120.4812595,3a,85.9y,289.62h,105.78t/data=!3m7!1e1!3m5!1sTIgDcz2GNNOwWmYdj4dv5Q!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3DTIgDcz2GNNOwWmYdj4dv5Q%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod%2Fmaps%2Flocal-details-getcard.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D326.12936%26pitch%3D0%26thumbfov%3D100!7i13312!8i6656!4m5!3m4!1s0x346e1e32af9a7489:0xf365959c38ff0447!8m2!3d22.5040427!4d120.4811859?hl=zh-TW	\N		\N	\N	\N	\N	\N		\N	\N	4拍進場	t	t	t	f	f	f	t	t	t	t	t	t	t	t	t	f	t	2020-09-09	22	327	4	2020-09-07 09:09:58.925952	2020-09-09 18:12:28.955643	越溪段		揚富開發有限公司		108司執43915/4拍進場/4/22	得標	2020-09-09	無人優購	PT007	2020-08-26	\N	拍賣	\N	\N	\N	\N	\N	\N	\N		2020-08-26	\N	198000	5	郵寄	需要	\N		一層	二層	屋頂突出物				\N	加強磚造	加強磚造					\N	84.99	83.85	3				\N					\N					\N					\N								\N	\N	4		洪蘇淑珍		\N																				\N																		1	8	0	7	0	2	5	2	0	0	0
+37	109東20361	內庄里內庄76之1號	2020-09-29	\N	\N	\N	1500000	0	0	0	40	\N	\N	\N	0	\N	\N	\N	300000	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-22	17	230	6	2020-09-21 08:06:29.523268	2020-09-22 04:15:17.730759	內庄子段		揚富開發有限公司		109東20361/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+40	109南金職亥480	那拔林224號之8	2020-08-12	2020-09-02	2020-09-23	\N	490000	441000	397000	0	\N	\N	79	\N	\N	\N	0	\N	98000	89000	80000	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-22	17	229	6	2020-09-22 06:22:21.03918	2020-09-22 06:28:44.065103			揚富開發有限公司	https://tw.988house.com/auction/597226	109南金職亥480/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+36	109司執地10785	瑞興街102巷18號	\N	\N	2020-09-17	\N	0	0	2160000	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	404000	\N	\N	\N	2020-08-07	\N	http://aomp.judicial.gov.tw/abbs/sale/ksd/10908/27160900059.010.pdf	\N		\N		\N	\N	\N	\N	\N		\N	\N	3拍進場	\N	f	f	f	f	f	t	t	t	t	t	t	t	t	t	f	t	2020-09-22	18	264	4	2020-09-14 02:45:56.294727	2020-09-22 19:47:28.046208	瑞隆段	1小段	揚富開發有限公司		109司執地10785/3拍進場/4/18	第三人搶標	2020-09-22	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	陳豊榮	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+39	109西45145	海佃路二段766巷8弄23號	2020-10-13	\N	\N	\N	590000	0	0	0	20	\N	\N	\N	0	\N	\N	\N	118000	\N	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10909/15091323898.026.pdf	\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-30	17	226	6	2020-09-21 08:42:39.799985	2020-09-30 15:22:19.742482	 海北段		揚富開發有限公司	https://m.988house.com/auction/600630	109西45145/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+48	109西41051	海安路二段296巷33號	2020-10-20	\N	\N	\N	300000	0	0	0	26	\N	\N	\N	0	\N	\N	\N	60000	\N	\N	\N	\N	2020-10-08	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10909/21153902675.026.pdf	\N		\N	https://drive.google.com/file/d/10TJ6eskIsWzw4NwYI86qCliJEin6pDir	\N	\N	\N	\N	\N		\N	\N	3拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-19	17	221	6	2020-09-30 10:47:44.991127	2020-10-19 08:01:54.017329	普濟		揚富開發有限公司	https://tw.988house.com/auction/601031	109西41051/1拍進場/6/17		2020-10-19	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+44	108乾102489	柳營276號之12	2020-05-13	2020-06-03	2020-07-01	\N	700000	560000	448000	0	\N	\N	\N	\N	\N	\N	\N	\N	140000	71100	56900	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-28	17	251	6	2020-09-28 06:51:48.306772	2020-09-28 06:54:55.931069	柳營段 	柳營小段 	揚富開發有限公司	https://tw.988house.com/auction/590454	108乾102489/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+45	109年度南金職字第427號	信義路100號	2020-09-30	\N	\N	\N	1402000	0	0	0	72	\N	\N	\N	0	\N	\N	\N	281000	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-28	17	229	6	2020-09-28 07:45:19.765869	2020-09-28 07:45:19.765869	新化	王公廟	揚富開發有限公司	https://tw.988house.com/auction/597710	/未判定/6/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	蔡國華 	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+46	109年度南金職字第465號	美豐里15鄰美豐121之3號	2020-09-30	\N	\N	\N	384000	0	0	0	75	\N	\N	\N	1	\N	\N	\N	77000	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-28	17	243	6	2020-09-28 08:04:21.44914	2020-09-28 08:04:21.44914	草糵		揚富開發有限公司	https://tw.988house.com/auction/597712	/未判定/6/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	賴皇州	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+47	109南金職亥字第483號	中山路875巷107之4號	2020-10-07	\N	\N	\N	2835000	0	0	0	97	\N	\N	\N	1	\N	\N	\N	567000	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-09-28	17	234	6	2020-09-28 08:20:01.380109	2020-09-28 08:20:01.380109	崁腳北段		揚富開發有限公司	https://tw.988house.com/auction/598165	/未判定/6/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+42	108年司執字107026號	金華路一段29巷8弄22號	2020-10-14	\N	\N	\N	2000000	0	0	0	39	\N	\N	\N	0	\N	\N	\N	400000	\N	\N	\N	\N	2020-10-01	\N	\N	https://tw.988house.com/Auction/AuctionDataShow.aspx?Caption=108%e5%9d%a4107026_1_2020-9-14.pdf&Court=TND	\N		\N	https://drive.google.com/file/d/1PeT1ahllKwJaaqtIP4vBCjiXz0sisPZw/view?usp=drivesdk	\N	\N	\N	\N	\N		\N	\N	3拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-01	17	223	6	2020-09-28 06:32:35.518673	2020-10-01 01:38:43.026628	南華段		揚富開發有限公司	https://tw.988house.com/auction/600588	108年司執字107026號/3拍進場/6/17		2020-10-01	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	沈昭安	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+41	109年度司執字第16332號	和平路277號	2020-10-15	\N	\N	\N	2274000	0	0	0	69	\N	\N	\N	0	\N	\N	\N	455000	\N	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/cyd/10909/10103812484.002.pdf	\N	https://www.google.com.tw/maps/place/600%E5%98%89%E7%BE%A9%E5%B8%82%E6%9D%B1%E5%8D%80%E5%92%8C%E5%B9%B3%E8%B7%AF277%E8%99%9F/@23.4806747,120.4565646,3a,90y,266.93h,89.77t/data=!3m7!1e1!3m5!1s-zhxJv40FOwYzuO7lUsf6Q!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3D-zhxJv40FOwYzuO7lUsf6Q%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D235.05804%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m5!3m4!1s0x346e9435b0fb491d:0x45a43969522a4901!8m2!3d23.480632!4d120.456493	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/%e6%9d%b1%e5%8d%80%e5%92%8c%e5%b9%b3%e8%b7%af277%e8%99%9f	\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-02	14	181	8	2020-09-25 23:35:57.512074	2020-10-02 10:26:58.331382	東門	七	揚富開發有限公司	https://tw.988house.com/auction/600560	109年度司執字第16332號/未判定/8/14	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	賴信章	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+51	108利23511	育人路705號	2020-10-07	\N	\N	\N	732000	0	0	0	55	\N	\N	\N	0	\N	\N	\N	147000	\N	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/cyd/10909/02152055141.006.pdf	\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-05	14	182	6	2020-10-05 03:26:24.467555	2020-10-05 03:26:24.467555	何庄		揚富開發有限公司	https://tw.988house.com/auction/599961	/未判定/6/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	何金龍	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+52	109速26223	過溝里14鄰蘭井街115巷6號	2020-10-08	\N	\N	\N	515000	0	0	0	37	\N	\N	\N	0	\N	\N	\N	103000	\N	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/cyd/10909/08161958025.007.pdf	\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-05	14	181	6	2020-10-05 03:39:00.880562	2020-10-05 03:39:00.880562	元	四	揚富開發有限公司	https://tw.988house.com/auction/600219	/未判定/6/	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+49	109公8838 甲	北花里中正路567巷8弄6號	2020-10-06	\N	\N	\N	1100000	0	0	0	43	\N	\N	\N	0	\N	\N	\N	220000	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-02	17	235	6	2020-10-02 12:09:30.572192	2020-10-02 12:21:11.096061	北花		揚富開發有限公司	https://tw.988house.com/auction/601075	109公8838 甲/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	陳琮霖	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+50	109年度司執字第53716號	朝琴路116號	2020-10-20	\N	\N	\N	1400000	0	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-02	17	252	8	2020-10-02 12:43:10.88868	2020-10-02 13:01:30.776361	後厝段		揚富開發有限公司		109年度司執字第53716號/未判定/8/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	蔡福建	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+8	108司執字第160537號\t	民治街134巷36號五樓	2020-06-09	2020-07-14	\N	\N	2400000	1920000	0	0	58	140	\N	\N	0	0	\N	\N	480000	390000	\N	\N	\N	2020-05-27	2020-06-03	\N	http://aomp.judicial.gov.tw/abbs/wkw/WHD2A03.jsp?pageTotal=6&pageSize=15&rowStart=16&saletypeX=1&proptypeX=C52&courtX=PCD&order=odposition&query_typeX=session&saleno=&hsimun=all&ctmd=all&sec=all&crmyy=&crmid=&crmno=&dpt=&saledate1=&saledate2=&minprice1=&minprice2=&sumprice1=&sumprice2=&area1=&area2=&registeno=&checkyn=all&emptyyn=all&order=odposition&owner1=&landkd=&rrange=%B3%A1%A5%F7&comm_yn=&stopitem=&courtNoLimit=&pageNow=3&276C0AD28D2C934E54AD3B15520FB7CB=CED37994E7A82127D21EFF34589430AF	\N	https://www.google.com.tw/maps/place/220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E6%B0%91%E6%B2%BB%E8%A1%97134%E5%B7%B736%E8%99%9F/@25.0314553,121.4767923,3a,75y,339.55h,122.63t/data=!3m7!1e1!3m5!1sKHditjmmNCFtKQTcqfDM8Q!2e0!6s%2F%2Fgeo2.ggpht.com%2Fcbk%3Fpanoid%3DKHditjmmNCFtKQTcqfDM8Q%26output%3Dthumbnail%26cb_client%3Dsearch.gws-prod.gps%26thumb%3D2%26w%3D86%26h%3D86%26yaw%3D293.60614%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m5!3m4!1s0x3442a8442ef31307:0x75494a6cce6bba24!8m2!3d25.0315099!4d121.4766431	\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/134%e5%b7%b736%e8%99%9f	\N	\N	4拍進場	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-07	3	22	3	2020-07-20 08:04:52.267795	2020-10-07 09:15:21.326077	江子翠段	第三崁小段	揚富開發有限公司		108司執字第160537號\t/4拍進場/3/3		2020-10-07	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+56	109年度司執字第21251號	學府路一段75巷11號四樓	2020-10-23	\N	\N	\N	1200000	0	0	0	200	\N	\N	\N	1	\N	\N	\N	240000	\N	\N	\N	\N	2020-10-07	\N	\N		\N		\N		\N	\N	\N	\N	\N		\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-07	3	35	3	2020-10-07 09:35:15.717967	2020-10-07 09:36:18.491044	板院		鉅鈦開發有限公司		109年度司執字第21251號/未判定/3/3	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	吳彥輝	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+35	南院武109司執如字第54533號	看東里成功六街16號	\N	2020-09-16	\N	\N	0	1280000	0	0	\N	59	\N	\N	\N	1	\N	\N	\N	256000	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/565333	\N	\N	3拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-08	17	228	6	2020-09-11 10:14:39.920177	2020-10-08 14:24:03.141347	歸仁北段		揚富開發有限公司	https://tw.988house.com/auction/598839	南院武109司執如字第54533號/3拍進場/6/17	第三人搶標	2020-10-08	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	易繼漢	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+43	 109方68564	社內28之34號	2020-10-15	2020-11-05	\N	\N	1950000	1560000	0	0	68	115	\N	\N	0	0	\N	\N	350000	31200	\N	\N	\N	\N	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10910/15111459162.002.pdf	\N	https://www.google.com.tw/maps/@23.0759842,120.286092,3a,67.7y,179.56h,128.85t/data=!3m7!1e1!3m5!1sRr6-fSc2HyUztjqZZtYdMg!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3DRr6-fSc2HyUztjqZZtYdMg%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D77.48026%26pitch%3D0%26thumbfov%3D100!7i13312!8i6656	\N	https://drive.google.com/file/d/1xd7lHOrZh8UDoKIWclzxLuAZ2tBkUjV_/view?usp=drivesdk	\N	\N	\N	\N	\N	https://www.257.com.tw/index.php?action=in_house_detail&id=NB001256	\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-19	17	256	6	2020-09-28 06:43:42.880631	2020-10-19 08:08:40.489971	富強段		揚富開發有限公司	https://tw.988house.com/auction/600450	 109方68564/未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	陳秀鳳	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+58	109源59965 	光華街119巷22號	2020-10-21	\N	\N	\N	160000	0	0	0	63	\N	\N	\N	0	\N	\N	\N	32000	\N	\N	\N	\N	\N	\N	\N		\N		\N		\N	\N	\N	\N	\N	https://tw.988house.com/auction/492065	\N	\N	未判定	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-16	17	222	6	2020-10-16 14:58:20.222459	2020-10-16 15:15:09.128953	龍泉		揚富開發有限公司	https://tw.988house.com/auction/601145	109源59965 /未判定/6/17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	袁幗蘭	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+57	109年度司執字第13135號	仁和路107巷12號	2020-11-10	\N	\N	\N	850000	0	0	0	17	\N	\N	\N	0	\N	\N	\N	170000	\N	\N	\N	\N	2020-10-17	\N	\N	http://aomp.judicial.gov.tw/abbs/sale/tnd/10910/05203423595.003.pdf	\N	https://maps.app.goo.gl/DQS9Y6P26jbTSCiq5	\N	https://drive.google.com/file/d/1SeWwgcjVhLB-uizg1HM5a9nc8UQyF0_u/view?usp=drivesdk	\N	\N	\N	\N	\N	https://tw.988house.com/auction/keyword/107%e5%b7%b712%e8%99%9f	\N	\N	4拍進場	\N	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	f	2020-10-17	17	234	8	2020-10-14 14:28:31.63846	2020-10-17 02:27:47.731425	仁和段		揚富開發有限公司	https://tw.988house.com/auction/601834	109年度司執字第13135號/4拍進場/8/17		2020-10-17	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	黃臆潔即黃芳玉	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+\.
+
+
+--
+-- Name: builds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.builds_id_seq', 74, true);
+
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.countries_id_seq', 24, true);
+
+
+--
+-- Name: lands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.lands_id_seq', 68, true);
+
+
+--
+-- Name: objectbuilds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.objectbuilds_id_seq', 102, true);
+
+
+--
+-- Name: personnals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.personnals_id_seq', 17, true);
+
+
+--
+-- Name: plusrateas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.plusrateas_id_seq', 1, false);
+
+
+--
+-- Name: plusratebs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.plusratebs_id_seq', 1, false);
+
+
+--
+-- Name: subsigntrueas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.subsigntrueas_id_seq', 27, true);
+
+
+--
+-- Name: subsigntruebs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.subsigntruebs_id_seq', 3, true);
+
+
+--
+-- Name: subsigntruecs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.subsigntruecs_id_seq', 1, false);
+
+
+--
+-- Name: townships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.townships_id_seq', 371, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 14, true);
+
+
+--
+-- Name: yfcases_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.yfcases_id_seq', 58, true);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: builds builds_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.builds
+    ADD CONSTRAINT builds_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: countries countries_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.countries
+    ADD CONSTRAINT countries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lands lands_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.lands
+    ADD CONSTRAINT lands_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: objectbuilds objectbuilds_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.objectbuilds
+    ADD CONSTRAINT objectbuilds_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: personnals personnals_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.personnals
+    ADD CONSTRAINT personnals_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: plusrateas plusrateas_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.plusrateas
+    ADD CONSTRAINT plusrateas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: plusratebs plusratebs_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.plusratebs
+    ADD CONSTRAINT plusratebs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: subsigntrueas subsigntrueas_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.subsigntrueas
+    ADD CONSTRAINT subsigntrueas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: subsigntruebs subsigntruebs_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.subsigntruebs
+    ADD CONSTRAINT subsigntruebs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: subsigntruecs subsigntruecs_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.subsigntruecs
+    ADD CONSTRAINT subsigntruecs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: townships townships_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.townships
+    ADD CONSTRAINT townships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: yfcases yfcases_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.yfcases
+    ADD CONSTRAINT yfcases_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_builds_on_yfcase_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_builds_on_yfcase_id ON public.builds USING btree (yfcase_id);
+
+
+--
+-- Name: index_lands_on_yfcase_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_lands_on_yfcase_id ON public.lands USING btree (yfcase_id);
+
+
+--
+-- Name: index_objectbuilds_on_yfcase_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_objectbuilds_on_yfcase_id ON public.objectbuilds USING btree (yfcase_id);
+
+
+--
+-- Name: index_personnals_on_yfcase_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_personnals_on_yfcase_id ON public.personnals USING btree (yfcase_id);
+
+
+--
+-- Name: index_plusrateas_on_objectbuild_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_plusrateas_on_objectbuild_id ON public.plusrateas USING btree (objectbuild_id);
+
+
+--
+-- Name: index_plusratebs_on_objectbuild_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_plusratebs_on_objectbuild_id ON public.plusratebs USING btree (objectbuild_id);
+
+
+--
+-- Name: index_subsigntrueas_on_yfcase_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_subsigntrueas_on_yfcase_id ON public.subsigntrueas USING btree (yfcase_id);
+
+
+--
+-- Name: index_subsigntruebs_on_yfcase_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_subsigntruebs_on_yfcase_id ON public.subsigntruebs USING btree (yfcase_id);
+
+
+--
+-- Name: index_subsigntruecs_on_yfcase_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_subsigntruecs_on_yfcase_id ON public.subsigntruecs USING btree (yfcase_id);
+
+
+--
+-- Name: index_townships_on_country_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_townships_on_country_id ON public.townships USING btree (country_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: index_yfcases_on_country_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_yfcases_on_country_id ON public.yfcases USING btree (country_id);
+
+
+--
+-- Name: index_yfcases_on_township_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_yfcases_on_township_id ON public.yfcases USING btree (township_id);
+
+
+--
+-- Name: index_yfcases_on_user_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_yfcases_on_user_id ON public.yfcases USING btree (user_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

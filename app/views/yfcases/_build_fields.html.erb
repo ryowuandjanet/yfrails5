@@ -1,0 +1,263 @@
+
+<div class="nested-fields">
+  <div class="field" style="border:1px dotted #666;padding:5px;margin:5px;">
+    <div class="buildCcontainer">
+      <div class="row">
+        
+        <div class="col-md-3">
+          <h3>建物資訊</h3>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">建號</span>
+            </div>
+            <%= f.text_field :build_number,class: "form-control" %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">建坪(平方公尺)</span>
+            </div>
+            <%= f.number_field :build_area, :step => 0.01,class: "form-control" %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">持分</span>
+            </div>
+            <%= f.number_field :build_holding_point_personal,class: "form-control" %> / <%= f.number_field :build_holding_point_all,class: "form-control" %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">建物型/使用</span>
+            </div>
+            <% if @yfcase.builds.where.not(build_type_use: "0公設").blank? %>
+              <%= f.select(:build_type_use,Yfcase::NO_HP_CLASS_LIST,{},class: "form-control") %>
+            <% else %>                    
+              <%= f.select(:build_type_use,Yfcase::CLASS_LIST,{},class: "form-control") %>
+            <% end %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">使用分區</span>
+            </div>
+            <%= f.select(:use_partition,Yfcase::AREA_LIST,{},class: "form-control") %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">地號謄本</span>
+            </div>
+            <%= f.url_field :build_url,class: "form-control" %>
+          </div>
+          <div class="col-sm-6" style="padding:1px;margin:auto;text-align:left;">
+            <%= link_to_remove_association "刪除建號", f, class: "btn btn-danger btn-sm" %>
+          </div>
+          <h3>坐落位置</h3>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">地號</span>
+            </div>
+            <%= f.collection_select :buildLandNumber, @yfcase.lands, :id, :land_number, {:include_blank => true}, { class: 'form-control'} %>
+          </div>
+          <div class="form-group" style="margin:10px 0px 0px 0px;">
+            <%= @yfcase.country.try(:name) %><%= @yfcase.township.try(:name) %><%= @yfcase.big_section %><%= @yfcase.small_section %>
+          </div> 
+          
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">街/路</span>
+            </div>
+            <%= f.text_field :buildRoad , placeholder: '街/路', class: 'form-control' %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">段</span>
+            </div>
+            <%= f.text_field :buildSegment , placeholder: '段', class: 'form-control' %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">巷</span>
+            </div>
+            <%= f.text_field :buildLane , placeholder: '巷', class: 'form-control' %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">弄</span>
+            </div>
+            <%= f.text_field :buildDo , placeholder: '弄', class: 'form-control' %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">號</span>
+            </div>
+            <%= f.text_field :buildNumber , placeholder: '號', class: 'form-control' %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">樓</span>
+            </div>
+            <%= f.text_field :buildFloor , placeholder: '樓', class: 'form-control' %>
+          </div>
+          
+        </div>
+        
+       
+        
+        <div class="col-md-9">
+         
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-sm" style="background-color:LightGoldenRodYellow;">
+                <h3>主建物面積<small>(單位：平方公尺)</small></h3>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">層次</th>
+                      <th scope="col">構造</th>
+                      <th scope="col">面積</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= f.select(:mainBuildLevel1,Build::MAIN_LEVEL_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.select(:mainBuildConstruction1,Build::MAIN_CONSTRUCTION_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :mainBuildArea1, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.select(:mainBuildLevel2,Build::MAIN_LEVEL_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.select(:mainBuildConstruction2,Build::MAIN_CONSTRUCTION_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :mainBuildArea2, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.select(:mainBuildLevel3,Build::MAIN_LEVEL_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.select(:mainBuildConstruction3,Build::MAIN_CONSTRUCTION_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :mainBuildArea3, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.select(:mainBuildLevel4,Build::MAIN_LEVEL_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.select(:mainBuildConstruction4,Build::MAIN_CONSTRUCTION_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :mainBuildArea4, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.select(:mainBuildLevel5,Build::MAIN_LEVEL_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.select(:mainBuildConstruction5,Build::MAIN_CONSTRUCTION_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :mainBuildArea5, class: 'form-control' %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm" style="background-color:MistyRose;">
+                <h3>公設面積<small>(單位：平方公尺)</small></h3>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">建號</th>
+                      <th scope="col">面積</th>
+                      <th scope="col">比例</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= f.text_field :publicBuildNumber1, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildArea1, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildHP1, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.text_field :publicBuildNumber2, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildArea2, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildHP2, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.text_field :publicBuildNumber3, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildArea3, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildHP3, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.text_field :publicBuildNumber4, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildArea4, class: 'form-control' %></td>
+                      <td><%= f.text_field :publicBuildHP4, class: 'form-control' %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm" style="background-color:PaleTurquoise;">
+                <h3>附屬建物面積<small>(單位：平方公尺)</small></h3>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">用途</th>
+                      <th scope="col">面積</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= f.select(:subBuildUse1,Build::SUB_USE_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :subBuildArea1, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                     <td><%= f.select(:subBuildUse2,Build::SUB_USE_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :subBuildArea2, class: 'form-control' %></td>
+                    </tr>
+                    <tr>
+                      <td><%= f.select(:subBuildUse3,Build::SUB_USE_LIST, {}, { class: 'form-control'}) %></td>
+                      <td><%= f.text_field :subBuildArea3, class: 'form-control' %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          
+          <h2>主建物面積<small>(單位：平方公尺)</small></h2>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <%= f.label :buildLevel1, "一層" %>
+              <%= f.text_field :buildLevel1 , class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-2">
+              <%= f.label :buildLevel2, "二層" %>
+              <%= f.text_field :buildLevel2 , class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-2">
+              <%= f.label :buildLevel3, "三層" %>
+              <%= f.text_field :buildLevel3 , class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-2">
+              <%= f.label :buildLevel4, "四層" %>
+              <%= f.text_field :buildLevel4 , class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-2">
+              <%= f.label :buildOther1, "其他一" %>
+              <%= f.text_field :buildOther1 , class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-2">
+              <%= f.label :buildOther2, "其他二" %>
+              <%= f.text_field :buildOther2 , class: 'form-control' %>
+            </div>
+          </div>
+          <h2>附屬建物面積<small>(單位：平方公尺)</small></h2>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <%= f.label :buildUse, "用途" %>
+              <%= f.select(:buildUse,Yfcase::BUILD_USE_LIST,{},class: "form-control") %>
+            </div>
+            <div class="form-group col-md-3">
+              <%= f.label :buildScopeOfArea, "面積" %>
+              <%= f.text_field :buildScopeOfArea , placeholder: '面積', class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-3">
+              <%= f.label :buildTotalArea, "總面積" %>
+              <%= f.text_field :buildTotalArea , placeholder: '總面積', class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-2">
+              <%= f.label :buildRemarks, "備註" %>
+              <%= f.text_field :buildRemarks , placeholder: '在此輸入建物備註', class: 'form-control' %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

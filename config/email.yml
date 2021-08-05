@@ -1,0 +1,27 @@
+# development:
+#   address: "smtp.mailgun.org"
+#   port: 587
+#   domain: "mailgun.org"
+#   authentication: "plain"
+#   user_name: "postmaster@sandbox2b67216c05a94043ab8725a0327598fe.mailgun.org"
+#   password: "926a61b730865ed9d7e11b86abc75982-3e51f8d2-63506e3e"
+#   enable_starttls_auto: true
+
+development:
+  address: "smtp.gmail.com"
+  port: 587
+  domain: "gmail.com"
+  authentication: "plain"
+  user_name: "ryowu0329@gmail.com"
+  password: "58004209Leowu"
+  enable_starttls_auto: true
+  
+    
+production:
+  address: "smtp.mailgun.org"
+  port: 587
+  domain: "ihower.com"
+  authentication: "plain"
+  user_name: "postmaster@ihower.tw"
+  password: "1234567890"
+  enable_starttls_auto: true

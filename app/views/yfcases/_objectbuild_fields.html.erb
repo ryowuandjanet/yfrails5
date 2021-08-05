@@ -1,0 +1,51 @@
+<div class="nested-fields">
+    <div class="field" style="background-color: #eee">
+        <div class="row mb-2" style="padding:10px;">
+            <div class="col-md-2 mb-2">
+                <%= f.label :objectbuild_status,"狀態" %>
+                <%= f.select(:objectbuild_status,Objectbuild::OBJECTBUILD_STATUS_LIST, {}, {  :prompt => '請輸入狀態', class: 'form-control'}) %>
+            </div>            
+            
+            <div class="col-md-6 mb-2">
+                <%= f.label :address,"地址" %> <small style="color:red;">(請輸入路/街以後的住址，例；敦化南路111巷22號~30號)</small>
+                <%= f.text_field :address, class: "form-control" %>
+            </div>
+            
+             <div class="col-md-2 mb-2">
+                <%= f.label :objectBuildDealYear,"成交年份" %>
+                <%= f.select(:objectBuildDealYear,Objectbuild::OBJECTBUILD_DEAL_YEAR, {}, { class: 'form-control'}) %>
+            </div>
+             <div class="col-md-2 mb-2">
+                <%= f.label :objectBuildDealMonth,"成交月份" %>
+                <%= f.select(:objectBuildDealMonth,Objectbuild::OBJECTBUILD_DEAL_MONTH, {}, { class: 'form-control'}) %>
+            </div>
+            
+            <div class="col-md-3 mb-2">
+                <%= f.label :total_price,"總價(元)" %>
+                <%= f.text_field :total_price, class: "form-control" %>
+            </div>
+            <div class="col-md-3 mb-2">
+                <%= f.label :build_area,"建坪(坪)" %>
+                <%= f.text_field :build_area, class: "form-control" %>
+            </div>
+            <div class="col-md-3 mb-2">
+                <%= f.label :house_age,"屋齡(年)" %>
+                <%= f.text_field :house_age, class: "form-control" %>
+            </div>
+            <div class="col-md-3 mb-2">
+                <%= f.label :floor_height,"樓高" %>
+                <%= f.text_field :floor_height, class: "form-control" %>
+            </div>
+            
+            <div class="col-md-10 mb-2">
+                <%= f.label :objectbuild_url,"附件連結" %>
+                <%= f.text_field :objectbuild_url, class: "form-control" %>
+            </div>
+            <div class="col-md-2 mb-2">
+                項目
+                <%= link_to_remove_association "刪除物件", f, class: "btn btn-outline-danger btn-sm form-control" %>
+            </div>
+        </div>
+        
+    </div>
+</div>

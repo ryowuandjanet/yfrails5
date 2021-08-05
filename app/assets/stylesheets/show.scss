@@ -1,0 +1,606 @@
+// @font-face {
+// 	font-family:'標楷體';
+// 	// 使用Windows內建的系統文字楷體可以通過測試
+// 	src: asset_url('/assets/kaiu.ttf') format('truetype');
+// 	font-weight: 800;
+// 	font-style: normal;
+// } 
+
+// @font-face {
+// 	font-family:'微軟正黑體';
+// 	// 使用Windows內建的系統文字楷體可以通過測試
+// 	src: asset_url('/assets/msjh') format('truetype');
+// 	font-weight: normal;
+// 	font-style: normal;
+// } 
+body{
+	font-family: "微軟正黑體";
+}
+
+.testfont{
+	font-family: "標楷體";
+}
+/*字型*/
+
+.font-th {
+	font-size: 14pt;
+	font-family: Arial,"微軟正黑體",sans-serif;
+	font-width:bold;
+	color:black;
+	text-align: center;	
+}
+
+.font-td {
+	font-size: 12pt;
+	font-family: Arial,"微軟正黑體",sans-serif;
+	font-width:bold;
+	color:blue;	
+}
+
+.font-th-10 {
+	font-size: 10pt;
+	font-family: Arial,"微軟正黑體",sans-serif;
+	font-width:bold;
+	color:black;
+}
+
+/*頁面大小*/
+@media only screen and (max-width: 1200px) {
+	.container{
+		max-width:1154;
+	}
+}
+@media only screen and (max-width: 600px) {
+	.container{
+		max-width:560px;
+	}
+}
+
+
+.x110000 { 
+	text-align: center;
+	font-family: Arial,標楷體;
+	font-weight: bold;
+}
+/*基本資料*/
+.xa1100{
+	background-color: pink;
+	border-right:1px dotted black;
+	border-bottom:1px double black;
+	background-color: AntiqueWhite;
+	width: 100px;
+}
+
+.xa1200{
+	border-right:1px dotted black;
+	border-bottom:1px double black;
+	width: 300px;
+	text-align: left;
+}
+
+.xa1300{
+	border-right:1px dotted black;
+	border-bottom:1px double black;
+	background-color: AntiqueWhite;
+	width: 100px;
+}
+.xa1400{
+	border-right:1px dotted black;
+	border-bottom:1px double black;
+	width: 200px;
+}
+
+.xa1500{
+	border-right:1px dotted black;
+	border-bottom:1px double black;
+	background-color: AntiqueWhite;
+	width: 100px;
+}
+.xa1600{
+	border-bottom:1px double black;
+	width: 200px;
+}
+
+.xa2100{
+	border-right:1px dotted black;
+	background-color: AntiqueWhite;
+	width: 100px;
+}
+
+.xa2200{
+	width: 900px;
+}
+
+.xb1100{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:1px double black;
+	border-left:3px solid black;
+	background-color: Aquamarine;
+	width: 250px;
+}
+.xb1200{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:1px double black;	
+	background-color: Aquamarine;
+	width: 50px;
+}
+.xb1300{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:1px double black;	
+	background-color: Aquamarine;
+	width: 150px;
+}
+.xb1400{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:1px double black;	
+	background-color: Aquamarine;
+	width: 100px;
+}
+.xb1500{
+	border-top:3px solid black;
+	border-right:3px solid black;
+	border-bottom:1px double black;	
+	background-color: Aquamarine;
+	width: 150px;
+}
+.xb1600{
+	border-top:none;
+	border-bottom:none;
+	width: 25px;
+}
+.xb1700{
+	border-top:3px solid black;
+	border-right:3px solid black;
+	border-bottom:double;
+	border-left:3px solid black;
+	background-color: Aquamarine;
+	width: 125px;
+}
+.xb1800{
+	border-top:none;
+	border-bottom:none;
+	width: 25px;
+}
+.xb1900{
+	border-top:3px solid black;
+	border-right:3px solid black;
+	border-bottom:double;
+	border-left:3px solid black;
+	background-color: DeepSkyBlue;
+	width: 125px;
+}
+
+.xb2100{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;
+	border-left:3px solid black;
+	width: 250px;
+}
+.xb2200{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;		
+	width: 50px;
+	text-align: center;
+}
+.xb2300{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;	
+	width: 150px;
+	text-align: center;
+}
+.xb2400{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;	
+	width: 100px;
+	text-align: center;
+}
+.xb2500{
+	border-right:3px solid black;
+	border-bottom:3px solid black;	
+	width: 150px;
+	text-align: center;
+}
+.xb2600{
+	border-top:none;
+	border-bottom:none;
+	width: 25px;
+}
+.xb2700{
+	border-right:3px solid black;
+	border-bottom:3px solid black;
+	border-left:3px solid black;
+	width: 125px;
+	text-align: center;
+}
+.xb2800{
+	border-top:none;
+	border-bottom:none;
+	width: 25px;
+}
+.xb2900{
+	border-right:3px solid black;
+	border-bottom:3px solid black;
+	border-left:3px solid black;
+	width: 125px;
+	text-align: center;
+}
+
+.xc1100{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:1px double black;
+	border-left:3px solid black;
+	background-color: DeepSkyBlue;
+	width: 250px;
+}
+.xc1200{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:double;
+	background-color: DeepSkyBlue;
+	width: 50px;
+}
+.xc1300{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:double;
+	background-color: DeepSkyBlue;
+	width: 150px;
+}
+.xc1400{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:double;
+	background-color: DeepSkyBlue;
+	width: 100px;
+}
+.xc1500{
+	border-top:3px solid black;
+	border-right:1px dotted black;
+	border-bottom:1px dotted black;
+	background-color: DeepSkyBlue;
+	width: 250px;
+}
+.xc1511{
+	border-right:1px dotted black;
+	border-bottom:double;
+	background-color: DeepSkyBlue;
+	width: 125px;
+}
+.xc1512{
+	border-right:1px dotted black;
+	border-bottom:double;
+	background-color: DeepSkyBlue;
+	width: 125px;
+}
+.xc1600{
+	border-top:3px solid black;
+	border-right:3px solid black;
+	border-bottom:double;
+	background-color: DeepSkyBlue;
+	width: 200px;
+}
+// .xc1700{
+// 	border-top:3px solid black;
+// 	border-right:3px solid black;
+// 	border-bottom:double;
+// 	background-color: DeepSkyBlue;
+// 	width: 110px;
+// }
+
+.xc2100{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;
+	border-left:3px solid black;
+	width: 250px;
+}
+.xc2200{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;		
+	width: 50px;
+	text-align: center;
+}
+.xc2300{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;	
+	width: 150px;
+	text-align: right;
+}
+.xc2400{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;	
+	width: 100px;
+	text-align: right;
+}
+.xc2500{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;	
+	width: 125px;
+	text-align: right;
+}
+.xc2501{
+	border-right:1px dotted black;
+	border-bottom:3px solid black;	
+	width: 125px;
+	text-align: right;
+}
+.xc2600{
+	border-right:3px solid black;
+	border-bottom:3px solid black;
+	width: 200px;
+	text-align: left;
+}
+// .xc2700{
+// 	border-right:3px solid black;
+// 	border-bottom:3px solid black;
+// 	width: 110px;
+// 	font-size:14px;
+// 	text-align: center;
+// }
+
+/*拍賣資訊*/
+.font-th-12 {font-size: 12pt;font-family: Arial,微軟正黑體,sans-serif;font-width:bold;color:black;text-align: center;}
+.font-td-10 {font-size: 10pt;font-family: Arial,微軟正黑體,sans-serif;font-width:bold;color:blue;}
+.font-td-10-bk {font-size: 10pt;font-family: Arial,微軟正黑體,sans-serif;font-width:bold;color:black;}
+
+.xd1100 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;border-left:3px solid black;background-color: Gainsboro;width: 100px;}
+.xd1200 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 190px;}
+.xd1300 {}
+.xd1400 {}
+.xd1500 {}
+.xd1600 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 100px;}
+.xd1700 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 100px;}
+.xd1800 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 100px;}
+.xd1900 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 70px;}
+.xd1a00 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 70px;}
+.xd1b00 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 70px;}
+.xd1c00 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;background-color: Gainsboro;width: 100px;}
+.xd1d00 {border-top:3px solid black;border-right:3px solid black;border-bottom:double;background-color: Gainsboro;width: 100px;}
+
+
+.xd2100 {border-right:1px dotted black;border-bottom:1px dashed black;border-left:3px solid black;width: 100px;text-align: center;}
+.xd2200 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;background-color: Gainsboro;}
+.xd2300 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd2400 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd2500 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd2600 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd2700 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd2800 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd2900 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd2a00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd2b00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd2c00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd2d00 {border-right:3px solid black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+
+
+.xd3100 {border-right:1px dotted black;border-bottom:1px dashed black;border-left:3px solid black;width: 100px;text-align: center;}
+.xd3200 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;background-color: Gainsboro;}
+.xd3300 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd3400 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd3500 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd3600 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd3700 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd3800 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd3900 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd3a00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd3b00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd3c00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd3d00 {border-right:3px solid black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+
+.xd4100 {border-right:1px dotted black;border-bottom:1px dashed black;border-left:3px solid black;width: 100px;text-align: center;}
+.xd4200 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;background-color: Gainsboro;}
+.xd4300 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd4400 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd4500 {border-right:1px dotted black;border-bottom:1px dashed black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd4600 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd4700 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd4800 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd4900 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd4a00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd4b00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 70px;text-align: center;}
+.xd4c00 {border-right:1px dotted black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+.xd4d00 {border-right:3px solid black;border-bottom:1px dashed black;width: 100px;text-align: center;}
+
+.xd5100 {border-right:1px dotted black;border-bottom:3px solid black;border-left:3px solid black;width: 100px;text-align: center;}
+.xd5200 {border-right:1px dotted black;border-bottom:3px solid black;width: 70px;text-align: center;background-color: Gainsboro;}
+.xd5300 {border-right:1px dotted black;border-bottom:3px solid black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd5400 {border-right:1px dotted black;border-bottom:3px solid black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd5500 {border-right:1px dotted black;border-bottom:3px solid black;width: 40px;text-align: center;background-color: Gainsboro;}
+.xd5600 {border-right:1px dotted black;border-bottom:3px solid black;width: 100px;text-align: center;}
+.xd5700 {border-right:1px dotted black;border-bottom:3px solid black;width: 100px;text-align: center;}
+.xd5800 {border-right:1px dotted black;border-bottom:3px solid black;width: 100px;text-align: center;}
+.xd5900 {border-right:1px dotted black;border-bottom:3px solid black;width: 70px;text-align: center;}
+.xd5a00 {border-right:1px dotted black;border-bottom:3px solid black;width: 70px;text-align: center;}
+.xd5b00 {border-right:1px dotted black;border-bottom:3px solid black;width: 70px;text-align: center;}
+.xd5c00 {border-right:1px dotted black;border-bottom:3px solid black;width: 100px;text-align: center;}
+.xd5d00 {border-right:3px solid black;border-bottom:3px solid black;width: 100px;text-align: center;}
+
+.xe1100 {border-top:3px solid black;border-right:double;border-bottom:1px dotted black;border-left:3px solid black;width: 200px;;text-align: center;background-color: Khaki;}
+.xe1200 {border-top:3px solid black;border-right:3px solid black;border-bottom:1px dotted black;width: 800px;}
+.xe2100 {border-right:double;border-bottom:1px dotted black;border-left:3px solid black;width: 200px;text-align: center;background-color: Khaki;}
+.xe2200 {border-right:3px solid black;border-bottom:1px dotted black;width: 800px;}
+.xe3100 {border-right:double;border-bottom:1px dotted black;border-left:3px solid black;width: 200px;text-align: center;background-color: Khaki;}
+.xe3200 {border-right:3px solid black;border-bottom:1px dotted black;width: 300px;}
+.xe3300 {border-right:double;border-bottom:1px dotted black;border-left:3px solid black;width: 100px;text-align: center;background-color: Khaki;}
+.xe3400 {border-right:3px solid black;border-bottom:1px dotted black;}
+.xe4100 {border-right:double;border-bottom:1px dotted black;border-left:3px solid black;width: 200px;text-align: center;background-color: Khaki;}
+.xe4200 {border-right:3px solid black;border-bottom:1px dotted black;width: 920px;}
+.xe5100 {border-right:double;border-bottom:1px dotted black;border-left:3px solid black;width: 80px;text-align: center;background-color: Khaki;}
+.xe5200 {border-right:3px solid black;border-bottom:1px dotted black;width: 800px;}
+.xe6100 {border-right:double;border-bottom:3px solid black;border-left:3px solid black;width: 200px;text-align: center;background-color: Khaki;}
+.xe6200 {border-right:3px solid black;border-bottom:3px solid black;width: 800px;}
+
+.xf1100 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;border-left:3px solid black;width: 150px;text-align: center;background-color: LightSteelBlue;}
+.xf1200 {border-top:3px solid black;border-right:double;border-bottom:double;width: 350px;text-align: center;background-color: LightSteelBlue;}
+.xf1300 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;width: 150px;text-align: center;background-color: LightSteelBlue;}
+.xf1400 {border-top:3px solid black;border-right:3px solid black;border-bottom:double;width: 350px;text-align: center;background-color: LightSteelBlue;}
+
+.xf2100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf2200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf2300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf2400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xf3100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf3200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf3300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf3400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xf4100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf4200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf4300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf4400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xf5100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf5200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf5300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf5400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xf6100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf6200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf6300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf6400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xf7100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf7200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf7300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf7400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xf8100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf8200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf8300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf8400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xf9100 {border-right:1px dotted black;border-bottom:1px dotted black;border-left:3px solid black;width: 150px;text-align: center;}
+.xf9200 {border-right:double;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+.xf9300 {border-right:1px dotted black;border-bottom:1px dotted black;width: 150px;text-align: center;}
+.xf9400 {border-right:3px solid black;border-bottom:1px dotted black;width: 350px;text-align: left;background-color: LightSteelBlue;}
+
+.xfa100 {border-right:1px dotted black;border-bottom:3px solid black;border-left:3px solid black;width: 150px;text-align: center;}
+.xfa200 {border-right:3px solid black;border-bottom:3px solid black;width: 850px;text-align: left}
+
+
+.xg1100 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;border-left:3px solid black;width: 200px;text-align: center;background-color: YellowGreen;}
+.xg1200 {border-top:3px solid black;border-right:double;border-bottom:double;width: 200px;text-align: center;background-color: YellowGreen;}
+.xg1300 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;width: 200px;text-align: center;background-color: YellowGreen;}
+.xg1400 {border-top:3px solid black;border-right:1px dotted black;border-bottom:double;width: 200px;text-align: center;background-color: YellowGreen;}
+.xg1500 {border-top:3px solid black;border-right:3px solid black;border-bottom:double;width: 200px;text-align: center;background-color: YellowGreen;}
+
+.xg2100 {border-right:1px dotted black;border-bottom:3px solid black;border-left:3px solid black;width: 200px;text-align: center;}
+.xg2200 {border-right:double black;border-bottom:3px solid black;width: 200px;height:120px;}
+.xg2300 {border-right:1px dotted black;border-bottom:3px solid black;width: 200px;height:120px;}
+.xg2400 {border-right:1px dotted black;border-bottom:3px solid black;width: 200px;height:120px;}
+.xg2500 {border-right:3px solid black;border-bottom:3px solid black;width: 200px;height:120px;}
+
+
+.xe5210{border: 1px solid black;width: 50px;text-align: center;background-color: Silver;}
+.xe5211{border: 1px solid black;width: 50px;text-align: center;background-color: Silver;}
+.xe5212{border: 1px solid black;width: 190px;text-align: center;background-color: Silver;}
+.xe5213{border: 1px solid black;width: 80px;text-align: center;background-color: Silver;}
+.xe5214{border: 1px solid black;width: 70px;text-align: center;background-color: Silver;}
+.xe5215{border: 1px solid black;width: 70px;text-align: center;background-color: Silver;}
+.xe5216{border: 1px solid black;width: 50px;text-align: center;background-color: Silver;}
+.xe5217{border: 1px solid black;width: 80px;text-align: center;background-color: Silver;}
+.xe5218{border: 1px solid black;width: 50px;text-align: center;background-color: Silver;}
+.xe5219{border: 1px solid black;width: 80px;text-align: center;background-color: Silver;}
+.xe521a{border: 1px solid black;width: 50px;text-align: center;background-color: Silver;}
+.xe521b{border: 1px solid black;width: 80px;text-align: center;background-color: Silver;}
+.xe521x{border: 1px solid black;width: 150px;text-align: center;background-color: Silver;}
+.xe521y{border: 1px solid black;width: 150px;text-align: center;background-color: Silver;}
+
+.xe5220{border: 1px solid black;width: 50px;text-align: center;color: blue;}
+.xe5221{border: 1px solid black;width: 50px;text-align: center;color: blue;}
+.xe5222{border: 1px solid black;width: 190px;text-align: left;color: blue;}
+.xe5223{border: 1px solid black;width: 80px;text-align: right;color: blue;}
+.xe5224{border: 1px solid black;width: 70px;text-align: right;color: blue;}
+.xe5225{border: 1px solid black;width: 70px;text-align: right;color: blue;}
+.xe5226{border: 1px solid black;width: 50px;text-align: center;color: blue;}
+.xe5227{border: 1px solid black;width: 80px;text-align: center;color: blue;}
+.xe5228{border: 1px solid black;width: 50px;text-align: right;color: blue;}
+.xe5229{border: 1px solid black;width: 80px;text-align: center;color: blue;}
+.xe522a{border: 1px solid black;width: 50px;text-align: right;color: blue;}
+.xe522b{border: 1px solid black;width: 50px;text-align: right;color: blue;}
+.xe522x{border: 1px solid black;width: 250px;color: blue;}
+.xe522y{border: 1px solid black;width: 250px;color: blue;}
+
+// ===========================自行設定=========================================================
+
+.yfcaseDatabase, .yfcaseLand, .yfcaseLandTotall, .yfcaseBuildTotall,.yfcaseBuild,.yfcaseAttachment {
+	border-collapse: collapse; 
+	border:3px solid black;
+}
+
+.yfcaseDatabase tr{
+	border-bottom:1px dashed grey;
+}
+
+.yfcaseDatabase tr th,td{
+	border-right:1px dotted grey;
+	border-left:1px dotted grey;
+	padding:3px;
+}
+
+.yfcaseDatabase tr th{
+	background-color: AntiqueWhite;
+	border-right:1px dotted grey;
+	text-align:center;
+}
+
+.yfcaseDatabase tr td{
+	color:blue;
+}
+.yfcaseLand {
+	margin-right: 5px;
+}
+
+.yfcaseLand tr th{
+	border-right: 1px dotted grey;
+	border-left: 1px dotted grey;
+	background-color: Aquamarine;
+	text-align: center;
+}
+
+.yfcaseLand tr td,.yfcaseLandTotall tr td,.yfcaseBuildTotall tr td,.yfcaseBuild tr td{
+	border-top: 3px double grey;
+	color: blue;
+	text-align: center;
+}
+
+.yfcaseLandTotall {
+	margin: 0px 5px;
+}
+
+.yfcaseLandTotall tr th{
+	text-align:center;
+	background-color: Aquamarine;
+}
+
+.yfcaseBuildTotall {
+	margin-left: 5px;
+}
+
+.yfcaseBuildTotall tr th,.yfcaseBuild tr th{
+	border-right: 1px dotted grey;
+	border-left: 1px dotted grey;
+	border-bottom: 1px dotted grey;
+	text-align:center;
+	background-color: DeepSkyBlue;
+}
+
+.yfcaseAttachment tr th {
+	text-align:center;
+	background-color: Khaki;
+	border-bottom: 1px dashed grey;
+	border-right:3px double grey;
+}
+
+.yfcaseAttachment tr td {
+	text-align:left;
+	color:blue;
+	border-bottom: 1px dashed grey;
+}
+
+

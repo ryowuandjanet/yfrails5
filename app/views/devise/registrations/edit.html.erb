@@ -1,0 +1,128 @@
+<style>
+  th{
+    background-color:#ccc;
+  }
+</style>
+<h2>編輯 <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), \
+                                              html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <table class="table table-bordered" >
+  <%= f.hidden_field :userFullName, :value => "#{current_user.first_name}#{current_user.last_name}" %>
+  <tr>
+    <td colspan="12">負責人基本資料</td>
+  </tr>
+  <tr>
+    <th colspan="2">姓名</th>
+    <td colspan="2"><%= f.text_field :first_name, autocomplete: "first_name", class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %></td>
+    <th colspan="2">信箱</th>
+    <td colspan="4"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
+  </tr>
+  <tr>
+    <th colspan="2">負責區域</th>
+    <td colspan="4"><%= f.text_field :userWorkArea, class: "form-control" %></td>
+    <th colspan="2">權限</th>
+    <td colspan="4"><%= f.number_field :role, :value => 0 ,class: "form-control" %></td>
+  </tr>
+  <tr>
+    <td colspan="12">密碼(最少6個字元)</td>
+  </tr>
+  <tr>
+    <th colspan="3">新密碼<br>(如不修改，請留空)</th>
+    <td colspan="3">
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </td>
+    <th colspan="3">新密碼再確認</th>
+    <td colspan="3"><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %></td>
+  </tr>
+  <tr>
+    <th colspan="3">原始密碼驗証<br>(輸入原始密碼確認更改)</th>
+    <td colspan="9"><%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %></td>
+  </tr>
+  <tr>
+    <td colspan="12">進階</td>
+  </tr>
+  <tr>
+    <th colspan="3">身分証字號</th>
+    <th colspan="3">出生年月日</th>
+    <th colspan="2">手機</th>
+    <th colspan="2">市話</th>
+    <th colspan="2">身分別</th>
+  </tr>
+  <tr>
+    <td colspan="3"><%= f.text_field :userIdentityCard, class: "form-control" %></td>
+    <td colspan="3"><%= f.text_field :userBirthday, class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :userMobilePhone, class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :userLocalPhone, class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :userPublicOrPrivate, class: "form-control" %></td>
+  </tr>
+  <tr>
+    <th colspan="2">縣市</th>
+    <th colspan="2">鄉鎮</th>
+    <th colspan="2">村里</th>
+    <th colspan="1">鄰</th>
+    <th colspan="2">街路</th>
+    <th colspan="1">段</th>
+    <th colspan="1">巷</th>
+    <th colspan="1">弄</th>
+  </tr>
+  <tr>
+    <td colspan="2"><%= f.text_field :userCountry, class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :userTownship, class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :userVillage, class: "form-control" %></td>
+    <td colspan="1"><%= f.text_field :userNeighbor, class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :userStreet, class: "form-control" %></td>
+    <td colspan="1"><%= f.text_field :userSection, class: "form-control" %></td>
+    <td colspan="1"><%= f.text_field :userLane, class: "form-control" %></td>
+    <td colspan="1"><%= f.text_field :userAlley, class: "form-control" %></td>
+  </tr>
+  <tr>
+    <th colspan="2">號</th>
+    <th colspan="2">樓</th>
+    <td colspan="8" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= f.text_field :userNumber, class: "form-control" %></td>
+    <td colspan="2"><%= f.text_field :userFloor, class: "form-control" %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table> 
+  
+  <div class="actions">
+    <%= f.submit "更新", class: "form-control" %>
+  </div>
+  
+
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), \
+                          data: { confirm: "你(妳)確定嗎?" }, method: :delete %></p>
+
+<%= link_to "返回", :back %>
+
+
+
+
+

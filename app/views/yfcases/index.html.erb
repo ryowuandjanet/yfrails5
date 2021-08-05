@@ -1,0 +1,265 @@
+<style>
+
+  .y20000{
+    border:2px solid black;
+    border-radius:10px;
+    color:white;
+    width:35px;
+    height:35px;
+    padding:0px;
+    margin: 0px;
+    text-align: center;
+    vertical-align: middle;
+    /*font-weight:bold;*/
+    font-size: 14pt;
+    font-width: bold;
+  }
+
+  .hometable th {
+    border:1px solid grey;
+    padding:2px;
+  }
+  .hometable td {
+    border:1px solid lightgrey;
+    padding:3px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .homeItem td{
+    border:none;
+    padding: 0px 5px;
+  }
+  
+  .btn-group {
+    padding-right:10px;
+  }
+  
+</style>
+
+<h1 style="text-align:center;">案號清單</h1>
+
+<!--篩選欄位-->
+<%= form_tag yfcases_path, :method => :get do %>
+  <div class="row">
+    <div style="padding-left:15px;padding-right:0px;margin-right:0px;">
+      <h3 style="padding-right:5px;">篩選條件：</h3>
+    </div>
+    <div class="col-sm-2" style="padding-left:0px;">
+      <!-- 案號篩選欄位 -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text bg-primary text-white" id="basic-addon1" style="border:1px solid black;">案號</span>
+        </div>
+        <%= text_field_tag "keyword", nil , placeholder: "輸入關鍵字", class: "form-control ", aria: {label: "Username",describedby: "basic-addon1"}, style: "border:1px solid black;" %>
+      </div>
+    </div>
+
+    <div class="col-sm-2" style="padding-left:0px;">
+      <!-- 縣市篩選欄位 -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend" >
+          <label class="input-group-text bg-success text-white" id="basic-addon2" style="border:1px solid black;">縣市</label>
+        </div>
+        <%= select_tag "city", options_from_collection_for_select(Country.order(:name), "id", "name"),:include_blank => true, class: 'form-control', aria: {label: "Username",describedby: "basic-addon2"}, style: "border:1px solid black;" %>
+      </div>
+    </div>
+
+    <div class="col-sm-2" style="padding-left:0px;">
+      <!-- 人員篩選欄位 -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend" >
+          <label class="input-group-text bg-info text-white" id="basic-addon3" style="border:1px solid black;">人員</label>
+        </div>
+        <%= select_tag "person", options_from_collection_for_select(User.order(:full_name), "id", "full_name") , :include_blank => true, class: 'form-control', aria: {label: "Username",describedby: "basic-addon3"}, style: "border:1px solid black;" %>
+
+      </div>
+    </div>
+
+    <div class="col-sm-2" style="padding-left:0px;">
+      <!-- 最終判定篩選欄位 -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend" >
+          <label class="input-group-text bg-warning" id="basic-addon4" style="border:1px solid black;">最終判定</label>
+        </div>
+        <%= select_tag "keyword2", raw("<option>1拍進場</option><option>2拍進場</option><option>3拍進場</option><option>4拍進場</option><option>未判定</option><option>放棄</option>"), :include_blank => true, class: 'form-control', aria: {label: "Username",describedby: "basic-addon4"}, style: "border:1px solid black;" %>
+      </div>
+    </div>
+    
+    <div class="form-check form-check-inline">
+      <%= check_box_tag 'noworbefore', false %>
+      <label class="form-check-label" for="inlineCheckbox1">所有記錄</label>
+    </div>
+
+    <div class="col-sm-2" style="padding-left:0px;">
+      <%= submit_tag "篩選", class: "btn btn-primary", style: "background-color: brown; border:1px solid chocolate;" %>
+    </div>
+
+  </div>
+<% end %>
+
+<table class="table table-hover hometable">
+  <thead style="background-color: darkblue; color:white;">
+    <tr >
+      <th scope="col" style="text-align: center;vertical-align: middle;width:5%;">操作</th>
+      <th scope="col" style="text-align: center;vertical-align: middle;width:30%;">案號</th>
+      <th scope="col" style="text-align: center;vertical-align: middle;width:7%;">兩週內<br>提醒</th>
+      <th style="text-align: center;vertical-align: middle;width:6%;">負責人</th>
+      <th style="text-align: center;vertical-align: middle;" colspan="2">最終判定</th>
+      <th style="text-align: center;vertical-align: middle;width:10%;">執行結果</th>
+      <th style="text-align: center;vertical-align: middle;width:10%;" colspan="2">優購結果</th>
+      <th style="text-align: center;vertical-align: middle;">標的編號</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @yfcases.each do |yfcase| %>
+      <tr>
+        <td scope="row" style="padding: 0px;text-align: center;vertical-align: middle;">
+          <table>
+            <tr>
+              <!--刪除：使用權限=1(管理者)-->
+              <% if current_user.role == 1 %>
+                <td>
+                  <%= link_to yfcase, method: :delete, data: { confirm: '你(妳)確定要刪除嗎?' } do %>
+                    <%= fa_icon "trash",class: "fa-2x" %>
+                  <% end %>
+                </td>
+              <% end %>
+              <% if yfcase.editable_by?(current_user) %>
+                <td>
+                  <%= link_to edit_yfcase_path(yfcase) do %>
+                    <%= fa_icon "edit 2x" %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          </table>
+        </td>
+        <td style="text-align: left;">
+          <%= link_to yfcase_path(yfcase) do %>
+            <%= yfcase.case_number %>
+          <% end %>
+          <br>
+          &emsp;&#10149;<%= yfcase.township.try(:zip_code) %> <%= yfcase.country.try(:name) %><%= yfcase.township.try(:name) %><%= yfcase.other_address %>
+        </td>
+        
+        <% @todayInteger = Date.today.in_time_zone("Taipei").to_time.to_i/ (60 * 60 * 24) + 1 %>
+        <td>
+          <% if yfcase.final_decision =="1拍進場" && yfcase.auction_day_1.present? %>
+            <% @yfcaseAuction_day_1= yfcase.auction_day_1.to_time.to_i / (60 * 60 * 24) - @todayInteger %>
+            <% if @yfcaseAuction_day_1 <= 14 && @yfcaseAuction_day_1 >=0 %>
+              兩週內<span style="color:red;">(<%= @yfcaseAuction_day_1 %>)</span>
+            <% end %> 
+          <% elsif yfcase.final_decision =="2拍進場" && yfcase.auction_day_2.present? %>
+            <% @yfcaseAuction_day_2= yfcase.auction_day_2.to_time.to_i / (60 * 60 * 24) - @todayInteger %>
+            <% if @yfcaseAuction_day_2 <= 14 && @yfcaseAuction_day_2 >=0 %>
+              兩週內<span style="color:red;">(<%= @yfcaseAuction_day_2 %>)</span>
+            <% end %> 
+          <% elsif yfcase.final_decision =="3拍進場" && yfcase.auction_day_3.present? %>
+            <% @yfcaseAuction_day_3= yfcase.auction_day_3.to_time.to_i / (60 * 60 * 24) - @todayInteger %>
+            <% if @yfcaseAuction_day_3 <= 14 && @yfcaseAuction_day_3 >=0 %>
+              兩週內<span style="color:red;">(<%= @yfcaseAuction_day_3 %>)</span>
+            <% end %> 
+          <% elsif yfcase.final_decision =="4拍進場" && yfcase.auction_day_4.present? %>
+            <% @yfcaseAuction_day_4= yfcase.auction_day_4.to_time.to_i / (60 * 60 * 24) - @todayInteger %>
+            <% if @yfcaseAuction_day_4 <= 14 && @yfcaseAuction_day_4 >=0 %>
+              兩週內<span style="color:red;">(<%= @yfcaseAuction_day_4 %>)</span>
+            <% end %>
+          <% else %>
+            <%= "" %>
+          <% end %>
+        </td>
+        <td>
+          <%= yfcase.user.first_name + yfcase.user.last_name %>
+        </td>
+        <td style="width:6%;border-right:none;">
+          <%= yfcase.final_decision.blank? ? '未判定' : yfcase.final_decision %>
+        </td>
+        <% @maxvalueYesNo = maxvalue(yfcase.floor_price_1,yfcase.floor_price_2,yfcase.floor_price_3,yfcase.floor_price_4) %>
+        <td style="width:3%;border-left:none;">
+          
+          <% if @maxvalueYesNo > 1000000 && yfcase.subsigntruebs.first.present? %>
+            <%= link_to yfratingscale_yfcase_path(yfcase,format: "pdf") do %>
+              <div class="y20000" style="border-color:lightblue;background-color: blue;">評</div>
+            <% end %>
+          <% elsif @maxvalueYesNo < 1000000 && @maxvalueYesNo > 0 && yfcase.subsigntrueas.first.present? %>
+            <%= link_to yfratingscale_yfcase_path(yfcase,format: "pdf") do %>
+              <div class="y20000" style="border-color:lightblue;background-color: blue;">評</div>
+            <% end %>
+          <% elsif yfcase.final_decision == "放棄" %>
+            <%= link_to yfratingscale_yfcase_path(yfcase,format: "pdf") do %>
+              <div class="y20000" style="border-color:lightblue;background-color: blue;">評</div>
+            <% end %>
+          <% else %>
+            <%= "" %>
+          <% end %>
+          </div>
+        </td>
+        <td style="width:7%;"><%= yfcase.active_result %></td>
+        <td style="width:6%;">
+          <%= yfcase.priority_purchase_result %>
+        </td>
+        <td style="width:10%;">
+          <table class="homeItem">
+            <% if yfcase.priority_purchase_result.present? && yfcase.priority_purchase_result == "無人優購" %>
+              <% if (@maxvalueYesNo > 1000000 && yfcase.subsigntruebs.first.present?) || (@maxvalueYesNo < 1000000 && @maxvalueYesNo > 0 && yfcase.subsigntrueas.first.present?) || yfcase.final_decision == "放棄" %>
+                <tr>
+                  <td>
+                    <%= link_to deedtax_yfcase_path(yfcase,format: "pdf") do %>
+                      <div class="y20000" style="border-color:lightpink;background-color: red;">契</div>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to realestateregistration_yfcase_path(yfcase,format: "pdf") do %>
+                      <div class="y20000" style="border-color:lightgreen;background-color: green;">動</div>
+                    <% end %>
+                    </td>
+                  <td>
+                    <%= link_to complaint_yfcase_path(yfcase,format: "pdf") do %>
+                      <div class="y20000" style="border-color:grey;background-color: black;">狀</div>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to letter_yfcase_path(yfcase,format: "pdf") do %>
+                      <div class="y20000" style="border-color:mediumpurple;background-color: indigo;">函</div>       
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to commonpropertydivision_yfcase_path(yfcase,format: "pdf") do %>
+                      <div class="y20000" style="border-color:mediumpurple;background-color: orangered;">共</div>       
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            <% end %>
+          </table>
+          
+        </td>
+        <td>
+          <%= yfcase.target_number %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+  
+</table>
+
+<!--分頁-->
+<div style="position: relative; width: 100%;">
+  <div style="position: absolute; color: blue; right: 0;">
+    <%= paginate @yfcases %>
+  </div>
+</div>
+
+
+
